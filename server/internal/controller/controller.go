@@ -2,6 +2,7 @@ package controller
 
 import (
 	"aquaGraph/internal/usecase"
+	"strconv"
 
 	"github.com/Rosto4eks/grapes"
 )
@@ -16,6 +17,22 @@ func New(usecase *usecase.Usecase) *Controller {
 	}
 }
 
-func (c *Controller) Get(context grapes.Context) {
-	context.SendString("Work in progress...")
+func (c *Controller) Get(ctx grapes.Context) {
+	polygons, err := c.usecase.GetPolygons()
+	if err != nil {
+		ctx.SendString(err.Error())
+	}
+	x, err := strconv.ParseFloat(ctx.GetQueryParam("x"), 64)
+	if err != nil {
+		ctx.SendString(err.Error())
+	}
+	y, err := strconv.ParseFloat(ctx.GetQueryParam("y"), 64)
+	if err != nil {
+		ctx.SendString(err.Error())
+	}
+	id, err := c.usecase.Locate(polygons, usecase.Point{x, y})
+	if err != nil {
+		ctx.SendString(err.Error())
+	}
+	ctx.SendString(id)
 }
