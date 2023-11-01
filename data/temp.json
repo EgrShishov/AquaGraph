@@ -1,0 +1,4806 @@
+{
+  "ID_00003": {
+    "name": "подземные источники водоснабжения",
+    "link": 432,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "2,1",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "379,0",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "6,36",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "7,4",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,011",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "0,6",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "20,9",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "26,7",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "51",
+          "name": "Окисляемость",
+          "value": "0,54",
+          "pdk": "5,0",
+          "metric": "мгО/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00010": {
+    "name": "подземные источники водоснабжения",
+    "link": 407,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "3,5",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "231,2",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "4,2",
+          "pdk": "7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "7,8",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,03 - 0,053",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "1,5 - 3,2",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "13,5 - 13,9",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "12,8 - 14,1",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00014": {
+    "name": "подземные источники водоснабжения",
+    "link": 408,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "2,97",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "241,0",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "3,4",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "8,3",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,014",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "4,6",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "13,6",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "13,8",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "51",
+          "name": "Окисляемость",
+          "value": "1,38",
+          "pdk": "5,0",
+          "metric": "мгО/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00009": {
+    "name": "подземные источники водоснабжения",
+    "link": 409,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "3,75",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "265,0",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "4,9",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "7,2",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "0,14",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,034",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "1,4",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "13,5",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "11,9",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "51",
+          "name": "Окисляемость",
+          "value": "0,60",
+          "pdk": "5,0",
+          "metric": "мгО/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00005": {
+    "name": "подземные источники водоснабжения",
+    "link": 410,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "1,80",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "108",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "2,4",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "8,1",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "0,14",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,032",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "0,3",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "1,5",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "4,8",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "51",
+          "name": "Окисляемость",
+          "value": "<0,25",
+          "pdk": "5,0",
+          "metric": "мгО/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00022": {
+    "name": "подземные источники водоснабжения",
+    "link": 411,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "3,18",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "216,8",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "3,8",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "7,8-7,9",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,038 - 0,053",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "3,6 - 9,1",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "13,5 - 29,1",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "14,1 - 19,1",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00019": {
+    "name": "подземные источники водоснабжения",
+    "link": 412,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "2,38",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "306,0",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "4,9",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "8,1",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "<0,01",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "11,3",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "32,6",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "26,8",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "51",
+          "name": "Окисляемость",
+          "value": "0,66",
+          "pdk": "5,0",
+          "metric": "мгО/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00025": {
+    "name": "подземные источники водоснабжения",
+    "link": 413,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "2,72",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "293,9",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "4,76",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "7,8-7,9",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,038 - 0,053",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "18,5",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "22,2 - 31,6",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "19,1 - 25,9",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00006": {
+    "name": "подземные источники водоснабжения",
+    "link": 425,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "2,77",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "251,1",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "4,4",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "51",
+          "name": "Водородный показатель",
+          "value": "7,8-7,9",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,038 - 0,054",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "8,0 - 8,3",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "15,9 - 22,2",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "17,3 - 19,1",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00001": {
+    "name": "подземные источники водоснабжения",
+    "link": 430,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "1,2",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "131",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "2,7",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "8,2",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,033",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "2,5",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "16,0",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "8,1",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "51",
+          "name": "Окисляемость",
+          "value": "0,49",
+          "pdk": "5,0",
+          "metric": "мгО/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "": {
+    "name": "Одна заполненная таблица НЕ УДАЛЯТЬ",
+    "link": 401,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": "<p><strong>Запах </strong>воды обусловлен наличием в ней летучих пахнущих веществ. Запах определяют при температуре воды 20°С и 60°С.</p>\n\n<p>Запах может быть: болотный, гнилостный, землистый, сероводородный, ароматический, хлорный, фенольный, хлорфенольный, нефтяной и др. Может быть естественного (от живущих и отмерших организмов, от влияния почв, водной растительности и т.п.) и искусственного происхождения (изменяться при обработке воды).</p>\n"
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": "<p><strong>Вкус </strong>воды определяется растворенными в ней веществами органического и неорганического происхождения. Вкус различается по характеру и интенсивности. Интенсивность вкуса определяют при 20°С.</p>\n\n<p>Вкус может быть: соленый, кислый, сладкий, горький виды вкуса. Все другие виды вкусовых ощущений называются привкусами. Привкус может быть щелочной, металлический, вяжущий и т.п.</p>\n"
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "3,1",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": "<p><strong>Цветность</strong> - показатель качества воды, характеризующий интенсивность окраски воды. Это естественное свойство природной воды, обусловленное присутствием гуминовых веществ и комплексных соединений железа.</p>\n\n<p>Цветность зависит от геологических условий в водоносных горизонтах и от количества и размеров торфяников в бассейне исследуемой реки. Характеризуется сезонностью. Подземные воды, как правило, имеют меньшую цветность, чем поверхностные.&nbsp;</p>\n"
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "0,3",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": "<p><strong>Мутность </strong>воды вызвана присутствием тонкодисперсных взвесей органического и неорганического происхождения, нерастворимых или коллоидных частиц различного происхождения.</p>\n\n<p>Причина мутности поверхностных вод - &nbsp;илы, кремниевая кислота, гидроокиси железа и алюминия, органические коллоиды, микроорганизмы и планктон, грунтовых вод - нерастворенные минеральные вещества.</p>\n"
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "224,2",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": "<p><strong>Общая минерализация (сухой остаток) </strong>- показатель, характеризующий количественное определение солей и минералов в воде. Минеральный состав воды отражает результат взаимодействия воды с другими фазами: с твердой, с газообразной средами и минеральными компонентами.</p>\n\n<p><strong>Относится к группе показателей физиологической полноценности питьевой воды. </strong>Наличие в воде необходимых солей и микроэлементов важно для обеспечения водно-солевого баланса, кислотно-щелочного равновесия.</p>\n"
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "4,1",
+          "pdk": "7,0",
+          "metric": "<sup>o</sup>Ж",
+          "help": "<p><strong>Жесткость</strong> - свойство воды, обусловленное наличием в ней растворимых солей кальция и магния. Карбонатная жесткость (гидрокарбонаты и карбонаты (при рН&gt;8.3) кальция и магния) почти полностью устраняется при кипячении воды.</p>\n\n<p><strong>Относится к группе показателей физиологической полноценности питьевой воды. </strong>Это важнейший параметр качества питьевой воды, имеющий значение для нормальной деятельности сердечно-сосудистой системы.</p>\n"
+        },
+        {
+          "MIGX_id": "19",
+          "name": "Фтор F<sup>-</sup> ***",
+          "value": "0,10",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": "<p><strong>Фтор</strong> в виде фторидов может содержаться в природных и грунтовых водах, что обусловлено его присутствием в составе некоторых почвообразующих пород и минералов.</p>\n\n<p><strong>Относится к группе показателей физиологической полноценности питьевой воды. </strong>При нормальном содержании является средством профилактики заболеваний желудочно-кишечного тракта и выделительной системы, аллергизации организма, кариеса. Избыточные количества фтора оказыва</p>\n"
+        },
+        {
+          "MIGX_id": "46",
+          "name": "Кальций Ca<sup>2+</sup> ***",
+          "value": "56,6",
+          "pdk": "25 - 130",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": "<p><strong>Кальций</strong> участвует в регуляции проницаемости клеточных мембран и регуляции проведения нервных импульсов, участвует в процессах клеточного иммунитета и в углеводном обмене.</p>\n\n<p><strong>Относится к группе показателей физиологической полноценности питьевой воды.</strong>&nbsp;</p>\n"
+        },
+        {
+          "MIGX_id": "47",
+          "name": "Калий К<sup>+</sup> ***",
+          "value": "0,8",
+          "pdk": "2 - 20",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": "<p><strong>Калий</strong> необходим для нормальной деятельности сердечной мышцы, участвует в регуляции осмотического давления в клетках.</p>\n\n<p><strong>Относится к группе показателей физиологической полноценности питьевой воды.</strong></p>\n"
+        },
+        {
+          "MIGX_id": "48",
+          "name": "Магний Mg<sup>2+</sup> ***",
+          "value": "11,1",
+          "pdk": "5 - 65",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": "<p><strong>Магний </strong>участвует в энергетическом обмене, синтезе нуклеиновых кислот, проводимости нервных импульсов, в иммунологических реакциях.</p>\n\n<p><strong>Относится к группе показателей физиологической полноценности питьевой воды.</strong>&nbsp;</p>\n"
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "7,8",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": "<p><strong>Водородный показатель (рН)</strong> характеризует концентрацию свободных ионов водорода в воде. От величины pH изменяется скорость протекания химических реакций, степень коррозионной агрессивности воды, токсичность загрязняющих веществ и т.д.</p>\n\n<p>Если в воде пониженное содержание свободных ионов водорода (рН&gt;7) по сравнению с ионами ОН-, то вода будет иметь щелочную реакцию, а при повышенном содержании ионов Н+ (рН&lt;7) - кислую. В идеально чистой дистиллированной воде эти ионы будут уравновешивать друг друга - вода нейтральна и рН=7.</p>\n"
+        },
+        {
+          "MIGX_id": "13",
+          "name": "Окисляемость",
+          "value": "0,8",
+          "pdk": "5,0",
+          "metric": "мг O/дм<sup>3</sup>",
+          "help": "<p><strong>Окисляемость</strong> - это величина, характеризующая содержание в воде органических и минеральных веществ, окисляемых (при определенных условиях) одним из сильных химических окислителей.</p>\n\n<p>Показатель полезен для общего представления о насыщенности воды органическими соединениями. Если вода добывается из глубокой скважины - окисляемость будет низкой, а если из наземного источника -&nbsp; высокой.</p>\n"
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": "<p><strong>Железо</strong> поступает в воду при растворении горных пород.</p>\n\n<p>Содержание железа в поверхностных пресных водах - минимально. Повышенное содержание железа в болотных водах. Насыщены железом и некоторые подземные воды. Железо в воде колодцев и скважин может находиться как в окисленной, так и в восстановленной форме, при отстаивании окисляется и может выпадать в осадок.&nbsp;</p>\n"
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,039",
+          "pdk": "2,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": "<p><strong>Аммиак</strong> и его соединения в небольших концентрациях обычно присутствуют в природных водах. Аммиак, присутствующий в воде, может быть органического или неорганического происхождения.</p>\n\n<p>Аммонийные соединения в больших количествах входят в состав минеральных и органических удобрений, избыточное и неправильное применение которых приводит к соответствующему загрязнению водоемов.&nbsp;</p>\n"
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": "<p><strong>Нитриты</strong> - соли азотистой кислоты, промежуточная ступень в цепи бактериальных процессов окисления аммония до нитратов или, напротив, восстановления нитратов до азота и аммиака. Нитриты могут быть выщелочены из почвы. Благодаря способности превращаться в нитраты, нитриты, как правило, отсутствуют в поверхностных водах.</p>\n\n<p>Наличие в анализируемой воде повышенного содержания нитритов свидетельствует о загрязнении воды.</p>\n"
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "8,7",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": "<p><strong>Нитраты</strong> - соли азотной кислоты, наибольшие концентрации которых обнаруживаются в поверхностных и приповерхностных подземных водах, наименьшие - в глубоких скважинах.</p>\n\n<p>Многие минеральные удобрения содержат нитраты, которые при избыточном или нерациональном внесении в почву приводят к загрязнению водоемов. Источниками загрязнения являются также поверхностные стоки с пастбищ, скотных дворов, молочных ферм и т.п.</p>\n"
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "19,9",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": "<p><strong>Хлориды</strong> присутствуют практически во всех пресных поверхностных и грунтовых водах, а также в питьевой воде, в виде солей металлов (NaCl, CaCl2 и MgCl2).</p>\n\n<p>Высокие концентрации хлоридов в питьевой воде не оказывают токсических эффектов на людей.</p>\n"
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "АПАВ",
+          "value": "<0,025",
+          "pdk": "0,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "16",
+          "name": "Фенольный индекс",
+          "value": "<0,0005",
+          "pdk": "0,25",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "17",
+          "name": "Цианиды CN<sup>-</sup>",
+          "value": "<0,01",
+          "pdk": "0,035",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "14,6",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": "<p><strong>Сульфаты</strong> поступают в воду вследствие вымывания осадочных горных пород, выщелачивания почвы и иногда вследствие окисления сульфидов и серы.</p>\n\n<p>Сульфаты в питьевой воде не оказывают токсического эффекта для человека, однако ухудшают вкус воды при их концентрации 250-400 мг/дм3.</p>\n"
+        },
+        {
+          "MIGX_id": "20",
+          "name": "Бор В (суммарно)",
+          "value": "<0,05",
+          "pdk": "0,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "21",
+          "name": "Барий Ba<sup>2+</sup>",
+          "value": "<0,05",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "22",
+          "name": "Стронций Sr<sup>2+</sup>",
+          "value": "<0,5",
+          "pdk": "7,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "23",
+          "name": "Цинк Zn<sup>2+</sup>",
+          "value": "<0,001",
+          "pdk": "5,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": "<p><strong>Цинк</strong>&nbsp;-&nbsp;микроэлемент,&nbsp;входящий в&nbsp;состав некоторых ферментов. Цинк находится в организме в динамическом равновесии, которое сдвигается в условиях повышенных концентраций в окружающей среде.</p>\n"
+        },
+        {
+          "MIGX_id": "24",
+          "name": "Медь Cu<sup>2+</sup>",
+          "value": "<0,001",
+          "pdk": "1,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": "<p><strong>Медь</strong> - микроэлемент, содержащийся в организме человека, в виде комплексных органических соединений. Медь играет важную роль в процессах кроветворения.&nbsp;</p>\n"
+        },
+        {
+          "MIGX_id": "25",
+          "name": "Свинец Pb (суммарно)",
+          "value": "<0,001",
+          "pdk": "0,03",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": "<p><strong>Соединения свинца</strong> - яды, действующие на все живое, вызывающие изменения особенно в нервной системе, крови и сосудах. Подавляют многие ферментативные процессы.</p>\n"
+        },
+        {
+          "MIGX_id": "26",
+          "name": "Алюминий A<sup>3+</sup>",
+          "value": "<0,01",
+          "pdk": "0,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "27",
+          "name": "Хром C<sup>6+</sup>",
+          "value": "0,002",
+          "pdk": "0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "28",
+          "name": "Кадмий Cd (суммарно)",
+          "value": "<0,0001",
+          "pdk": "0,001",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": "<p><strong>Соединения кадмия</strong> очень ядовиты. Действуют на многие системы организма - органы дыхания и желудочно-кишечный тракт, центральную и периферическую нервные системы. Механизм действия заключается в угнетении активности ряда ферментов, нарушении фосфорно-кальциевого обмена, нарушений метаболизма микроэлементов.</p>\n"
+        },
+        {
+          "MIGX_id": "29",
+          "name": "Никель Ni  (суммарно)",
+          "value": "<0,001",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": "<p><strong>Никель</strong> - тяжелый металл, который, попадая в воду, может существовать в виде растворимых токсичных солей и комплексных соединений, коллоидных частиц, осадков.</p>\n\n<p>Главными источниками загрязнения воды тяжелыми металлами являются гальванические производства, предприятия горнорудной, черной и цветной металлургии, машиностроительные заводы и др. Тяжелые металлы по пищевым цепям попадают в организм человека.</p>\n"
+        },
+        {
+          "MIGX_id": "30",
+          "name": "Бериллий Ве<sup>2+</sup>",
+          "value": "<0,0001",
+          "pdk": "0,0002",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "31",
+          "name": "Молибден Мо (суммарно)",
+          "value": "<0,001",
+          "pdk": "0,25",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "32",
+          "name": "Селен Se (суммарно)",
+          "value": "<0,002",
+          "pdk": "0,01",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,016",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": "<p>Характерный признак наличия <strong>марганца</strong> в воде - почернение поверхностей, контактирующих с водой. Удаление марганца аналогично мероприятиям по обезжелезиванию воды.</p>\n"
+        },
+        {
+          "MIGX_id": "34",
+          "name": "Мышьяк As (суммарно)",
+          "value": "<0,005",
+          "pdk": "0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "35",
+          "name": "Ртуть Hg (суммарно)",
+          "value": "<0,00005",
+          "pdk": "0,0005",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": "<p><strong>Ртуть</strong> относится к ультрамикроэлементам и постоянно присутствует в организме, поступая с пищей, в результате чего возникают глубокие нарушения функций центральной нервной системы, изменения в вегетативной нервной системе, в сердце, сосудах, кроветворных органах, печени и др., нарушения в иммунобиологическом состоянии организма. Соединения ртути обладают также эмбриотоксическим действием.</p>\n"
+        },
+        {
+          "MIGX_id": "36",
+          "name": "Гамма-ГХЦГ (линдан)",
+          "value": "<0,001",
+          "pdk": "0,002",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "37",
+          "name": "ДДТ (сумма изомеров)",
+          "value": "<0,001",
+          "pdk": "0,002",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "38",
+          "name": "2,4-Д",
+          "value": "<0,002",
+          "pdk": "0,03",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "39",
+          "name": "Cs-137\t",
+          "value": "<3,7",
+          "pdk": "10,0",
+          "metric": "",
+          "help": ""
+        },
+        {
+          "MIGX_id": "40",
+          "name": "Суммарная альфа-активность",
+          "value": "<0,007",
+          "pdk": "0,1",
+          "metric": "Бк/дм <sup>3</sup>",
+          "help": "<p>Доза облучения, получаемая человеком, складывается из внешнего облучения (за счет источников ионизирующего излучения вне тела человека) и внутреннего облучения (за счет поступающих в организм радионуклидов). Основное поступление радиоактивных элементов в организм человека происходит за счет дыхания (газ радон - до 75% всего внутреннего облучения) и пищи. За счет питьевой воды – незначительно.</p>\n\n<p><strong>Альфа-излучение</strong> гораздо опаснее, когда источник альфа-частиц находится внутри организма.&nbsp;</p>\n"
+        },
+        {
+          "MIGX_id": "41",
+          "name": "Суммарная бета-активность",
+          "value": "<0,1",
+          "pdk": "1,0",
+          "metric": "Бк/дм <sup>3</sup>",
+          "help": "<p>Доза облучения, получаемая человеком, складывается из внешнего облучения (за счет источников ионизирующего излучения вне тела человека) и внутреннего облучения (за счет поступающих в организм радионуклидов). Основное поступление радиоактивных элементов в организм человека происходит за счет дыхания (газ радон - до 75% всего внутреннего облучения) и пищи. За счет питьевой воды – незначительно.</p>\n\n<p><strong>Бета-излучение </strong>может привести к ожогам кожи и очень опасно, когда источник бета-частиц попадает внутрь организма человека.</p>\n"
+        },
+        {
+          "MIGX_id": "42",
+          "name": "Sr-90",
+          "value": "<0,2",
+          "pdk": "3,7",
+          "metric": "",
+          "help": ""
+        },
+        {
+          "MIGX_id": "43",
+          "name": "Общее микробное число, число КОЕ в 1см<sup>3</sup>",
+          "value": "0,3",
+          "pdk": "50",
+          "metric": "",
+          "help": "<p><strong>Общее микробное число</strong> - общее число образующих колонии бактерий в 1мл воды. Используется при оценке эффективности процессов водоочистки.</p>\n\n<p>Внезапное увеличение числа колоний бактерий при анализе воды из подземного водоисточника может служить ранним сигналом загрязнения водоносного горизонта.&nbsp;</p>\n"
+        },
+        {
+          "MIGX_id": "44",
+          "name": "Общие колиформные бактерии, число бактерий в 100см<sup>3</sup>",
+          "value": "отсутствуют",
+          "pdk": "отсутствие",
+          "metric": "",
+          "help": "<p><strong>Колиформные бактерии</strong> считаются удобными микробными индикаторами качества питьевой воды, т.к. легко поддаются обнаружению и количественному определению.</p>\n\n<p>В воду попадают, как правило, с фекальными стоками и способны выживать в ней в течение нескольких недель, хотя и лишены (в подавляющем большинстве) способности к размножению.&nbsp;</p>\n"
+        },
+        {
+          "MIGX_id": "45",
+          "name": "Термотолерантные колиформные бактерии, число бактерий в 100см<sup>3</sup>",
+          "value": "отсутствуют",
+          "pdk": "отсутствие",
+          "metric": "",
+          "help": "<p><strong>Термотолерантные колиформные бактерии</strong> по многим признакам наиболее близких к истинной кишечной палочке. Поддаются быстрому обнаружению и поэтому играют важную вторичную роль при оценке эффективности очистки воды от фекальных бактерий.</p>\n\n<p>Присутствие в воде термотолерантных кишечных палочек является верным признаком свежего фекального загрязнения и, следовательно, эпидемической опасности воды.</p>\n"
+        },
+        {
+          "MIGX_id": "49",
+          "name": "Бикарбонаты НСО<sup>3-</sup>",
+          "value": "183,0",
+          "pdk": "30 - 400",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "отсутсвует",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": "<p><strong>Хлор</strong> (хлорсодержащие реактивы, обладающие сильными окислительными свойствами) используют для обеззараживания воды.</p>\n\n<p>Перед подачей воды в распределительную сеть производится обязательный контроль за содержанием остаточного хлора.</p>\n"
+        },
+        {
+          "MIGX_id": "51",
+          "name": "Хлороформ",
+          "value": "отсутсвует",
+          "pdk": "0,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "52",
+          "name": "Бромоформ",
+          "value": "отсутсвует",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "53",
+          "name": "Дибромхлорметан",
+          "value": "отсутсвует",
+          "pdk": "0,03",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "54",
+          "name": "Бромдихлометан",
+          "value": "отсутсвует",
+          "pdk": "0,03",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "55",
+          "name": "Колифаги (число БОЕ в 100см<sup>3</sup>)",
+          "value": "отсутсвуют",
+          "pdk": "отсутствие",
+          "metric": "",
+          "help": "<p><strong>Колифаги</strong> - вирусы, постоянно присутствующие в местах обитания кишечной палочки во внешней среде. Колифаг является санитарным показателем вирусного загрязнения.</p>\n\n<p>Определение колифагов проводится в системах водоснабжения из поверхностного источника перед подачей воды в распределительную сеть.</p>\n"
+        },
+        {
+          "MIGX_id": "56",
+          "name": "Цисты лямблий (число цист в 50дм<sup>3</sup>)",
+          "value": "отсутсвуют",
+          "pdk": "отсутствие",
+          "metric": "",
+          "help": "<p><strong>Лямблия</strong> - это простейший одноклеточный микроорганизм, существующий в двух отдельных морфологических формах: цисты (статическая форма) и трофозоиты (свободно живущая форма). Они устойчивы к кислотам, щелочам, веществам, содержащим активный хлор, и полностью инактивируются лишь при кипячении в течение не менее 20 минут.</p>\n\n<p>Определение цист лямлий проводится в системах водоснабжения из поверхностного источника перед подачей воды в распределительную сеть.</p>\n"
+        },
+        {
+          "MIGX_id": "57",
+          "name": "Клостридий (число спор в 20см<sup>3</sup>)",
+          "value": "отсутсвуют",
+          "pdk": "отсутствие",
+          "metric": "",
+          "help": "<p><strong>Клостридии</strong> - это анаэробные спорообразующие организмы, обычно присутствуют в фекалиях. Их присутствие в прошедшей дезинфекцию воде может указывать на ее недостаточную очистку и, следовательно, на то, что устойчивые к обеззараживанию патогенные микроорганизмы могли не погибнуть.&nbsp;</p>\n"
+        },
+        {
+          "MIGX_id": "58",
+          "name": "Энтеровирусы (качеств. реакция)",
+          "value": "отсутсвуют",
+          "pdk": "отсутствие",
+          "metric": "",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "<em>Водозабор №7 \"Волма\"</em>",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00013": {
+    "name": "поверхностный и подземные источники водоснабжения (смешанная зона)",
+    "link": 429,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0 ",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "2,2 - 10",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "128,5-240,8",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "2,4-4,1",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "7,8",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,011-0,053",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "17,5",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "19,3",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "14,8-25,9",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0 ",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00002": {
+    "name": "поверхностный источник водоснабжения",
+    "link": 329,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "1/2",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "8",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "233,7",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "3,39",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "7,9",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "<0,01",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,078",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,003",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "1,01",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "23,3",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "0,013",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "13,5",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0,9",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "51",
+          "name": "Окисляемость",
+          "value": "4,12",
+          "pdk": "5,0",
+          "metric": "мгО/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00000": {
+    "name": "подземные источники водоснабжения",
+    "link": 427,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "2,54",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "237,0",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "3,92",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "8,1",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "0,14",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,014",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "9,9",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "21,9",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "16,5",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "51",
+          "name": "Окисляемость",
+          "value": "<0,25",
+          "pdk": "5,0",
+          "metric": "мгО/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00020": {
+    "name": "подземные источники водоснабжения",
+    "link": 428,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "2,3",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "294,0",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "4,66",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "8,1",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,023",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "8,8",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "17,2",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "17,3",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "51",
+          "name": "Окисляемость",
+          "value": "0,33",
+          "pdk": "5,0",
+          "metric": "мгО/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00015": {
+    "name": "подземные источники водоснабжения",
+    "link": 426,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "2-2,20",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "251,0 - 336,6",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "4,46 - 5,21",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "51",
+          "name": "Водородный показатель",
+          "value": "7,8",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,054",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "18,9",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "15,9 - 31,6",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "17,3 - 25,9",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00008": {
+    "name": "подземные источники водоснабжения",
+    "link": 406,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "3,8",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "288,0",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "5,4",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "8,4",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "0,11",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,013",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "1,8",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "14,6",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "17,6",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "51",
+          "name": "Окисляемость",
+          "value": "1,26",
+          "pdk": "5,0",
+          "metric": "мгО/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00007": {
+    "name": "подземные источники водоснабжения",
+    "link": 431,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "2,4-4",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "212,4-317,3",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "4,36-5,3",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "7,8-8,0",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,053-0,077",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "4,0",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "12,0 - 22,0",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "14,1 - 19,3",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00012": {
+    "name": "подземные источники водоснабжения",
+    "link": 424,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "1,9",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "360,0",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "5,42",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "7,9",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,025",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "42,7",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "32,3",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "22,0",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "51",
+          "name": "Окисляемость",
+          "value": "0,26",
+          "pdk": "5,0",
+          "metric": "мгО/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00004": {
+    "name": "подземные источники водоснабжения",
+    "link": 1170,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "1,6",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "269,0",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "4,86",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "7,1",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,034",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "10,4",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "22,4",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "15,8",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "51",
+          "name": "Окисляемость",
+          "value": "<0,25",
+          "pdk": "5,0",
+          "metric": "мгО/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00016": {
+    "name": "подземные источники водоснабжения",
+    "link": 1171,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "1,6",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "269,0",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "4,86",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "7,1",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,034",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "10,4",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "22,4",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "15,8",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "51",
+          "name": "Окисляемость",
+          "value": "<0,25",
+          "pdk": "5,0",
+          "metric": "мгО/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00011": {
+    "name": "поверхностный источник водоснабжения",
+    "link": 1172,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "1/2",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "8",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "233,7",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "3,39",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "7,9",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "<0,01",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,078",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,003",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "1,01",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "23,3",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "0,013",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "13,5",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0,9",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "51",
+          "name": "Окисляемость",
+          "value": "4,12",
+          "pdk": "5,0",
+          "metric": "мгО/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00017": {
+    "name": "подземные источники водоснабжения",
+    "link": 1173,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "3,24",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "190",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "4,68",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "7,8",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,019",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "1,3",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "13,5",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "0,007",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "11,9",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "51",
+          "name": "Окисляемость",
+          "value": "1,10",
+          "pdk": "5,0",
+          "metric": "мгО/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00018": {
+    "name": "подземные источники водоснабжения",
+    "link": 1174,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "3,24",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "190",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "4,68",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "7,8",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,019",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "1,3",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "13,5",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "11,9",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "51",
+          "name": "Окисляемость",
+          "value": "1,10",
+          "pdk": "5,0",
+          "metric": "мгО/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00021": {
+    "name": "подземные источники водоснабжения",
+    "link": 1175,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "1,2",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "335,0",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "5,26",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "7,8",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,013",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "9,6",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "17,2",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "17,3",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "51",
+          "name": "Окисляемость",
+          "value": "<0,25",
+          "pdk": "5,0",
+          "metric": "мгО/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00023": {
+    "name": "подземные источники водоснабжения",
+    "link": 1176,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "3,18",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "216,8",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "3,8",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "7,8-7,9",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,038 - 0,053",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "3,6 - 9,1",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "13,5 - 29,1",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "14,1 - 19,1",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00024": {
+    "name": "подземные источники водоснабжения",
+    "link": 1177,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "3,18",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "216,8",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "3,8",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "7,8-7,9",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,038 - 0,053",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "3,6 - 9,1",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "13,5 - 29,1",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "14,1 - 19,1",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  },
+  "ID_00026": {
+    "name": "подземные источники водоснабжения",
+    "link": 1178,
+    "params": [
+      [
+        {
+          "MIGX_id": "1",
+          "name": "Запах",
+          "value": "0/0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "2",
+          "name": "Привкус",
+          "value": "0",
+          "pdk": "2",
+          "metric": "баллы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "3",
+          "name": "Цветность",
+          "value": "2,72",
+          "pdk": "20",
+          "metric": "градусы",
+          "help": ""
+        },
+        {
+          "MIGX_id": "4",
+          "name": "Мутность",
+          "value": "<0,58",
+          "pdk": "1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "11",
+          "name": "Общая минерализация ***",
+          "value": "293,9",
+          "pdk": "1000",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "12",
+          "name": "Жесткость ***",
+          "value": "4,76",
+          "pdk": "1,5-7,0",
+          "metric": "<sup>o</sup>Ж<sup> **** перевод в др.ед.изм.</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "10",
+          "name": "Водородный показатель",
+          "value": "7,8-7,9",
+          "pdk": "от 6 до 9",
+          "metric": "рН",
+          "help": ""
+        },
+        {
+          "MIGX_id": "5",
+          "name": "Железо Fe (суммарно)",
+          "value": "<0,1",
+          "pdk": "0,3",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "33",
+          "name": "Марганец Mn (суммарно)",
+          "value": "0,038 - 0,053",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "6",
+          "name": "Аммиак NH<sup>4+</sup>",
+          "value": "<0,39",
+          "pdk": "2,0/1,5",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "7",
+          "name": "Нитриты NO<sup>2-</sup>",
+          "value": "<0,2",
+          "pdk": "3,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "8",
+          "name": "Нитраты NO<sup>3-</sup>",
+          "value": "18,5",
+          "pdk": "45,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "9",
+          "name": "Хлориды Cl<sup>-</sup>",
+          "value": "22,2 - 31,6",
+          "pdk": "350,0",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "14",
+          "name": "Нефтепродукты",
+          "value": "<0,005",
+          "pdk": "0,1",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "15",
+          "name": "Поверхностно-активные вещества",
+          "value": "<0,025",
+          "pdk": "0,5/0,05",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "18",
+          "name": "Сульфаты SO<sub>4</sub><sup>2+</sup>",
+          "value": "19,1 - 25,9",
+          "pdk": "500",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        },
+        {
+          "MIGX_id": "50",
+          "name": "Хлор суммарный остаточный",
+          "value": "0",
+          "pdk": "1,2",
+          "metric": "мг/дм<sup>3</sup>",
+          "help": ""
+        }
+      ],
+      null,
+      null,
+      null,
+      null
+    ],
+    "titles": [
+      "",
+      "",
+      "",
+      "",
+      null
+    ]
+  }
+}
