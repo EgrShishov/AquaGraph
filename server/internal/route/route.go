@@ -7,5 +7,6 @@ import (
 )
 
 func Init(router *grapes.Router, c *controller.Controller) {
-	router.Get("/", c.Get)
+	router.Get("/quality", c.GetQuality)
+	router.Get("/qualities", c.GetQualities)
 }
