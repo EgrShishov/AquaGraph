@@ -1,3 +1,6 @@
+crawshaw.io/iox v0.0.0-20181124134642-c51c3df30797/go.mod h1:sXBiorCo8c46JlQV3oXPKINnZ8mcqnye1EkVkqsectk=
+crawshaw.io/sqlite v0.3.2 h1:N6IzTjkiw9FItHAa0jp+ZKC6tuLzXqAYIv+ccIWos1I=
+crawshaw.io/sqlite v0.3.2/go.mod h1:igAO5JulrQ1DbdZdtVq48mnZUBAPOeFzer7VhDWNtW4=
 github.com/Rosto4eks/grapes v0.1.1 h1:zS5xN4eMohSHKLczUSV+LO4XWCI9nGFzlRY3hg0M4RU=
 github.com/Rosto4eks/grapes v0.1.1/go.mod h1:GoBroOyEXwO7hhR4NJ20LX5darIHHF0TQFfgcDukCns=
 github.com/mattn/go-sqlite3 v1.14.17 h1:mCRHCLDUBXgpKAqIKsaAaAsrAlbkeomtRFKXh2L6YIM=
