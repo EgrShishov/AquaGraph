@@ -1,6 +1,4 @@
-package com.example.aquagraphapp
-
-import org.json.JSONArray
+package com.example.aquagraphapp.models
 
 data class QualityModel(
     val MIGX_id: Int,
