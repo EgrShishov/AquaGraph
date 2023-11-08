@@ -9,17 +9,22 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.lifecycle.lifecycleScope
 import com.example.aquagraphapp.ui.theme.AquaGraphAppTheme
 import com.example.aquagraphapp.models.QualityModel
+import kotlinx.coroutines.launch
 
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var point = Pair(27.587433, 53.919585)
-        val dataForTable = mutableListOf<QualityModel>()
-        com.example.aquagraphapp.qualityData.getQualityData(point, dataForTable, applicationContext)
-        Log.d("data", "$dataForTable")
+        lifecycleScope.launch {
+            val dataForTable =
+                com.example.aquagraphapp.qualityData.getQualityData(point, applicationContext)
+            Log.d("coroutine", "$dataForTable")
+        }
 
         setContent {
             AquaGraphAppTheme {
@@ -27,13 +32,11 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = Color.White,
-                    shape = MaterialTheme.shapes.medium,
                 ) {
                     com.example.aquagraphapp.navigation.NavigationBar()
                 }
             }
         }
-
     }
 }
 
