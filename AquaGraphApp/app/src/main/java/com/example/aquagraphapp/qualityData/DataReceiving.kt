@@ -1,41 +1,49 @@
 package com.example.aquagraphapp.qualityData
 
+import android.app.Application
 import android.content.Context
 import android.util.Log
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.aquagraphapp.models.QualityModel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import org.json.JSONArray
 import org.json.JSONObject
+import kotlin.coroutines.Continuation
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
-fun getQualityData(
+suspend fun getQualityData(
     point: Pair<Double, Double>,
-    dataForTable: MutableList<QualityModel>,
-    applicationContext : Context
-) {
+    applicationContext: Context
+) : List<QualityModel> = suspendCoroutine{ continuation ->
     val url = "http://192.168.23.100:1337/qualities?x=" +
             point.first +
             "&y=" +
             point.second
+
     val queue = Volley.newRequestQueue(applicationContext)
-    //val dataForTable = mutableListOf<QualityModel>()
     val request = StringRequest(
         Request.Method.GET,
         url,
         { result ->
-            parseQualityData(result, dataForTable)
+            val dataForTable = parseQualityData(result)
+            continuation.resume(dataForTable)
         },
         { error ->
             Log.d("ErrorLog", "Error in requesting API happened : $error")
+            continuation.resume(emptyList())
         },
     )
     queue.add(request)
 }
 
-fun parseQualityData(result: String, paramsForTable: MutableList<QualityModel>) {
+fun parseQualityData(result: String):MutableList<QualityModel> {
 
     val resParamsArray = mutableListOf<JSONArray>()
+    val paramsForTable = mutableListOf<QualityModel>()
     val responseObject = JSONObject(result)
     val qualities = responseObject.getJSONArray("Qualities")
     //Log.d("qualities","$qualities")
@@ -67,7 +75,8 @@ fun parseQualityData(result: String, paramsForTable: MutableList<QualityModel>) 
             )
             paramsForTable.add(j, model)
         }
-        Log.d("JSONInfo","$paramsForTable")
-        Log.d("JSONInfo","Success parsing JSON")
+        Log.d("JSONInfo", "$paramsForTable")
+        Log.d("JSONInfo", "Success parsing JSON")
     }
+    return paramsForTable
 }
