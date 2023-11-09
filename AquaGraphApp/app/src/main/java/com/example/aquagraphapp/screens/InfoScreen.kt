@@ -1,10 +1,15 @@
 package com.example.aquagraphapp.screens
 
-import androidx.annotation.RestrictTo
+import android.text.Html
+import android.webkit.WebView
+import android.widget.TextView
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.paddingFrom
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.mutableStateOf
@@ -31,57 +36,25 @@ fun InfoScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text(
+        /*Text(
             text = "INFO SCREEN",
             fontSize = 30.sp,
             color = Color.Green
-        )
-        CreateTable()
+        )*/
+        //CreateTable(items)
     }
 }
 
 @Composable
-fun CreateTable() {//data: MutableList<QualityModel>) {
+fun CreateTable() {
 
     var selectedRow by remember { mutableStateOf(0) }
-    var items = listOf(
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-    )
-
+    var items = listOf<QualityModel>()
     Table(
-        modifier = Modifier.padding(1.dp, 1.dp),
+        modifier = Modifier
+            //.fillMaxWidth()
+            //.padding(10.dp, 10.dp)
+            .padding(10.dp),
         columns = listOf(
             TableColumnDefinition {
                 Text("Критерий")

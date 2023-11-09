@@ -50,6 +50,8 @@ android {
 }
 
 dependencies {
+    implementation("com.yandex.android:maps.mobile:4.4.0-lite")
+    implementation("com.seanproctor:datatable:0.2.1")
     implementation("androidx.navigation:navigation-compose:2.7.5")
     implementation("com.android.volley:volley:1.2.1")
     implementation("androidx.core:core-ktx:1.9.0")

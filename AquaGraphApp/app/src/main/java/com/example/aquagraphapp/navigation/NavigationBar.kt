@@ -39,6 +39,7 @@ import com.example.aquagraphapp.screens.ProblemsScreen
 import com.example.aquagraphapp.screens.Screens
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
+import com.example.aquagraphapp.models.QualityModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

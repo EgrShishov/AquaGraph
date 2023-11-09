@@ -19,7 +19,7 @@ suspend fun getQualityData(
     point: Pair<Double, Double>,
     applicationContext: Context
 ) : List<QualityModel> = suspendCoroutine{ continuation ->
-    val url = "http://192.168.23.100:1337/qualities?x=" +
+    val url = "http://192.168.1.100:1337/qualities?x=" +
             point.first +
             "&y=" +
             point.second

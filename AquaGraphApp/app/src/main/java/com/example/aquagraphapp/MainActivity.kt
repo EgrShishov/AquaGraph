@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.lifecycleScope
 import com.example.aquagraphapp.ui.theme.AquaGraphAppTheme
 import com.example.aquagraphapp.models.QualityModel
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 
@@ -21,19 +22,19 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         var point = Pair(27.587433, 53.919585)
         lifecycleScope.launch {
-            val dataForTable =
-                com.example.aquagraphapp.qualityData.getQualityData(point, applicationContext)
+            val data = async{ com.example.aquagraphapp.qualityData.getQualityData(point, applicationContext)}
+            val dataForTable = data.await()
             Log.d("coroutine", "$dataForTable")
-        }
 
-        setContent {
-            AquaGraphAppTheme {
-                MaterialTheme.colorScheme.primary
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = Color.White,
-                ) {
-                    com.example.aquagraphapp.navigation.NavigationBar()
+            setContent {
+                AquaGraphAppTheme {
+                    MaterialTheme.colorScheme.primary
+                    Surface(
+                        modifier = Modifier.fillMaxSize(),
+                        color = Color.White,
+                    ) {
+                        com.example.aquagraphapp.navigation.NavigationBar()
+                    }
                 }
             }
         }
