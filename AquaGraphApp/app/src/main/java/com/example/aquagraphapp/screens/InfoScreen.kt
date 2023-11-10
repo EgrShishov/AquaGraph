@@ -25,7 +25,9 @@ import androidx.compose.ui.unit.dp
 import com.seanproctor.datatable.TableColumnDefinition
 import com.seanproctor.datatable.Table
 import androidx.compose.material3.Text
+import com.example.aquagraphapp.MainActivity
 import com.example.aquagraphapp.models.QualityModel
+import com.yandex.mapkit.geometry.Point
 
 @Composable
 fun InfoScreen() {
@@ -52,8 +54,6 @@ fun CreateTable() {
     var items = listOf<QualityModel>()
     Table(
         modifier = Modifier
-            //.fillMaxWidth()
-            //.padding(10.dp, 10.dp)
             .padding(10.dp),
         columns = listOf(
             TableColumnDefinition {
