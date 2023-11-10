@@ -43,7 +43,7 @@ import com.example.aquagraphapp.models.QualityModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NavigationBar() {
+fun NavigationBar(dataForTable : List<QualityModel>) {
     val items = listOf(
         BottomNavigationItem(
             route = "HomeScreen",
@@ -138,7 +138,7 @@ fun NavigationBar() {
                 HomeScreen()
             }
             composable("InfoScreen") {
-                InfoScreen()
+                InfoScreen(dataForTable)
             }
             composable("ProblemsScreen") {
                 ProblemsScreen()
