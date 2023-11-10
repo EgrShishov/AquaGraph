@@ -9,4 +9,6 @@ import (
 func Init(router *grapes.Router, c *controller.Controller) {
 	router.Get("/quality", c.GetQuality)
 	router.Get("/qualities", c.GetQualities)
+	router.Get("/marks", c.GetMarks)
+	router.Get("/new-mark", c.NewMark)
 }

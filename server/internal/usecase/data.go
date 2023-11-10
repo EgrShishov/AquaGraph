@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+	"time"
 )
 
 func (u *Usecase) GetPolygons() (Polygons, error) {
@@ -18,7 +19,7 @@ func (u *Usecase) GetPolygons() (Polygons, error) {
 }
 
 func (u *Usecase) GetQuality(id string) (models.QualityJson, error) {
-    data, err := u.repository.Get()
+    data, err := u.repository.GetQuality()
     if err != nil {
         return models.QualityJson{}, err
     }
@@ -35,7 +36,7 @@ func (u *Usecase) GetQuality(id string) (models.QualityJson, error) {
 
 
 func (u *Usecase) GetQualities(id string) ([]models.QualityJson, error) {
-    data, err := u.repository.GetAll()
+    data, err := u.repository.GetQualities()
     if err != nil {
         return nil, err
     }
@@ -53,4 +54,15 @@ func (u *Usecase) GetQualities(id string) ([]models.QualityJson, error) {
         })
     }
     return arr, nil
+}
+
+
+func (u *Usecase) GetMarks() ([]models.Mark, error) {
+    return u.repository.GetMarks()
+}
+
+
+func (u *Usecase) NewMark(m models.Mark) error {
+    m.Time = time.Now().Format("2006-01-02")
+    return u.repository.NewMark(m)
 }

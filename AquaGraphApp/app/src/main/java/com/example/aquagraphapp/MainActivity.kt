@@ -1,30 +1,20 @@
 package com.example.aquagraphapp
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.renderscript.ScriptGroup.Binding
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
-import android.widget.VideoView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Surface
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.internal.composableLambda
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.viewinterop.AndroidView
-import androidx.core.view.get
 import androidx.lifecycle.lifecycleScope
 import com.example.aquagraphapp.ui.theme.AquaGraphAppTheme
-import com.example.aquagraphapp.models.QualityModel
-import com.google.android.gms.common.internal.ShowFirstParty
-import com.yandex.mapkit.Animation
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.map.CameraPosition
@@ -55,12 +45,17 @@ class MainActivity : ComponentActivity() {
 
             setContent {
                 AquaGraphAppTheme {
+                    if(isSystemInDarkTheme()){
+                        //implement changing to the dark theme
+                        mapView.map.setNightModeEnabled(true)
+                        Log.d("night","night")
+                    }
                     MaterialTheme.colorScheme.primary
                     Surface(
                         modifier = Modifier.fillMaxSize(),
                         color = Color.White,
                     ) {
-                        com.example.aquagraphapp.navigation.NavigationBar()
+                        com.example.aquagraphapp.navigation.NavigationBar(dataForTable)
                         //ShowMap(point = Point(point.second,point.first))
                     }
                 }

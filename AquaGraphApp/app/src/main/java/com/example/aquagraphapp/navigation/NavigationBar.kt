@@ -45,7 +45,7 @@ import com.yandex.mapkit.geometry.Point
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NavigationBar() {
+fun NavigationBar(dataForTable : List<QualityModel>) {
     val items = listOf(
         BottomNavigationItem(
             route = "HomeScreen",
@@ -125,7 +125,7 @@ fun NavigationBar() {
                                 restoreState = true
                             }
                         },
-                        modifier = Modifier.height(90.dp)
+                        modifier = Modifier.height(90.dp),
                     )
                 }
             }
@@ -134,13 +134,13 @@ fun NavigationBar() {
         NavHost(
             navController = navController,
             startDestination = Screens.HomeScreen.name,
-            modifier = Modifier.padding(paddingValues)
+            modifier = Modifier.padding(paddingValues),
         ) {
             composable("HomeScreen") {
                 HomeScreen()
             }
             composable("InfoScreen") {
-                InfoScreen()
+                InfoScreen(dataForTable)
             }
             composable("ProblemsScreen") {
                 ProblemsScreen()
