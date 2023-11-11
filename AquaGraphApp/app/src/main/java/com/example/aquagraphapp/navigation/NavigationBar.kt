@@ -22,6 +22,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -39,9 +40,14 @@ import com.example.aquagraphapp.screens.ProblemsScreen
 import com.example.aquagraphapp.screens.Screens
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.aquagraphapp.MainActivity
 import com.example.aquagraphapp.models.QualityModel
 import com.yandex.mapkit.geometry.Point
+import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -82,6 +88,8 @@ fun NavigationBar(dataForTable : List<QualityModel>) {
     }
 
     val navController = rememberNavController()
+
+    var loading = remember {mutableStateOf(true)}
 
     Scaffold(
         bottomBar = {
@@ -137,15 +145,39 @@ fun NavigationBar(dataForTable : List<QualityModel>) {
             modifier = Modifier.padding(paddingValues),
         ) {
             composable("HomeScreen") {
+                LaunchedEffect(Unit) {
+                    loading.value = true
+                    delay(1000)
+                    loading.value = false
+                }
+                com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
                 HomeScreen()
             }
             composable("InfoScreen") {
+                LaunchedEffect(Unit) {
+                    loading.value = true
+                    delay(1000)
+                    loading.value = false
+                }
+                com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
                 InfoScreen(dataForTable)
             }
             composable("ProblemsScreen") {
+                LaunchedEffect(Unit) {
+                    loading.value = true
+                    delay(1000)
+                    loading.value = false
+                }
+                com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
                 ProblemsScreen()
             }
             composable("NotificationScreen") {
+                LaunchedEffect(Unit) {
+                    loading.value = true
+                    delay(900)
+                    loading.value = false
+                }
+                com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
                 NotificationScreen()
             }
         }
