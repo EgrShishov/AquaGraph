@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.aquagraphapp"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -50,6 +50,7 @@ android {
 }
 
 dependencies {
+    implementation("co.yml:ycharts:2.1.0")
     implementation("com.yandex.android:maps.mobile:4.4.0-lite")
     implementation("com.seanproctor:datatable:0.2.1")
     implementation("androidx.navigation:navigation-compose:2.7.5")

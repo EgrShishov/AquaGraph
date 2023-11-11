@@ -20,8 +20,8 @@ fun NotificationScreen() {
     ) {
         Text(
             text = "NotificationsScreen",
-            fontSize = 50.sp,
-            color = Color.Yellow
+            fontSize = 30.sp,
+            color = Color.Blue
         )
     }
 }

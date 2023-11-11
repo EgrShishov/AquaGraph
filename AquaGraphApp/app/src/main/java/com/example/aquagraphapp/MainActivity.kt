@@ -60,7 +60,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         color = Color.White,
                     ) {
-                        com.example.aquagraphapp.navigation.NavigationBar()
+                        com.example.aquagraphapp.navigation.NavigationBar(dataForTable)
                         //ShowMap(point = Point(point.second,point.first))
                     }
                 }

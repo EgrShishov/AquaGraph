@@ -1,22 +1,11 @@
 package com.example.aquagraphapp.screens
 
-import android.text.Html
-import android.webkit.WebView
-import android.widget.TextView
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.paddingFrom
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -42,7 +31,7 @@ fun InfoScreen(dataForTable: List<QualityModel>) {
         Text(
             text = "Таблица ПДК",
             fontSize = 30.sp,
-            color = Color.Green,
+            color = Color.Blue,
             modifier = Modifier.paddingFromBaseline(100.dp, 0.dp)
         )
         CreateTable(dataForTable)
@@ -77,10 +66,10 @@ fun CreateTable(data: List<QualityModel>) {
             row {
                 //onClick = { selectedRow = index }
                 //cell { Text("${item.name}")}
-                cell { Text("${removeHtmlTags(item.metric)} - ${removeHtmlTags(item.name)}")}
+                cell { Text("${removeHtmlTags(item.name)}")}
                 //cell { Text("${removeHtmlTags(item.name)}")}
                 //cell { Text("${removeHtmlTags(item.metric)}")}
-                cell { Text("${item.pdk}")}
+                cell { Text("${removeHtmlTags(item.metric)} - ${item.pdk}")}
                 cell { Text("${item.value}")}
             }
         }

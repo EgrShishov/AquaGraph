@@ -9,3 +9,12 @@ data class BottomNavigationItem(
     val unselectedItem : ImageVector,
     var hasNotifications : Boolean
 )
+
+var ListOfMonth : List<String> = listOf(
+    "",
+    "Янв", "Фев",
+    "Март", "Апр", "Май",
+    "Июнь", "Июль", "Авг",
+    "Сент", "Окт", "Нояб",
+    "Декаб"
+)
