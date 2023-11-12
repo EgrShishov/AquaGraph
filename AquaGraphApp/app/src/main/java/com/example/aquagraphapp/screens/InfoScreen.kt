@@ -28,6 +28,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -66,13 +67,14 @@ fun InfoScreen(dataForTable: List<QualityModel>) {
             ) {
                 if (items.isNotEmpty()) {
                     Text(
-                        text = "Таблица ПДК",
+                        text = "Качественный состав воды",
                         fontSize = 30.sp,
                         color = Color.Black,
                         modifier = Modifier
                             .padding(10.dp)
                             .align(Alignment.CenterHorizontally),
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.Bold,
+                        textAlign = TextAlign.Center
                     )
                     CreateTable(dataForTable)
                 } else {
@@ -93,8 +95,6 @@ fun InfoScreen(dataForTable: List<QualityModel>) {
 fun CreateTable(data: List<QualityModel>) {
     var selectedRow by remember { mutableStateOf(0) }
     Table(
-        modifier = Modifier
-            .padding(10.dp),
         columns = listOf(
             TableColumnDefinition {
                 Text("Критерий")
@@ -111,29 +111,25 @@ fun CreateTable(data: List<QualityModel>) {
             row {
                 onClick = { selectedRow = index }
                 cell { Text("${removeHtmlTags(item.name)}") }
-                cell { Text("${item.pdk + ", " + removeHtmlTags(item.metric)}") }
+                cell { Text("${removeHtmlTags(item.metric).toString() + " - " + item.pdk}") }
                 cell { Text("${item.value}") }
             }
         }
     }
     Box(
-        modifier = Modifier
-            .padding(10.dp, 10.dp, 0.dp, 10.dp
-            ),
+        modifier = Modifier.padding(10.dp, 20.dp,10.dp, 0.dp),
         contentAlignment = Alignment.Center
     ) {
         Text(
             text = "*** Показатели физиологической полноценности питьевой воды - показатели общей минерализации, жесткости," +
                     " содержания макро- и микроэлементов, обеспечивающие профилактику заболеваний, устраняя дефицит биологически" +
-                    " необходимых элементов. В функционирующих централизованных системах хозяйственно-питьевого водоснабжения " +
-                    "собственник системы не реже одного раза в год должен обеспечить проведение лабораторных исследований воды " +
-                    "по показателям физиологической полноценности перед поступлением питьевой воды в распределительную сеть " +
-                    "(Санитарные нормы и правила Требования к физиологической полноценности питьевой воды" +
+                    " необходимых элементов." +
                     "\n**** В Республике Беларусь жесткость воды измеряют в градусах жесткости (оЖ), за рубежом приняты " +
                     "другие единицы измерения.",
             fontSize = 14.sp,
             fontWeight = FontWeight.Light,
-            fontStyle = FontStyle.Italic
+            fontStyle = FontStyle.Italic,
+            textAlign = TextAlign.Justify
         )
     }
 }
