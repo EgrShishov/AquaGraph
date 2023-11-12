@@ -39,7 +39,7 @@ func (r* Repository) GetQuality() (models.Quality, error) {
 
 func (r* Repository) GetQualities() ([]models.Quality, error) {
     var quality []models.Quality
-    rows, err := r.db.Query("SELECT * FROM quality ORDER BY id")
+    rows, err := r.db.Query("SELECT * FROM quality ORDER BY id LIMIT 12")
     if err != nil {
         return nil, err
     } 

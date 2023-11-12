@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"retriever/services"
 	"time"
 )
@@ -12,6 +11,15 @@ func main() {
     if err != nil {
         fmt.Println(err.Error())
     }
+
+
+    fmt.Print("distort data? (Y/n): ")
+    var ans string
+    fmt.Scanln(&ans)
+    if ans != "n" {
+        data = services.Distort(data)
+    }
+
     if len(data) < 80000 {
         fmt.Println(data)
     } else {
@@ -20,9 +28,9 @@ func main() {
 
     date := time.Now().UTC().Format("2006-01-02")
     fmt.Print("- ", date, " - insert this data? (Y/n): ")
-    symb := make([]byte, 1)
-    os.Stdin.Read(symb)
-    if symb[0] == 110 {
+    ans = ""
+    fmt.Scanln(&ans)
+    if ans == "n" {
         return
     }
 
