@@ -24,4 +24,5 @@ fun NotificationScreen() {
             color = Color.Blue
         )
     }
+    com.example.aquagraphapp.buttons.AddNewAdressButton()
 }
