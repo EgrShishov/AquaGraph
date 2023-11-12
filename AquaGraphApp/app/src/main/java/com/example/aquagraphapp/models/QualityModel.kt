@@ -9,13 +9,15 @@ data class QualityModel(
     val help : String
     )
 
+//data class ResponseModel(
+//    val name : String,
+//    val link : Int,
+//    val time : String,
+//    val params : List<QualityModel>
+//)
+
 data class ResponseModel(
     val name : String,
-    val link : Int,
+    val time : String,
     val params : List<QualityModel>
-)
-
-data class JSONResponseModel(
-    val Time : String,
-    val Data : ResponseModel
 )

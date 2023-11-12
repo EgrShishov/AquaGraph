@@ -46,12 +46,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.aquagraphapp.MainActivity
 import com.example.aquagraphapp.models.QualityModel
+import com.example.aquagraphapp.models.ResponseModel
 import com.yandex.mapkit.geometry.Point
 import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NavigationBar(dataForTable : List<QualityModel>) {
+fun NavigationBar(parsedData : List<ResponseModel>) {
     val items = listOf(
         BottomNavigationItem(
             route = "HomeScreen",
@@ -160,7 +161,7 @@ fun NavigationBar(dataForTable : List<QualityModel>) {
                     loading.value = false
                 }
                 com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
-                InfoScreen(dataForTable)
+                InfoScreen(parsedData)
             }
             composable("ProblemsScreen") {
                 LaunchedEffect(Unit) {

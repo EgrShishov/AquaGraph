@@ -1,6 +1,6 @@
 package com.example.aquagraphapp.screens
 
-import androidx.compose.foundation.background
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -10,14 +10,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Divider
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -49,9 +47,18 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.window.Dialog
+import co.yml.charts.axis.AxisData
+import co.yml.charts.common.model.Point
+import co.yml.charts.ui.barchart.BarChart
+import co.yml.charts.ui.barchart.models.BarChartData
+import co.yml.charts.ui.barchart.models.BarData
+import co.yml.charts.ui.barchart.models.BarStyle
+import com.example.aquagraphapp.models.ListOfMonth
+import com.example.aquagraphapp.models.ResponseModel
+import java.text.DecimalFormat
 
 @Composable
-fun InfoScreen(dataForTable: List<QualityModel>) {
+fun InfoScreen(parsedData: List<ResponseModel>) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -61,10 +68,12 @@ fun InfoScreen(dataForTable: List<QualityModel>) {
         verticalArrangement = Arrangement.Center
     ) {
         val items = mutableListOf<String>()
+        val dataForTable = parsedData.last().params
         dataForTable.forEachIndexed { index, item ->
             items.add(index, removeHtmlTags(item.name).toString())
         }
         var selectedIndex by remember { mutableStateOf(-1) }
+
         if (items.isNotEmpty()) {
             LargeDropdownMenu(
                 label = "Выберите критерий",
@@ -72,14 +81,18 @@ fun InfoScreen(dataForTable: List<QualityModel>) {
                 selectedIndex = selectedIndex,
                 onItemSelected = { index, _ -> selectedIndex = index },
             )
-            Text(
-                text = "Таблица ПДК",
-                fontSize = 30.sp,
-                color = Color.Black,
-                modifier = Modifier.padding(20.dp, 20.dp, 20.dp, 20.dp),
-                fontWeight = FontWeight.Bold
-            )
-            CreateTable(dataForTable)
+            if(selectedIndex == -1) {
+                Text(
+                    text = "Таблица ПДК",
+                    fontSize = 30.sp,
+                    color = Color.Black,
+                    modifier = Modifier.padding(20.dp, 20.dp, 20.dp, 20.dp),
+                    fontWeight = FontWeight.Bold
+                )
+                CreateTable(dataForTable)
+            }
+            else
+               CreateGraphic(parsedData, selectedIndex)
         } else {
             Text(
                 text = "521 ОШИБКА\n СЕРВЕР НЕ РАБОТАЕТ",
@@ -93,8 +106,134 @@ fun InfoScreen(dataForTable: List<QualityModel>) {
 }
 
 @Composable
+fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int) {
+
+    var origpointsdata = PartitionByPoint(data, criterionIndex)
+    var delta = StringToMonth(data.last().time) - 1
+    var steps = 20
+    var max_y = max_Y(origpointsdata)
+    var min_y = min_Y(origpointsdata)
+    var gamma = 1f
+    if(min_y < 1)
+        gamma = 1 / min_y
+    max_y *= gamma
+
+    var pointsdata: MutableList<BarData> = mutableListOf()
+
+    for (i in 0..origpointsdata.size - 1)
+        pointsdata.add(BarData(Point(origpointsdata[i].point.x, origpointsdata[i].point.y * gamma), origpointsdata[i].color))
+
+    pointsdata.add(0, BarData(Point(0f, max_y), Color.White))
+    pointsdata.add(
+        pointsdata.size,
+        BarData(Point(pointsdata.last().point.x + 1f, max_y), Color.White)
+    )
+
+    val xAxisData = AxisData.Builder()
+        .backgroundColor(MaterialTheme.colorScheme.tertiaryContainer)
+        .steps(pointsdata.size)
+        .axisLabelAngle(35f)
+        .labelData { i ->
+            if (i != pointsdata.size - 1 && i != 0)
+            {
+                ListOfMonth[(pointsdata[i].point.x.toInt() + delta) % 12]
+            }
+            else
+            {
+                ""
+            }
+        }
+        .labelAndAxisLinePadding(10.dp)
+        .bottomPadding(35.dp)
+        .build()
+
+    val yAxisData = AxisData.Builder()
+        .steps(steps)
+        .backgroundColor(MaterialTheme.colorScheme.tertiaryContainer)
+        .labelAndAxisLinePadding(20.dp)
+        .labelData { i -> DecimalFormat("#0.00").format(i * min_y)}
+        .build()
+
+    val barChartData = BarChartData(
+        chartData = pointsdata,
+        xAxisData = xAxisData,
+        yAxisData = yAxisData,
+        barStyle = BarStyle(
+            paddingBetweenBars = 9.68.dp,
+            barWidth = 16.dp
+        )
+    )
+
+    BarChart(
+        modifier = Modifier
+            .height(400.dp)
+            .fillMaxWidth(),
+        barChartData = barChartData
+    )
+}
+
+fun StringToMonth(time: String) : Int // time: yyyy-mm-dd
+{
+    var index1: Int = time.indexOf('-', 0)
+    var index2: Int = time.indexOf('-', index1 + 1)
+    //Log.d("timestring", "${time.substring(index1 + 1, index2)}")
+    return time.substring(index1 + 1, index2).toInt()
+}
+
+fun StringToValue(valueStr: String) : Float
+{
+    var valueStrCopy = valueStr.substring(0)
+    //Log.d("valuestring", "${valueStrCopy}")
+    if(valueStrCopy[0] == '<' || valueStrCopy[0] == '>' || valueStrCopy[0] == '~')
+        valueStrCopy = valueStrCopy.drop(1)
+    valueStrCopy = valueStrCopy.replace(",", ".")
+    //Log.d("value", "${valueStrCopy}")
+    //Log.d("value", "${valueStrCopy.toFloat()}")
+    return valueStrCopy.toFloat()
+}
+
+@Composable
+fun PartitionByPoint(data: List<ResponseModel>, criterionIndex: Int): List<BarData>
+{
+    //var criterionIndex = CriterionIndex--
+    var pointsdata: MutableList<BarData> = mutableListOf()
+    var falseMonth = 12f
+    for (item in data)
+    {
+        var value = StringToValue(item.params[criterionIndex].value)
+        pointsdata.add(0, BarData(Point(falseMonth, value), MaterialTheme.colorScheme.tertiary))
+        falseMonth--
+    }
+    while(pointsdata.size < 12)
+    {
+        pointsdata.add(0, BarData(Point(falseMonth, pointsdata[0].point.y), Color.White))
+        falseMonth--
+    }
+    //This func always return twelve months
+    return pointsdata
+}
+
+fun max_Y(points: List<BarData>): Float {
+    var max: Float = points[0].point.y
+    for (point in points) {
+        if (point.point.y > max)
+            max = point.point.y
+    }
+    return max
+}
+
+fun min_Y(points: List<BarData>): Float {
+    var min: Float = points[0].point.y
+    for (point in points) {
+        if (point.point.y < min)
+            min = point.point.y
+    }
+    return min
+}
+
+@Composable
 fun CreateTable(data: List<QualityModel>) {
-    var selectedRow by remember { mutableStateOf(0) }
+    //var selectedRow by remember { mutableStateOf(0) }
     Table(
         modifier = Modifier
             .padding(0.dp, 0.dp, 0.dp, 7.dp),
@@ -112,7 +251,7 @@ fun CreateTable(data: List<QualityModel>) {
     ) {
         data.forEachIndexed { index, item ->
             row {
-                onClick = { selectedRow = index }
+                //onClick = { selectedRow = index }
                 cell { Text("${removeHtmlTags(item.name)}") }
                 cell { Text("${item.pdk + ", " + removeHtmlTags(item.metric)}") }
                 cell { Text("${item.value}") }

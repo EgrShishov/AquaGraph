@@ -40,8 +40,8 @@ class MainActivity : ComponentActivity() {
                     applicationContext
                 )
             }
-            val dataForTable = data.await()
-            Log.d("coroutine", "$dataForTable")
+            val parsedData = data.await()
+            Log.d("coroutine", "$parsedData")
 
             setContent {
                 AquaGraphAppTheme {
@@ -55,7 +55,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         color = Color.White,
                     ) {
-                        com.example.aquagraphapp.navigation.NavigationBar(dataForTable)
+                        com.example.aquagraphapp.navigation.NavigationBar(parsedData)
                         //ShowMap(point = Point(point.second,point.first))
                     }
                 }

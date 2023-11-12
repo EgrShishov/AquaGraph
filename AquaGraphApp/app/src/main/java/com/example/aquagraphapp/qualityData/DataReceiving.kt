@@ -7,6 +7,7 @@ import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.aquagraphapp.models.QualityModel
+import com.example.aquagraphapp.models.ResponseModel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.json.JSONArray
@@ -18,8 +19,8 @@ import kotlin.coroutines.suspendCoroutine
 suspend fun getQualityData(
     point: Pair<Double, Double>,
     applicationContext: Context
-) : List<QualityModel> = suspendCoroutine{ continuation ->
-    val url = "http://192.168.1.248:1337/qualities?x=" +
+): List<ResponseModel> = suspendCoroutine { continuation ->
+    val url = "http://192.168.173.248:1337/qualities?x=" +
             point.first +
             "&y=" +
             point.second
@@ -29,8 +30,8 @@ suspend fun getQualityData(
         Request.Method.GET,
         url,
         { result ->
-            val dataForTable = parseQualityData(result)
-            continuation.resume(dataForTable)
+            val parsedData = parseQualityData(result)
+            continuation.resume(parsedData)
         },
         { error ->
             Log.d("ErrorLog", "Error in requesting API happened : $error")
@@ -40,30 +41,26 @@ suspend fun getQualityData(
     queue.add(request)
 }
 
-fun parseQualityData(result: String):MutableList<QualityModel> {
+fun parseQualityData(result: String): List<ResponseModel> {
 
-    val resParamsArray = mutableListOf<JSONArray>()
-    val paramsForTable = mutableListOf<QualityModel>()
+    val parsedData = mutableListOf<ResponseModel>()
     val responseObject = JSONObject(result)
     val qualities = responseObject.getJSONArray("Qualities")
     //Log.d("qualities","$qualities")
-    for (i in 0 until qualities.length()) {
+    for (i in 0 until qualities.length())
+    {
         val item = qualities[i] as JSONObject
         //Log.d("item$i", "$item")
         val Time = item.getString("Time")
+        //val Name = item.getString("Name")
         val Data = item.getJSONObject("Data")
         //Log.d("TimeLog", "${Time}")
         //Log.d("dataLog", "${Data}")
         val paramsArray = Data.getJSONArray("params")
-        resParamsArray.add(i, paramsArray)
-    }
-
-    //Log.d("mama", "${resParamsArray.size}")
-    for (i in 0 until resParamsArray.size) {
-        val arrayElem = resParamsArray[i]
-        //Log.d("elem","${arrayElem}")
-        for (j in 0 until arrayElem.length()) {
-            val finalElement = arrayElem[j] as JSONObject
+        val paramsForTable = mutableListOf<QualityModel>()
+        for (j in 0 until paramsArray.length())
+        {
+            val finalElement = paramsArray[j] as JSONObject
             //Log.d("params$j", "$finalElement")
             val model = QualityModel(
                 finalElement.getInt("MIGX_id"),
@@ -75,8 +72,9 @@ fun parseQualityData(result: String):MutableList<QualityModel> {
             )
             paramsForTable.add(j, model)
         }
-        Log.d("JSONInfo", "$paramsForTable")
-        Log.d("JSONInfo", "Success parsing JSON")
+        parsedData.add(i, ResponseModel("", Time, paramsForTable))
+//        Log.d("JSONInfo", "$paramsForTable")
+//        Log.d("JSONInfo", "Success parsing JSON")
     }
-    return paramsForTable
+    return parsedData
 }

@@ -11,7 +11,6 @@ data class BottomNavigationItem(
 )
 
 var ListOfMonth : List<String> = listOf(
-    "",
     "Янв", "Фев",
     "Март", "Апр", "Май",
     "Июнь", "Июль", "Авг",
