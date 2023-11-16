@@ -1,5 +1,6 @@
 package com.example.aquagraphapp.navigation
 
+import android.content.Context
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -42,17 +43,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.aquagraphapp.MainActivity
-import com.example.aquagraphapp.models.QualityModel
 import com.example.aquagraphapp.models.ResponseModel
-import com.yandex.mapkit.geometry.Point
 import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NavigationBar(parsedData : List<ResponseModel>) {
+fun NavigationBar(parsedData : List<ResponseModel>, applicationContext: Context) {
     val items = listOf(
         BottomNavigationItem(
             route = "HomeScreen",
@@ -152,7 +148,7 @@ fun NavigationBar(parsedData : List<ResponseModel>) {
                     loading.value = false
                 }
                 com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
-                HomeScreen()
+                HomeScreen(applicationContext)
             }
             composable("InfoScreen") {
                 LaunchedEffect(Unit) {
@@ -170,7 +166,7 @@ fun NavigationBar(parsedData : List<ResponseModel>) {
                     loading.value = false
                 }
                 com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
-                ProblemsScreen()
+                ProblemsScreen(applicationContext)
             }
             composable("NotificationScreen") {
                 LaunchedEffect(Unit) {

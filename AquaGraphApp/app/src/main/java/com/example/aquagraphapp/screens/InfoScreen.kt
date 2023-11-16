@@ -4,28 +4,21 @@ import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Divider
-import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.ExposedDropdownMenuBox
-import androidx.compose.material3.ExposedDropdownMenuDefaults
-import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.FabPosition
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Surface
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,19 +28,14 @@ import androidx.compose.ui.unit.dp
 import com.seanproctor.datatable.TableColumnDefinition
 import com.seanproctor.datatable.Table
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import com.example.aquagraphapp.models.QualityModel
 import androidx.core.text.HtmlCompat
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.window.Dialog
 import co.yml.charts.axis.AxisData
 import co.yml.charts.common.model.Point
 import co.yml.charts.ui.barchart.BarChart
@@ -67,20 +55,42 @@ fun InfoScreen(data: List<ResponseModel>) {
     dataForTable.forEachIndexed { index, item ->
         items.add(index, removeHtmlTags(item.name).toString())
     }
-    if (items.isEmpty()) {
-        items.add(0, "")
-    }
     var selectedIndex by remember { mutableStateOf(-1) }
+    var isEnabled by remember { mutableStateOf(false) }
+    var buttonEnabled by remember { mutableStateOf(false) }
+    if (items.isNotEmpty()) {
+        isEnabled = true
+    }
+
     Scaffold(
         topBar = {
             com.example.aquagraphapp.dropdownMenu.LargeDropdownMenu(
                 modifier = Modifier.padding(10.dp, 10.dp, 10.dp, 10.dp),
+                enabled = isEnabled,
                 label = "Выберите критерий",
                 items = items,
                 selectedIndex = selectedIndex,
-                onItemSelected = { index, _ -> selectedIndex = index },
+                onItemSelected = { index, _ ->
+                    selectedIndex = index
+                    buttonEnabled = if (index != -1) true else false
+                },
             )
-        }
+        },
+        floatingActionButton = {
+            if (buttonEnabled) {
+                FloatingActionButton(
+                    onClick = {
+                        selectedIndex = -1
+                        buttonEnabled = false
+                    },
+                    backgroundColor = MaterialTheme.colorScheme.tertiaryContainer,
+                    contentColor = MaterialTheme.colorScheme.primary
+                ) {
+                    Icon(Icons.Filled.ArrowBack, "FAB")
+                }
+            }
+        },
+        floatingActionButtonPosition = FabPosition.End
     ) { paddingValues ->
         Box(
             modifier = Modifier
@@ -135,11 +145,12 @@ fun InfoScreen(data: List<ResponseModel>) {
                     }
                 } else {
                     Text(
-                        text = "521 ОШИБКА\n СЕРВЕР НЕ РАБОТАЕТ",
+                        text = "ОШИБКА СОЕДИНЕНИЯ С СЕРВЕРОМ",
                         fontSize = 40.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.Gray,
-                        maxLines = 3
+                        textAlign = TextAlign.Center,
+                        lineHeight = 44.sp
                     )
                 }
             }
@@ -321,7 +332,7 @@ fun CreateTable(data: List<QualityModel>) {
         }
     }
     Box(
-        modifier = Modifier.padding(10.dp, 20.dp,10.dp, 0.dp),
+        modifier = Modifier.padding(10.dp, 20.dp, 10.dp, 0.dp),
         contentAlignment = Alignment.Center
     ) {
         Text(

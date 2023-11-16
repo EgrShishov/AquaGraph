@@ -1,1 +1,3 @@
+.gitignore
 /server/main.exe
+/server/.idea
