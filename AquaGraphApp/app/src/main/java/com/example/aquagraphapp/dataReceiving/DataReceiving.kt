@@ -1,4 +1,4 @@
-package com.example.aquagraphapp.qualityData
+package com.example.aquagraphapp.dataReceiving
 
 import android.content.Context
 import android.net.wifi.WifiManager

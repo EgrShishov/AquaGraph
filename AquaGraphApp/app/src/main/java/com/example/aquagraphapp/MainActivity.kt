@@ -47,19 +47,18 @@ class MainActivity : ComponentActivity() {
 
         lifecycleScope.launch {
             val data = async {
-                com.example.aquagraphapp.qualityData.getQualityData(
+                com.example.aquagraphapp.dataReceiving.getQualityData(
                     _curPoint,
                     applicationContext
                 )
             }
             val dataForTable = data.await()
             Log.d("coroutine", "$dataForTable")
+            com.example.aquagraphapp.dataReceiving.getListOfScheduledWork(applicationContext).thenAccept{
+                Log.d("sheduledWork","$it")
+            }
 
-//            val res = async {
-//                com.example.aquagraphapp.buttons.AddNewAdress("ул.Якуба Коласа 28")
-//            }
-//            val jsonres = res.await()
-//           Log.d("res","$jsonres")
+
             setContent {
                 AquaGraphAppTheme {
                     if(isSystemInDarkTheme()){

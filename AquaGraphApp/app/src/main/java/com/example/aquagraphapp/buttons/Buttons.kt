@@ -34,7 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.material3.ButtonColors.*
-import com.example.aquagraphapp.qualityData.getNewAdressPoint
+import com.example.aquagraphapp.dataReceiving.getNewAdressPoint
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -143,6 +143,7 @@ fun AddNewAdressButton(applicationContext: Context) {
                                 onClick = {
                                     showDialog = false
                                     text = ""
+                                    wrongInput = false
                                 },
                                 shape = RoundedCornerShape(12.dp),
 //                                colors = ButtonColors(
