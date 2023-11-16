@@ -157,7 +157,7 @@ fun NavigationBar(parsedData : List<ResponseModel>) {
             composable("InfoScreen") {
                 LaunchedEffect(Unit) {
                     loading.value = true
-                    delay(1000)
+                    delay(1200)
                     loading.value = false
                 }
                 com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)

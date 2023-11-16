@@ -1,4 +1,4 @@
-package com.example.aquagraphapp.qualityData
+package com.example.aquagraphapp.dataReceiving
 
 import android.content.Context
 import android.net.wifi.WifiManager
@@ -8,9 +8,6 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.aquagraphapp.models.QualityModel
 import com.example.aquagraphapp.models.ResponseModel
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import org.json.JSONArray
 import org.json.JSONObject
 import java.net.InetAddress
 import java.net.NetworkInterface
@@ -65,7 +62,7 @@ suspend fun getQualityData(
     applicationContext: Context
 ): List<ResponseModel> = suspendCoroutine { continuation ->
     Log.d("ipv4","${getNetworkIPv4Address(applicationContext)}")
-    val url = "http://192.168.65.100:1337/qualities?x=${point.first}&y=${point.second}"
+    val url = "http://192.168.209.248:1337/qualities?x=${point.first}&y=${point.second}"
 
     val queue = Volley.newRequestQueue(applicationContext)
     val request = StringRequest(

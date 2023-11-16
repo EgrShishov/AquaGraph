@@ -40,6 +40,7 @@ fun HomeScreen() {
             ) {
                 val mama = MainActivity()
                 mama.ShowMap(point = com.yandex.mapkit.geometry.Point(53.919585, 27.587433))
+                //mama.setMarkerInStartLocation()
             }
         }
     }

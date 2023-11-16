@@ -1,7 +1,6 @@
 package com.example.aquagraphapp.screens
 
 import android.util.Log
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -62,8 +61,9 @@ import androidx.compose.ui.text.style.TextAlign
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun InfoScreen(dataForTable: List<QualityModel>) {
+fun InfoScreen(data: List<ResponseModel>) {
     val items = mutableListOf<String>()
+    var dataForTable = data.last().params
     dataForTable.forEachIndexed { index, item ->
         items.add(index, removeHtmlTags(item.name).toString())
     }
@@ -96,17 +96,43 @@ fun InfoScreen(dataForTable: List<QualityModel>) {
                 verticalArrangement = Arrangement.Center
             ) {
                 if (items.isNotEmpty()) {
-                    Text(
-                        text = "Качественный состав воды",
-                        fontSize = 30.sp,
-                        color = Color.Black,
-                        modifier = Modifier
-                            .padding(10.dp)
-                            .align(Alignment.CenterHorizontally),
-                        fontWeight = FontWeight.Bold,
-                        textAlign = TextAlign.Center
-                    )
-                    CreateTable(dataForTable)
+                    if(selectedIndex == -1) {
+                        Text(
+                            text = "Качественный состав воды",
+                            fontSize = 30.sp,
+                            color = Color.Black,
+                            modifier = Modifier
+                                .padding(10.dp)
+                                .align(Alignment.CenterHorizontally),
+                            fontWeight = FontWeight.Bold,
+                            textAlign = TextAlign.Center
+                        )
+                        CreateTable(dataForTable)
+                    }
+                    else
+                    {
+                        Text(
+                            text = "Единицы измерения: ${removeHtmlTags(data.last().params[selectedIndex].metric)}",
+                            fontSize = 20.sp,
+                            color = Color.Black,
+                            modifier = Modifier
+                                .padding(10.dp)
+                                .align(Alignment.CenterHorizontally),
+                            fontWeight = FontWeight.Bold,
+                            textAlign = TextAlign.Center
+                        )
+                        var str = CreateGraphic(data = data, criterionIndex = selectedIndex)
+                        Text(
+                            text = "${removeHtmlTags(str)}",
+                            fontSize = 20.sp,
+                            color = Color.Black,
+                            modifier = Modifier
+                                .padding(10.dp)
+                                .align(Alignment.CenterHorizontally),
+                            fontWeight = FontWeight.Bold,
+                            textAlign = TextAlign.Center
+                        )
+                    }
                 } else {
                     Text(
                         text = "521 ОШИБКА\n СЕРВЕР НЕ РАБОТАЕТ",
@@ -122,18 +148,18 @@ fun InfoScreen(dataForTable: List<QualityModel>) {
 }
 
 @Composable
-fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int) {
-
-    var origpointsdata = PartitionByPoint(data, criterionIndex)
+fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int) : String {
+    var origpointsdata = PartitionByPoint(data, criterionIndex).toMutableList()
     var delta = StringToMonth(data.last().time) - 1
     var steps = 20
     var max_y = max_Y(origpointsdata)
     var min_y = min_Y(origpointsdata)
-    var gamma = 1f
-    if(min_y < 1)
-        gamma = 1 / min_y
+    var degree = GetDegree(min_y)
+    var gamma = 10f / min_y
+    Log.d("min", "$min_y")
+    min_y = min_y / 10f * Math.pow(10.0, -1.0 * degree).toFloat()
+    Log.d("min", "$min_y")
     max_y *= gamma
-
     var pointsdata: MutableList<BarData> = mutableListOf()
 
     for (i in 0..origpointsdata.size - 1)
@@ -175,7 +201,7 @@ fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int) {
         xAxisData = xAxisData,
         yAxisData = yAxisData,
         barStyle = BarStyle(
-            paddingBetweenBars = 9.68.dp,
+            paddingBetweenBars = 7 .dp,
             barWidth = 16.dp
         )
     )
@@ -186,6 +212,28 @@ fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int) {
             .fillMaxWidth(),
         barChartData = barChartData
     )
+
+    return "10<sup>$degree</sup>"
+}
+
+fun GetDegree(Num: Float): Int
+{
+    var num = Num
+    var degree = 0
+    while(num > 10 || num < 1)
+    {
+        if(num > 10)
+        {
+            num /= 10
+            degree++
+        }
+        else
+        {
+            num *= 10
+            degree--
+        }
+    }
+    return degree
 }
 
 fun StringToMonth(time: String) : Int // time: yyyy-mm-dd
@@ -214,7 +262,7 @@ fun PartitionByPoint(data: List<ResponseModel>, criterionIndex: Int): List<BarDa
     //var criterionIndex = CriterionIndex--
     var pointsdata: MutableList<BarData> = mutableListOf()
     var falseMonth = 12f
-    for (item in data)
+    for (item in data.reversed())
     {
         var value = StringToValue(item.params[criterionIndex].value)
         pointsdata.add(0, BarData(Point(falseMonth, value), MaterialTheme.colorScheme.tertiary))
@@ -291,7 +339,8 @@ fun CreateTable(data: List<QualityModel>) {
 }
 
 fun removeHtmlTags(htmlString: String): CharSequence {
-    var res = htmlString.replace("<sup>4+</sup>", "\u2074\u207A")
+    var res = htmlString
+    res = res.replace("<sup>4+</sup>", "\u2074\u207A")
     res = res.replace("<sup>4-</sup>", "\u2074\u207B")
     res = res.replace("<sup>3+</sup>", "\u00B3\u207A")
     res = res.replace("<sup>3-</sup>", "\u00B3\u207B")
@@ -299,6 +348,10 @@ fun removeHtmlTags(htmlString: String): CharSequence {
     res = res.replace("<sup>2-</sup>", "\u00B2\u207B")
     res = res.replace("<sup>+</sup>", "\u207A")
     res = res.replace("<sup>-</sup>", "\u207A")
+    res = res.replace("<sup>2</sup>", "\u00B2")
+    res = res.replace("<sup>-2</sup>", "\u207A\u00B2")
+    res = res.replace("<sup>1</sup>", "\u00B1")
+    res = res.replace("<sup>-1</sup>", "\u207A\u00B1")
     res = res.replace("<sup>4</sup>", "\u2074")
     res = res.replace("<sup>3</sup>", "\u00B3")
     res = res.replace("<sup>2</sup>", "\u00B2")

@@ -18,7 +18,10 @@ import com.example.aquagraphapp.ui.theme.AquaGraphAppTheme
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.map.CameraPosition
+import com.yandex.mapkit.map.MapObjectCollection
+import com.yandex.mapkit.map.PlacemarkMapObject
 import com.yandex.mapkit.mapview.MapView
+import com.yandex.runtime.image.ImageProvider
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
@@ -26,6 +29,10 @@ import kotlinx.coroutines.launch
 class MainActivity : ComponentActivity() {
 
     private lateinit var mapView: MapView
+    private lateinit var mapObjectCollection: MapObjectCollection
+    private lateinit var placemarkMapObject: PlacemarkMapObject
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val point = Pair(27.587433, 53.919585)
@@ -35,12 +42,27 @@ class MainActivity : ComponentActivity() {
 
         lifecycleScope.launch {
             val data = async {
-                com.example.aquagraphapp.qualityData.getQualityData(
+                com.example.aquagraphapp.dataReceiving.getQualityData(
                     point,
                     applicationContext
                 )
             }
+//            val sec = async{
+//                com.example.aquagraphapp.dataReceiving.addMarkData(
+//                    27.594296f,
+//                    53.925545f,
+//                    "Суицид cеньора по асемблеру",
+//                    applicationContext
+//                )
+//            }
+            val marks = async{
+                com.example.aquagraphapp.dataReceiving.getMarksData(
+                    applicationContext
+                )
+            }
+            //sec.await()
             val parsedData = data.await()
+            val asd = marks.await()
             Log.d("coroutine", "$parsedData")
 
             setContent {
@@ -91,6 +113,12 @@ class MainActivity : ComponentActivity() {
                         )
                     )
                 }
+                val marker = R.drawable.ic_pin_black_png // Добавляем ссылку на картинку
+                mapObjectCollection = mapView.map.mapObjects // Инициализируем коллекцию различных объектов на карте
+                placemarkMapObject = mapObjectCollection.addPlacemark(Point(53.919585, 27.587433), ImageProvider.fromResource(context, marker)) // Добавляем метку со значком
+                //ImageProvider.fromResource(this, marker)
+                placemarkMapObject.opacity = 0.5f // Устанавливаем прозрачность метке
+                placemarkMapObject.setText("Обязательно к посещению!") // Устанавливаем текст сверху метки
                 view
             },
             modifier = Modifier.fillMaxSize(),
