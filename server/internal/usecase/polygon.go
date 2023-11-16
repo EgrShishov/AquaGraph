@@ -1,8 +1,10 @@
 package usecase
 
 import (
+	"encoding/json"
 	"errors"
 	"math"
+	"os"
 )
 
 type Point []float64
@@ -21,6 +23,18 @@ type Properties struct {
 	Id   string `json:"id"`
 	Name string `json:"name"`
 }
+
+
+func (u *Usecase) GetPolygons() (Polygons, error) {
+	file, err := os.ReadFile("data/polygons.json")
+	if err != nil {
+		return Polygons{}, err
+	}
+	var polygons Polygons
+	json.Unmarshal(file, &polygons)
+	return polygons, nil
+}
+
 
 // returns id of point's polygon
 func (u *Usecase) Locate(polygons Polygons, point Point) (string, error) {
