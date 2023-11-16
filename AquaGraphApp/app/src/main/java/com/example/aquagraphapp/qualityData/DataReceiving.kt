@@ -58,11 +58,11 @@ fun getNetworkIPv4Address(context: Context): String? {
 }
 
 suspend fun getQualityData(
-    point: Pair<Double, Double>,
+    point: com.yandex.mapkit.geometry.Point,
     applicationContext: Context
 ): List<QualityModel> = suspendCoroutine { continuation ->
     Log.d("ipv4","${getNetworkIPv4Address(applicationContext)}")
-    val url = "http://192.168.65.100:1337/qualities?x=${point.first}&y=${point.second}"
+    val url = "http://192.168.209.248:1337/qualities?x=${point.longitude}&y=${point.latitude}"
     val queue = Volley.newRequestQueue(applicationContext)
     val request = StringRequest(
         Request.Method.GET,

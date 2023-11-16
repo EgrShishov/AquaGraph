@@ -25,29 +25,46 @@ import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
 
-    private lateinit var mapView: MapView
+    private lateinit var _mapView: MapView
+    var mapView: MapView
+        set(value) {
+            _mapView = value
+        }
+        get() = this._mapView
+
+    private var _curPoint: Point = Point(53.919585,27.587433)
+        var curPoint: Point
+        set(value) {
+            if(value.longitude != 0.0 && value.latitude != 0.0)
+                _curPoint = value
+        }
+        get() = this._curPoint
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val point = Pair(27.587433, 53.919585)
         MapKitFactory.setApiKey("f46e14a5-c996-44dc-8436-3eacfe546a4f")
         MapKitFactory.initialize(this)
-        mapView = MapView(applicationContext)
+        _mapView = MapView(applicationContext)
 
         lifecycleScope.launch {
             val data = async {
                 com.example.aquagraphapp.qualityData.getQualityData(
-                    point,
+                    _curPoint,
                     applicationContext
                 )
             }
             val dataForTable = data.await()
             Log.d("coroutine", "$dataForTable")
 
+//            val res = async {
+//                com.example.aquagraphapp.buttons.AddNewAdress("ул.Якуба Коласа 28")
+//            }
+//            val jsonres = res.await()
+//           Log.d("res","$jsonres")
             setContent {
                 AquaGraphAppTheme {
                     if(isSystemInDarkTheme()){
                         //implement changing to the dark theme
-                        mapView.map.setNightModeEnabled(true)
+                        _mapView.map.setNightModeEnabled(true)
                         Log.d("night","night")
                     }
                     MaterialTheme.colorScheme.primary
@@ -55,8 +72,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         color = Color.White,
                     ) {
-                        com.example.aquagraphapp.navigation.NavigationBar(dataForTable)
-                        //ShowMap(point = Point(point.second,point.first))
+                        com.example.aquagraphapp.navigation.NavigationBar(dataForTable, applicationContext)
                     }
                 }
             }
@@ -66,11 +82,11 @@ class MainActivity : ComponentActivity() {
     override fun onStart() {
         super.onStart()
         MapKitFactory.getInstance().onStart()
-        mapView.onStart()
+        _mapView.onStart()
     }
 
     override fun onStop() {
-        mapView.onStop()
+        _mapView.onStop()
         MapKitFactory.getInstance().onStop()
         super.onStop()
     }
@@ -80,9 +96,9 @@ class MainActivity : ComponentActivity() {
         AndroidView(
             factory = { context ->
                 val view = LayoutInflater.from(context).inflate(R.layout.main_activity, null)
-                mapView = view.findViewById<MapView>(R.id.mapview)
-                if (mapView.map.cameraPosition.target != point) {
-                    mapView.map.move(
+                _mapView = view.findViewById<MapView>(R.id.mapview)
+                if (_mapView.map.cameraPosition.target != point) {
+                    _mapView.map.move(
                         CameraPosition(
                             point,
                             15.0f,
@@ -95,8 +111,8 @@ class MainActivity : ComponentActivity() {
             },
             modifier = Modifier.fillMaxSize(),
             update = {
-                if (mapView.map.cameraPosition.target != point) {
-                    mapView.map.move(
+                if (_mapView.map.cameraPosition.target != point) {
+                    _mapView.map.move(
                         CameraPosition(
                             point,
                             15.0f,

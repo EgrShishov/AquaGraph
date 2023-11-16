@@ -9,7 +9,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.FloatingActionButton
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FabPosition
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -37,20 +43,42 @@ fun InfoScreen(dataForTable: List<QualityModel>) {
     dataForTable.forEachIndexed { index, item ->
         items.add(index, removeHtmlTags(item.name).toString())
     }
-    if (items.isEmpty()) {
-        items.add(0, "")
-    }
     var selectedIndex by remember { mutableStateOf(-1) }
+    var isEnabled by remember { mutableStateOf(false) }
+    var buttonEnabled by remember { mutableStateOf(false) }
+    if (items.isNotEmpty()) {
+        isEnabled = true
+    }
+
     Scaffold(
         topBar = {
             com.example.aquagraphapp.dropdownMenu.LargeDropdownMenu(
                 modifier = Modifier.padding(10.dp, 10.dp, 10.dp, 10.dp),
+                enabled = isEnabled,
                 label = "Выберите критерий",
                 items = items,
                 selectedIndex = selectedIndex,
-                onItemSelected = { index, _ -> selectedIndex = index },
+                onItemSelected = { index, _ ->
+                    selectedIndex = index
+                    buttonEnabled = if (index != -1) true else false
+                },
             )
-        }
+        },
+        floatingActionButton = {
+            if (buttonEnabled) {
+                FloatingActionButton(
+                    onClick = {
+                        selectedIndex = -1
+                        buttonEnabled = false
+                    },
+                    backgroundColor = MaterialTheme.colorScheme.tertiaryContainer,
+                    contentColor = MaterialTheme.colorScheme.primary
+                ) {
+                    Icon(Icons.Filled.ArrowBack, "FAB")
+                }
+            }
+        },
+        floatingActionButtonPosition = FabPosition.End
     ) { paddingValues ->
         Box(
             modifier = Modifier
@@ -79,11 +107,12 @@ fun InfoScreen(dataForTable: List<QualityModel>) {
                     CreateTable(dataForTable)
                 } else {
                     Text(
-                        text = "521 ОШИБКА\n СЕРВЕР НЕ РАБОТАЕТ",
+                        text = "ОШИБКА СОЕДИНЕНИЯ С СЕРВЕРОМ",
                         fontSize = 40.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.Gray,
-                        maxLines = 3
+                        textAlign = TextAlign.Center,
+                        lineHeight = 44.sp
                     )
                 }
             }
@@ -117,7 +146,7 @@ fun CreateTable(data: List<QualityModel>) {
         }
     }
     Box(
-        modifier = Modifier.padding(10.dp, 20.dp,10.dp, 0.dp),
+        modifier = Modifier.padding(10.dp, 20.dp, 10.dp, 0.dp),
         contentAlignment = Alignment.Center
     ) {
         Text(

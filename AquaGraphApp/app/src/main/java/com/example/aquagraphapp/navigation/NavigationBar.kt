@@ -1,5 +1,6 @@
 package com.example.aquagraphapp.navigation
 
+import android.content.Context
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -42,16 +43,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.aquagraphapp.MainActivity
 import com.example.aquagraphapp.models.QualityModel
-import com.yandex.mapkit.geometry.Point
 import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NavigationBar(dataForTable : List<QualityModel>) {
+fun NavigationBar(dataForTable : List<QualityModel>, applicationContext: Context) {
     val items = listOf(
         BottomNavigationItem(
             route = "HomeScreen",
@@ -151,7 +148,7 @@ fun NavigationBar(dataForTable : List<QualityModel>) {
                     loading.value = false
                 }
                 com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
-                HomeScreen()
+                HomeScreen(applicationContext)
             }
             composable("InfoScreen") {
                 LaunchedEffect(Unit) {
