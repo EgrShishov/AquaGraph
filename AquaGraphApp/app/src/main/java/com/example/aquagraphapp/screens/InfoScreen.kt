@@ -15,6 +15,7 @@ import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -34,6 +35,7 @@ import com.example.aquagraphapp.models.QualityModel
 import androidx.core.text.HtmlCompat
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import co.yml.charts.axis.AxisData
@@ -46,112 +48,115 @@ import com.example.aquagraphapp.models.ListOfMonth
 import com.example.aquagraphapp.models.ResponseModel
 import java.text.DecimalFormat
 import androidx.compose.ui.text.style.TextAlign
+import com.aay.compose.barChart.model.BarParameters
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun InfoScreen(data: List<ResponseModel>) {
-    val items = mutableListOf<String>()
-    var dataForTable = data.last().params
-    dataForTable.forEachIndexed { index, item ->
-        items.add(index, removeHtmlTags(item.name).toString())
-    }
-    var selectedIndex by remember { mutableStateOf(-1) }
-    var isEnabled by remember { mutableStateOf(false) }
-    var buttonEnabled by remember { mutableStateOf(false) }
-    if (items.isNotEmpty()) {
-        isEnabled = true
-    }
+class InfoScreen {
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun ShowInfoScreen(data: List<ResponseModel>) {
+        val items = mutableListOf<String>()
+        var dataForTable = data.last().params
+        dataForTable.forEachIndexed { index, item ->
+            items.add(index, removeHtmlTags(item.name).toString())
+        }
+        var selectedIndex by remember { mutableStateOf(-1) }
+        var isEnabled by remember { mutableStateOf(false) }
+        var buttonEnabled by remember { mutableStateOf(false) }
+        if (items.isNotEmpty()) {
+            isEnabled = true
+        }
 
-    Scaffold(
-        topBar = {
-            com.example.aquagraphapp.dropdownMenu.LargeDropdownMenu(
-                modifier = Modifier.padding(10.dp, 10.dp, 10.dp, 10.dp),
-                enabled = isEnabled,
-                label = "Выберите критерий",
-                items = items,
-                selectedIndex = selectedIndex,
-                onItemSelected = { index, _ ->
-                    selectedIndex = index
-                    buttonEnabled = if (index != -1) true else false
-                },
-            )
-        },
-        floatingActionButton = {
-            if (buttonEnabled) {
-                FloatingActionButton(
-                    onClick = {
-                        selectedIndex = -1
-                        buttonEnabled = false
+        Scaffold(
+            topBar = {
+                com.example.aquagraphapp.dropdownMenu.LargeDropdownMenu(
+                    modifier = Modifier.padding(10.dp, 10.dp, 10.dp, 10.dp),
+                    enabled = isEnabled,
+                    label = "Выберите критерий",
+                    items = items,
+                    selectedIndex = selectedIndex,
+                    onItemSelected = { index, _ ->
+                        selectedIndex = index
+                        buttonEnabled = if (index != -1) true else false
                     },
-                    backgroundColor = MaterialTheme.colorScheme.tertiaryContainer,
-                    contentColor = MaterialTheme.colorScheme.primary
-                ) {
-                    Icon(Icons.Filled.ArrowBack, "FAB")
-                }
-            }
-        },
-        floatingActionButtonPosition = FabPosition.End
-    ) { paddingValues ->
-        Box(
-            modifier = Modifier
-                .padding(paddingValues)
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
-        ) {
-            Column(
-                modifier = Modifier
-                    .wrapContentSize()
-                    .padding(10.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                if (items.isNotEmpty()) {
-                    if(selectedIndex == -1) {
-                        Text(
-                            text = "Качественный состав воды",
-                            fontSize = 30.sp,
-                            color = Color.Black,
-                            modifier = Modifier
-                                .padding(10.dp)
-                                .align(Alignment.CenterHorizontally),
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
-                        )
-                        CreateTable(dataForTable)
-                    }
-                    else
-                    {
-                        Text(
-                            text = "Единицы измерения: ${removeHtmlTags(data.last().params[selectedIndex].metric)}",
-                            fontSize = 20.sp,
-                            color = Color.Black,
-                            modifier = Modifier
-                                .padding(10.dp)
-                                .align(Alignment.CenterHorizontally),
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
-                        )
-                        var str = CreateGraphic(data = data, criterionIndex = selectedIndex)
-                        Text(
-                            text = "${removeHtmlTags(str)}",
-                            fontSize = 20.sp,
-                            color = Color.Black,
-                            modifier = Modifier
-                                .padding(10.dp)
-                                .align(Alignment.CenterHorizontally),
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
-                        )
-                    }
-                } else {
-                    Text(
-                        text = "ОШИБКА СОЕДИНЕНИЯ С СЕРВЕРОМ",
-                        fontSize = 40.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.Gray,
-                        textAlign = TextAlign.Center,
-                        lineHeight = 44.sp
+                )
+            },
+            floatingActionButton = {
+                if (buttonEnabled) {
+                    ExtendedFloatingActionButton(
+                        onClick = {
+                            selectedIndex = -1
+                            buttonEnabled = false
+                        },
+                        contentColor = MaterialTheme.colorScheme.primary,
+                        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                        icon = { Icon(Icons.Filled.ArrowBack, "FAB") },
+                        text = { Text("Назад") },
+                        expanded = true
                     )
+                }
+            },
+            floatingActionButtonPosition = FabPosition.End
+        ) { paddingValues ->
+            Box(
+                modifier = Modifier
+                    .padding(paddingValues)
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+            ) {
+                Column(
+                    modifier = Modifier
+                        .wrapContentSize()
+                        .padding(10.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    if (items.isNotEmpty()) {
+                        if (selectedIndex == -1) {
+                            Text(
+                                text = "Качественный состав воды",
+                                fontSize = 30.sp,
+                                color = MaterialTheme.colorScheme.onBackground,
+                                modifier = Modifier
+                                    .padding(10.dp)
+                                    .align(Alignment.CenterHorizontally),
+                                fontWeight = FontWeight.Bold,
+                                textAlign = TextAlign.Center
+                            )
+                            CreateTable(dataForTable)
+                        } else {
+                            Text(
+                                text = "Единицы измерения: ${removeHtmlTags(data.last().params[selectedIndex].metric)}",
+                                fontSize = 20.sp,
+                                color = MaterialTheme.colorScheme.onBackground,
+                                modifier = Modifier
+                                    .padding(10.dp)
+                                    .align(Alignment.CenterHorizontally),
+                                fontWeight = FontWeight.Bold,
+                                textAlign = TextAlign.Center
+                            )
+                            //com.example.aquagraphapp.screens.BarChartSample(data, selectedIndex)
+                            var str = CreateGraphic(data = data, criterionIndex = selectedIndex)
+                            Text(
+                                text = "${removeHtmlTags(str)}",
+                                fontSize = 20.sp,
+                                color = MaterialTheme.colorScheme.onBackground,
+                                modifier = Modifier
+                                    .padding(10.dp)
+                                    .align(Alignment.CenterHorizontally),
+                                fontWeight = FontWeight.Bold,
+                                textAlign = TextAlign.Center
+                            )
+                        }
+                    } else {
+                        Text(
+                            text = "ОШИБКА СОЕДИНЕНИЯ С СЕРВЕРОМ",
+                            fontSize = 40.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.onBackground,
+                            textAlign = TextAlign.Center,
+                            lineHeight = 44.sp
+                        )
+                    }
                 }
             }
         }
@@ -159,40 +164,90 @@ fun InfoScreen(data: List<ResponseModel>) {
 }
 
 @Composable
-fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int) : String {
-    var origpointsdata = PartitionByPoint(data, criterionIndex).toMutableList()
-    var delta = StringToMonth(data.last().time) - 1
-    var steps = 20
+fun BarChartSample(data: List<ResponseModel>, index: Int) {
+
+    val testBarParameters: List<BarParameters> = listOf(
+        BarParameters(
+            dataName = "Completed",
+            data = listOf(0.0, 0.0, 0.0, 50.6, 44.0, 100.6, 10.0),
+            barColor = Color(0xFF6C3428)
+        ),
+        BarParameters(
+            dataName = "Completed",
+            data = listOf(0.0, 0.0, 0.0, 69.6, 50.0, 30.6, 80.0),
+            barColor = Color(0xFFBA704F),
+        ),
+        BarParameters(
+            dataName = "Completed",
+            data = listOf(0.0, 0.0, 0.0, 80.6, 10.0, 100.6, 55.99),
+            barColor = Color(0xFFDFA878),
+        ),
+    )
+
+    Box(Modifier.fillMaxSize()) {
+        com.aay.compose.barChart.BarChart(
+            chartParameters = testBarParameters,
+            gridColor = Color.DarkGray,
+            xAxisData = listOf("2016", "2017", "2018", "2019", "2020", "2021", "2022"),
+            isShowGrid = true,
+            animateChart = true,
+            showGridWithSpacer = true,
+            yAxisStyle = TextStyle(
+                fontSize = 14.sp,
+                color = Color.DarkGray,
+            ),
+            xAxisStyle = TextStyle(
+                fontSize = 14.sp,
+                color = Color.DarkGray,
+                fontWeight = FontWeight.W400
+            ),
+            yAxisRange = 20,
+            barWidth = 20.dp,
+            spaceBetweenBars = 5.dp
+        )
+    }
+}
+
+@Composable
+fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int): String {
+    val origpointsdata = PartitionByPoint(data, criterionIndex).toMutableList()
+    val delta = StringToMonth(data.last().time) - 1
+    val steps = 20
     var max_y = max_Y(origpointsdata)
     var min_y = min_Y(origpointsdata)
-    var degree = GetDegree(min_y)
-    var gamma = 10f / min_y
+    val degree = GetDegree(min_y)
+    val gamma = 10f / min_y
     Log.d("min", "$min_y")
     min_y = min_y / 10f * Math.pow(10.0, -1.0 * degree).toFloat()
     Log.d("min", "$min_y")
     max_y *= gamma
-    var pointsdata: MutableList<BarData> = mutableListOf()
+    val pointsdata: MutableList<BarData> = mutableListOf()
 
     for (i in 0..origpointsdata.size - 1)
-        pointsdata.add(BarData(Point(origpointsdata[i].point.x, origpointsdata[i].point.y * gamma), origpointsdata[i].color))
+        pointsdata.add(
+            BarData(
+                Point(origpointsdata[i].point.x, origpointsdata[i].point.y * gamma),
+                origpointsdata[i].color
+            )
+        )
 
-    pointsdata.add(0, BarData(Point(0f, max_y), Color.White))
+    pointsdata.add(0, BarData(Point(0f, max_y), MaterialTheme.colorScheme.onBackground))
     pointsdata.add(
         pointsdata.size,
-        BarData(Point(pointsdata.last().point.x + 1f, max_y), Color.White)
+        BarData(
+            Point(pointsdata.last().point.x + 1f, max_y),
+            MaterialTheme.colorScheme.onBackground
+        )
     )
 
     val xAxisData = AxisData.Builder()
-        .backgroundColor(MaterialTheme.colorScheme.tertiaryContainer)
+        .backgroundColor(MaterialTheme.colorScheme.onBackground)
         .steps(pointsdata.size)
         .axisLabelAngle(35f)
         .labelData { i ->
-            if (i != pointsdata.size - 1 && i != 0)
-            {
+            if (i != pointsdata.size - 1 && i != 0) {
                 ListOfMonth[(pointsdata[i].point.x.toInt() + delta) % 12]
-            }
-            else
-            {
+            } else {
                 ""
             }
         }
@@ -202,9 +257,9 @@ fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int) : String {
 
     val yAxisData = AxisData.Builder()
         .steps(steps)
-        .backgroundColor(MaterialTheme.colorScheme.tertiaryContainer)
+        .backgroundColor(MaterialTheme.colorScheme.onBackground)
         .labelAndAxisLinePadding(20.dp)
-        .labelData { i -> DecimalFormat("#0.00").format(i * min_y)}
+        .labelData { i -> DecimalFormat("#0.00").format(i * min_y) }
         .build()
 
     val barChartData = BarChartData(
@@ -212,9 +267,10 @@ fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int) : String {
         xAxisData = xAxisData,
         yAxisData = yAxisData,
         barStyle = BarStyle(
-            paddingBetweenBars = 7 .dp,
-            barWidth = 16.dp
-        )
+            paddingBetweenBars = 7.dp,
+            barWidth = 16.dp,
+        ),
+        backgroundColor = MaterialTheme.colorScheme.onBackground
     )
 
     BarChart(
@@ -227,19 +283,14 @@ fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int) : String {
     return "10<sup>$degree</sup>"
 }
 
-fun GetDegree(Num: Float): Int
-{
+fun GetDegree(Num: Float): Int {
     var num = Num
     var degree = 0
-    while(num > 10 || num < 1)
-    {
-        if(num > 10)
-        {
+    while (num > 10 || num < 1) {
+        if (num > 10) {
             num /= 10
             degree++
-        }
-        else
-        {
+        } else {
             num *= 10
             degree--
         }
@@ -247,19 +298,18 @@ fun GetDegree(Num: Float): Int
     return degree
 }
 
-fun StringToMonth(time: String) : Int // time: yyyy-mm-dd
+fun StringToMonth(time: String): Int // time: yyyy-mm-dd
 {
-    var index1: Int = time.indexOf('-', 0)
-    var index2: Int = time.indexOf('-', index1 + 1)
+    val index1: Int = time.indexOf('-', 0)
+    val index2: Int = time.indexOf('-', index1 + 1)
     //Log.d("timestring", "${time.substring(index1 + 1, index2)}")
     return time.substring(index1 + 1, index2).toInt()
 }
 
-fun StringToValue(valueStr: String) : Float
-{
+fun StringToValue(valueStr: String): Float {
     var valueStrCopy = valueStr.substring(0)
     //Log.d("valuestring", "${valueStrCopy}")
-    if(valueStrCopy[0] == '<' || valueStrCopy[0] == '>' || valueStrCopy[0] == '~')
+    if (valueStrCopy[0] == '<' || valueStrCopy[0] == '>' || valueStrCopy[0] == '~')
         valueStrCopy = valueStrCopy.drop(1)
     valueStrCopy = valueStrCopy.replace(",", ".")
     //Log.d("value", "${valueStrCopy}")
@@ -268,20 +318,23 @@ fun StringToValue(valueStr: String) : Float
 }
 
 @Composable
-fun PartitionByPoint(data: List<ResponseModel>, criterionIndex: Int): List<BarData>
-{
+fun PartitionByPoint(data: List<ResponseModel>, criterionIndex: Int): List<BarData> {
     //var criterionIndex = CriterionIndex--
     var pointsdata: MutableList<BarData> = mutableListOf()
     var falseMonth = 12f
-    for (item in data.reversed())
-    {
+    for (item in data.reversed()) {
         var value = StringToValue(item.params[criterionIndex].value)
         pointsdata.add(0, BarData(Point(falseMonth, value), MaterialTheme.colorScheme.tertiary))
         falseMonth--
     }
-    while(pointsdata.size < 12)
-    {
-        pointsdata.add(0, BarData(Point(falseMonth, pointsdata[0].point.y), Color.White))
+    while (pointsdata.size < 12) {
+        pointsdata.add(
+            0,
+            BarData(
+                Point(falseMonth, pointsdata[0].point.y),
+                MaterialTheme.colorScheme.onBackground
+            )
+        )
         falseMonth--
     }
     //This func always return twelve months
@@ -324,7 +377,6 @@ fun CreateTable(data: List<QualityModel>) {
     ) {
         data.forEachIndexed { index, item ->
             row {
-                //onClick = { selectedRow = index }
                 cell { Text("${removeHtmlTags(item.name)}") }
                 cell { Text("${removeHtmlTags(item.metric).toString() + " - " + item.pdk}") }
                 cell { Text("${item.value}") }

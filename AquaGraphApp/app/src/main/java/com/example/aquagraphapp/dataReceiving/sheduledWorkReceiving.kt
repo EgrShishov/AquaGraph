@@ -11,7 +11,7 @@ import java.util.concurrent.CompletableFuture
 
 
 fun getListOfScheduledWork(applicationContext: Context): CompletableFuture<List<SheduledWork>> {
-    val url = "http://192.168.194.100:1337/works"
+    val url = "http://192.168.209.248:1337/works"
     val response = CompletableFuture<List<SheduledWork>>()
     val queue = Volley.newRequestQueue(applicationContext)
     val request = StringRequest(
@@ -52,5 +52,6 @@ fun parseScheduledWorkData(result: String): List<SheduledWork> {
             )
         )
     }
+    Log.d("list of work","$listOfWorks")
     return listOfWorks
 }

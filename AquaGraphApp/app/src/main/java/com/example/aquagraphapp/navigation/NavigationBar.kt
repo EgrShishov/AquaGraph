@@ -1,6 +1,7 @@
 package com.example.aquagraphapp.navigation
 
 import android.content.Context
+import android.util.Log
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -36,146 +37,165 @@ import androidx.navigation.compose.rememberNavController
 import com.example.aquagraphapp.models.BottomNavigationItem
 import com.example.aquagraphapp.screens.HomeScreen
 import com.example.aquagraphapp.screens.InfoScreen
-import com.example.aquagraphapp.screens.NotificationScreen
-import com.example.aquagraphapp.screens.ProblemsScreen
 import com.example.aquagraphapp.screens.Screens
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import com.example.aquagraphapp.models.MarkModel
 import com.example.aquagraphapp.models.ResponseModel
+import com.example.aquagraphapp.screens.NotificationsScreen
+import com.example.aquagraphapp.screens.ProblemsScreen
+import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun NavigationBar(parsedData : List<ResponseModel>, applicationContext: Context) {
-    val items = listOf(
-        BottomNavigationItem(
-            route = "HomeScreen",
-            title = "Главная",
-            selectedItem = Icons.Filled.Home,
-            unselectedItem = Icons.Outlined.Home,
-            hasNotifications = false
-        ),
-        BottomNavigationItem(
-            route = "InfoScreen",
-            title = "Инфо",
-            selectedItem = Icons.Filled.Info,
-            unselectedItem = Icons.Outlined.Info,
-            hasNotifications = false
-        ),
-        BottomNavigationItem(
-            route = "ProblemsScreen",
-            title = "Проблемы?",
-            selectedItem = Icons.Filled.Build,
-            unselectedItem = Icons.Outlined.Build,
-            hasNotifications = false
-        ),
-        BottomNavigationItem(
-            route = "NotificationScreen",
-            title = "Уведомления",
-            selectedItem = Icons.Filled.Notifications,
-            unselectedItem = Icons.Outlined.Notifications,
-            hasNotifications = true
-        )
-    )
+class NavigationBar {
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun ShowNavigationBar(parsedData: List<ResponseModel>, applicationContext: Context) {
+        val HomeScreen = HomeScreen()
+        val InfoScreen = InfoScreen()
+        val NotificationsScreen = NotificationsScreen()
+        val ProblemsScreen = ProblemsScreen()
 
-    var selectedItemIndex by rememberSaveable {
-        mutableIntStateOf(0)
-    }
-
-    val navController = rememberNavController()
-
-    var loading = remember {mutableStateOf(true)}
-
-    Scaffold(
-        bottomBar = {
-            androidx.compose.material3.NavigationBar(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .paddingFromBaseline(bottom = 0.dp),
-                containerColor = MaterialTheme.colorScheme.background,
+        val items = listOf(
+            BottomNavigationItem(
+                route = "HomeScreen",
+                title = "Главная",
+                selectedItem = Icons.Filled.Home,
+                unselectedItem = Icons.Outlined.Home,
+                hasNotifications = false
+            ),
+            BottomNavigationItem(
+                route = "InfoScreen",
+                title = "Инфо",
+                selectedItem = Icons.Filled.Info,
+                unselectedItem = Icons.Outlined.Info,
+                hasNotifications = false
+            ),
+            BottomNavigationItem(
+                route = "ProblemsScreen",
+                title = "Проблемы?",
+                selectedItem = Icons.Filled.Build,
+                unselectedItem = Icons.Outlined.Build,
+                hasNotifications = false
+            ),
+            BottomNavigationItem(
+                route = "NotificationScreen",
+                title = "Уведомления",
+                selectedItem = Icons.Filled.Notifications,
+                unselectedItem = Icons.Outlined.Notifications,
+                hasNotifications = true
             )
-            {
-                items.forEachIndexed { index, item ->
-                    NavigationBarItem(
-                        icon = {
-                            BadgedBox(
-                                badge = {
-                                    if (item.hasNotifications) {
-                                        Badge(contentColor = Color.Red)
-                                    }
-                                }
-                            ) {
-                                Icon(
-                                    imageVector = if (index == selectedItemIndex) {
-                                        item.selectedItem
-                                    } else {
-                                        item.unselectedItem
-                                    },
-                                    contentDescription = item.title
-                                )
-                            }
-                        },
-                        label = { Text(text = item.title) },
-                        selected = selectedItemIndex == index,
-                        onClick =
-                        {
-                            selectedItemIndex = index
-                            navController.navigate(item.route) {
-                                popUpTo(navController.graph.findStartDestination().id) {
-                                    saveState = true
-                                }
-                                launchSingleTop = true
-                                restoreState = true
-                            }
-                        },
-                        modifier = Modifier.height(90.dp),
-                    )
-                }
-            }
+        )
+
+        var selectedItemIndex by rememberSaveable {
+            mutableIntStateOf(0)
         }
-    ) { paddingValues ->
-        NavHost(
-            navController = navController,
-            startDestination = Screens.HomeScreen.name,
-            modifier = Modifier.padding(paddingValues),
-        ) {
-            composable("HomeScreen") {
-                LaunchedEffect(Unit) {
-                    loading.value = true
-                    delay(1000)
-                    loading.value = false
+
+        val navController = rememberNavController()
+
+        var loading = remember { mutableStateOf(true) }
+
+        var marks by remember {
+            mutableStateOf(listOf<MarkModel>())
+        }
+
+        Scaffold(
+            bottomBar = {
+                androidx.compose.material3.NavigationBar(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .paddingFromBaseline(bottom = 0.dp),
+                    containerColor = MaterialTheme.colorScheme.background,
+                )
+                {
+                    items.forEachIndexed { index, item ->
+                        NavigationBarItem(
+                            icon = {
+                                BadgedBox(
+                                    badge = {
+                                        if (item.hasNotifications) {
+                                            Badge(contentColor = Color.Red)
+                                        }
+                                    }
+                                ) {
+                                    Icon(
+                                        imageVector = if (index == selectedItemIndex) {
+                                            item.selectedItem
+                                        } else {
+                                            item.unselectedItem
+                                        },
+                                        contentDescription = item.title
+                                    )
+                                }
+                            },
+                            label = { Text(text = item.title) },
+                            selected = selectedItemIndex == index,
+                            onClick =
+                            {
+                                selectedItemIndex = index
+                                navController.navigate(item.route) {
+                                    popUpTo(navController.graph.findStartDestination().id) {
+                                        saveState = true
+                                    }
+                                    launchSingleTop = true
+                                    restoreState = true
+                                }
+                            },
+                            modifier = Modifier.height(90.dp),
+                        )
+                    }
                 }
-                com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
-                HomeScreen(applicationContext)
             }
-            composable("InfoScreen") {
-                LaunchedEffect(Unit) {
-                    loading.value = true
-                    delay(1200)
-                    loading.value = false
+        ) { paddingValues ->
+            NavHost(
+                navController = navController,
+                startDestination = Screens.HomeScreen.name,
+                modifier = Modifier.padding(paddingValues),
+            ) {
+                composable("HomeScreen") {
+                    LaunchedEffect(Unit) {
+                        val res = async{
+                            com.example.aquagraphapp.dataReceiving.getMarksData(applicationContext)
+                        }
+                        loading.value = true
+                        marks = res.await()
+                        loading.value = false
+                        Log.d("marks", "$marks")
+                    }
+                    com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
+                    if(!loading.value) {
+                        HomeScreen.ShowHomeScreen(applicationContext, marks)
+                    }
                 }
-                com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
-                InfoScreen(parsedData)
-            }
-            composable("ProblemsScreen") {
-                LaunchedEffect(Unit) {
-                    loading.value = true
-                    delay(1000)
-                    loading.value = false
+                composable("InfoScreen") {
+                    LaunchedEffect(Unit) {
+                        loading.value = true
+                        delay(1200)
+                        loading.value = false
+                    }
+                    com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
+                    InfoScreen.ShowInfoScreen(parsedData)
                 }
-                com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
-                ProblemsScreen(applicationContext)
-            }
-            composable("NotificationScreen") {
-                LaunchedEffect(Unit) {
-                    loading.value = true
-                    delay(900)
-                    loading.value = false
+                composable("ProblemsScreen") {
+                    LaunchedEffect(Unit) {
+                        loading.value = true
+                        delay(1000)
+                        loading.value = false
+                    }
+                    com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
+                    ProblemsScreen.ShowProblemsScreen(applicationContext)
                 }
-                com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
-                NotificationScreen()
+                composable("NotificationScreen") {
+                    LaunchedEffect(Unit) {
+                        loading.value = true
+                        delay(900)
+                        loading.value = false
+                    }
+                    com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
+                    NotificationsScreen.ShowNotificationScreen()
+                }
             }
         }
     }

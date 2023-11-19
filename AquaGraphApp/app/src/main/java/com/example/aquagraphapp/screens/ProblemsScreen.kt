@@ -12,22 +12,24 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 import com.example.aquagraphapp.models.SheduledWork
 
-@Composable
-fun ProblemsScreen(applicationContext: Context) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text(
-            text = "ProblemsScreen",
-            fontSize = 30.sp,
-            color = Color.Blue
-        )
-        com.example.aquagraphapp.dataReceiving.getListOfScheduledWork(applicationContext)
-            .thenAccept {
-                //ShowWorksSchedule(it)
-            }
+class ProblemsScreen {
+    @Composable
+    fun ShowProblemsScreen(applicationContext: Context) {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = "ProblemsScreen",
+                fontSize = 30.sp,
+                color = Color.Blue
+            )
+            com.example.aquagraphapp.dataReceiving.getListOfScheduledWork(applicationContext)
+                .thenAccept {
+                    //ShowWorksSchedule(it)
+                }
+        }
     }
 }
 
