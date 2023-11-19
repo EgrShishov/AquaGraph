@@ -37,6 +37,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.aquagraphapp.models.BottomNavigationItem
 import com.example.aquagraphapp.screens.HomeScreen
 import com.example.aquagraphapp.screens.InfoScreen
+import com.example.aquagraphapp.screens.ProblemsScreen
 import com.example.aquagraphapp.screens.Screens
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
@@ -44,63 +45,24 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import com.example.aquagraphapp.models.MarkModel
 import com.example.aquagraphapp.models.ResponseModel
-<<<<<<< HEAD
+import com.example.aquagraphapp.models.ScheduledWork
 import com.example.aquagraphapp.screens.NotificationsScreen
-import com.example.aquagraphapp.screens.ProblemsScreen
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 
-class NavigationBar {
+class NavigationBar{
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun ShowNavigationBar(parsedData: List<ResponseModel>, applicationContext: Context) {
+    fun ShowNavigationBar(
+        qualityData: List<ResponseModel>,
+        worksData: List<ScheduledWork>,
+        workMarks: List<MarkModel>,
+        applicationContext: Context
+    ) {
         val HomeScreen = HomeScreen()
         val InfoScreen = InfoScreen()
         val NotificationsScreen = NotificationsScreen()
         val ProblemsScreen = ProblemsScreen()
-=======
-import com.example.aquagraphapp.models.ScheduledWork
-import kotlinx.coroutines.delay
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun NavigationBar(
-    qualityData : List<ResponseModel>,
-    worksData: List<ScheduledWork>,
-    workMarks: List<MarkModel>,
-    applicationContext: Context
-) {
-    val items = listOf(
-        BottomNavigationItem(
-            route = "HomeScreen",
-            title = "Главная",
-            selectedItem = Icons.Filled.Home,
-            unselectedItem = Icons.Outlined.Home,
-            hasNotifications = false
-        ),
-        BottomNavigationItem(
-            route = "InfoScreen",
-            title = "Инфо",
-            selectedItem = Icons.Filled.Info,
-            unselectedItem = Icons.Outlined.Info,
-            hasNotifications = false
-        ),
-        BottomNavigationItem(
-            route = "ProblemsScreen",
-            title = "Проблемы?",
-            selectedItem = Icons.Filled.Build,
-            unselectedItem = Icons.Outlined.Build,
-            hasNotifications = false
-        ),
-        BottomNavigationItem(
-            route = "NotificationScreen",
-            title = "Уведомления",
-            selectedItem = Icons.Filled.Notifications,
-            unselectedItem = Icons.Outlined.Notifications,
-            hasNotifications = true
-        )
-    )
->>>>>>> origin/main_app
 
         val items = listOf(
             BottomNavigationItem(
@@ -191,11 +153,6 @@ fun NavigationBar(
                         )
                     }
                 }
-<<<<<<< HEAD
-=======
-                com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
-                HomeScreen(applicationContext, workMarks)
->>>>>>> origin/main_app
             }
         ) { paddingValues ->
             NavHost(
@@ -214,11 +171,10 @@ fun NavigationBar(
                         Log.d("marks", "$marks")
                     }
                     com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
-                    if(!loading.value) {
+                    if (!loading.value) {
                         HomeScreen.ShowHomeScreen(applicationContext, marks)
                     }
                 }
-<<<<<<< HEAD
                 composable("InfoScreen") {
                     LaunchedEffect(Unit) {
                         loading.value = true
@@ -226,17 +182,7 @@ fun NavigationBar(
                         loading.value = false
                     }
                     com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
-                    InfoScreen.ShowInfoScreen(parsedData)
-=======
-                com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
-                InfoScreen(qualityData)
-            }
-            composable("ProblemsScreen") {
-                LaunchedEffect(Unit) {
-                    loading.value = true
-                    //delay(1000)
-                    loading.value = false
->>>>>>> origin/main_app
+                    InfoScreen.ShowInfoScreen(qualityData)
                 }
                 composable("ProblemsScreen") {
                     LaunchedEffect(Unit) {
@@ -254,13 +200,8 @@ fun NavigationBar(
                         loading.value = false
                     }
                     com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
-                    NotificationsScreen.ShowNotificationScreen()
+                    NotificationsScreen.ShowNotificationScreen(worksData)
                 }
-<<<<<<< HEAD
-=======
-                com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
-                NotificationScreen(worksData)
->>>>>>> origin/main_app
             }
         }
     }

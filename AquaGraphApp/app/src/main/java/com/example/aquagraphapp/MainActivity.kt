@@ -30,18 +30,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
-<<<<<<< HEAD
 import com.example.aquagraphapp.buttons.AddNewAdressButton
 import com.example.aquagraphapp.databinding.MainActivityBinding
-import com.example.aquagraphapp.models.MarkModel
 import com.example.aquagraphapp.models.ResponseModel
 import com.example.aquagraphapp.navigation.NavigationBar
 import com.example.aquagraphapp.notifications.NotificationService
-=======
 import com.example.aquagraphapp.dataReceiving.getNewAdressPoint2
 import com.example.aquagraphapp.models.MarkModel
 import com.example.aquagraphapp.models.ScheduledWork
->>>>>>> origin/main_app
 import com.example.aquagraphapp.ui.theme.AquaGraphAppTheme
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.Point
@@ -63,24 +59,13 @@ class MainActivity : ComponentActivity() {
     private var marksAdresses = listOf<MarkModel>()
     private var curLocation: Point = Point(53.919585, 27.587433)
 
-<<<<<<< HEAD
-=======
-    private var _curPoint: Point = Point(53.919585, 27.587433)
-    var curPoint: Point
-        set(value) {
-            if (value.longitude != 0.0 && value.latitude != 0.0)
-                _curPoint = value
-        }
-        get() = this._curPoint
-
->>>>>>> origin/main_app
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setApiKey(savedInstanceState)
         MapKitFactory.initialize(this)
         binding = MainActivityBinding.inflate(layoutInflater)
         val NavigationBar = NavigationBar()
-        val service = NotificationService(applicationContext)
+        //val service = NotificationService(applicationContext)
 
         lifecycleScope.launch {
             val data = async {
@@ -89,33 +74,24 @@ class MainActivity : ComponentActivity() {
                     applicationContext
                 )
             }
-<<<<<<< HEAD
+
             val dataForTable = data.await()
             Log.d("coroutine", "$dataForTable")
-            com.example.aquagraphapp.dataReceiving.getListOfScheduledWork(applicationContext)
-                .thenAccept {
-                    for (i in 0 until it.size) {
-                        Log.d("test$i", "${it[i].Data}")
-                    }
-                }
 
-=======
->>>>>>> origin/main_app
             val marks = async {
                 com.example.aquagraphapp.dataReceiving.getMarksData(
                     applicationContext
                 )
             }
-<<<<<<< HEAD
+
             val marksAdresses2 = marks.await()
-            if(marksAdresses2.isNotEmpty()) {
+            if (marksAdresses2.isNotEmpty()) {
                 marksAdresses = marksAdresses2.subList(1, 3)
                 Log.d("marksdata", "$marksAdresses")
             }
             val parsedData = data.await()
             Log.d("coroutine", "$parsedData")
 
-=======
             val works = async {
                 com.example.aquagraphapp.dataReceiving.getListOfScheduledWork(
                     applicationContext
@@ -131,16 +107,11 @@ class MainActivity : ComponentActivity() {
             val workmarksData = workMarks.await()
             val qualityData = data.await()
             val marksData = marks.await()
->>>>>>> origin/main_app
             setContent {
                 AquaGraphAppTheme {
                     if (isSystemInDarkTheme()) {
                         //implement changing to the dark theme
-<<<<<<< HEAD
                         binding.mapview.map.isNightModeEnabled = true
-=======
-                        _mapView.map.setNightModeEnabled(true)
->>>>>>> origin/main_app
                         Log.d("night", "night")
                     }
                     MaterialTheme.colorScheme.primary
@@ -148,20 +119,12 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         color = Color.White,
                     ) {
-<<<<<<< HEAD
                         NavigationBar.ShowNavigationBar(
-                            dataForTable,
-                            applicationContext
+                            qualityData = qualityData,
+                            worksData = worksData,
+                            workMarks = workmarksData,
+                            applicationContext = applicationContext
                         )
-                        service.showNotification("mama papa im here")
-=======
-                        com.example.aquagraphapp.navigation.NavigationBar(
-                            qualityData,
-                            worksData,
-                            workmarksData,
-                            applicationContext
-                        )
->>>>>>> origin/main_app
                     }
                 }
             }
@@ -191,64 +154,6 @@ class MainActivity : ComponentActivity() {
         MapKitFactory.getInstance().onStop()
         super.onStop()
     }
-
-<<<<<<< HEAD
-    private fun moveToStartLocation() {
-        binding.mapview.map.move(
-            CameraPosition(
-                curLocation,
-                15.0f,
-                150.0f,
-                30.0f
-            )
-=======
-    @Composable
-    fun ShowMap(point: Point, worksModel: List<MarkModel>) {
-        AndroidView(
-            factory = { context ->
-                val view = LayoutInflater.from(context).inflate(R.layout.main_activity, null)
-                _mapView = view.findViewById<MapView>(R.id.mapview)
-                if (_mapView.map.cameraPosition.target != point) {
-                    _mapView.map.move(
-                        CameraPosition(
-                            point,
-                            15.0f,
-                            150.0f,
-                            30.0f
-                        )
-                    )
-                }
-                for (item in worksModel) {
-                    val marker = R.drawable.ic_pin_black_png // Добавляем ссылку на картинку
-                    mapObjectCollection =
-                        _mapView.map.mapObjects // Инициализируем коллекцию различных объектов на карте
-                    placemarkMapObject = mapObjectCollection.addPlacemark(
-                        Point(item.X.toDouble(), item.Y.toDouble()),
-                        ImageProvider.fromResource(context, marker)
-                    ) // Добавляем метку со значком
-                    //ImageProvider.fromResource(this, marker)
-                    placemarkMapObject.opacity = 0.5f // Устанавливаем прозрачность метке
-                    placemarkMapObject.setText("Работы!") // Устанавливаем текст сверху метки
-                }
-                view
-            },
-            modifier = Modifier.fillMaxSize(),
-            update = {
-//                if (_mapView.map.cameraPosition.target != point) {
-//                    _mapView.map.move(
-//                        CameraPosition(
-//                            point,
-//                            15.0f,
-//                            150.0f,
-//                            30.0f
-//                        )
-//                    )
-//                }
-            }
->>>>>>> origin/main_app
-        )
-
-    }
 }
 
 
@@ -259,7 +164,7 @@ suspend fun ToMarksModel(works: List<ScheduledWork>, applicationContext: Context
 
             var index = adress.indexOf(',')
             var new_adress = ""
-            if(index == -1)
+            if (index == -1)
                 new_adress = adress
             else
                 new_adress = adress.substring(0, adress.indexOf(','))

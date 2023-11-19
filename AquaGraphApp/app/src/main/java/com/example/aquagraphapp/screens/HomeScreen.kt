@@ -32,7 +32,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-<<<<<<< HEAD
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.ui.window.Dialog
 import com.example.aquagraphapp.R
@@ -57,23 +56,6 @@ class HomeScreen {
             mutableStateOf(com.yandex.mapkit.geometry.Point(53.919585, 27.587433))
         }
         Scaffold(
-=======
-import androidx.compose.ui.unit.sp
-import com.example.aquagraphapp.MainActivity
-import com.example.aquagraphapp.models.MarkModel
-import com.yandex.mapkit.geometry.Point
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun HomeScreen(applicationContext: Context, workMarks: List<MarkModel>) {
-    Scaffold(
-        modifier = Modifier
-            .fillMaxSize(),
-        floatingActionButton = {com.example.aquagraphapp.buttons.AddNewAdressButton(applicationContext)},
-        floatingActionButtonPosition = FabPosition.End
-    ) { paddingValues ->
-        Box(
->>>>>>> origin/main_app
             modifier = Modifier
                 .fillMaxSize(),
             floatingActionButton = {
@@ -91,7 +73,6 @@ fun HomeScreen(applicationContext: Context, workMarks: List<MarkModel>) {
                     .padding(paddingValues)
                     .fillMaxSize(),
             ) {
-<<<<<<< HEAD
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
@@ -102,10 +83,6 @@ fun HomeScreen(applicationContext: Context, workMarks: List<MarkModel>) {
                     Log.d("marksinfunc", "$marks")
                     ShowMap(point, marks)
                 }
-=======
-                val maExample = MainActivity()
-                maExample.ShowMap(maExample.curPoint, workMarks)
->>>>>>> origin/main_app
             }
         }
     }

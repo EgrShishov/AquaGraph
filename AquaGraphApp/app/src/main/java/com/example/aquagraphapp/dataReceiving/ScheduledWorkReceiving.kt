@@ -12,16 +12,10 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
 
-<<<<<<< HEAD:AquaGraphApp/app/src/main/java/com/example/aquagraphapp/dataReceiving/sheduledWorkReceiving.kt
-fun getListOfScheduledWork(applicationContext: Context): CompletableFuture<List<SheduledWork>> {
-    val url = "http://192.168.209.248:1337/works"
-    val response = CompletableFuture<List<SheduledWork>>()
-=======
 suspend fun getListOfScheduledWork(
     applicationContext: Context
 ): List<ScheduledWork> = suspendCoroutine { continuation ->
     val url = "http://192.168.209.248:1337/works"
->>>>>>> origin/main_app:AquaGraphApp/app/src/main/java/com/example/aquagraphapp/dataReceiving/ScheduledWorkReceiving.kt
     val queue = Volley.newRequestQueue(applicationContext)
     val request = StringRequest(
         Request.Method.GET,
