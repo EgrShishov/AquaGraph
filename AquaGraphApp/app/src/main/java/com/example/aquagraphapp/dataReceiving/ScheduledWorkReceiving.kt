@@ -1,18 +1,27 @@
 package com.example.aquagraphapp.dataReceiving
 
 import android.content.Context
+//import android.graphics.Point
 import android.util.Log
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.aquagraphapp.models.SheduledWork
+import com.example.aquagraphapp.models.ScheduledWork
 import org.json.JSONObject
-import java.util.concurrent.CompletableFuture
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
 
+<<<<<<< HEAD:AquaGraphApp/app/src/main/java/com/example/aquagraphapp/dataReceiving/sheduledWorkReceiving.kt
 fun getListOfScheduledWork(applicationContext: Context): CompletableFuture<List<SheduledWork>> {
     val url = "http://192.168.209.248:1337/works"
     val response = CompletableFuture<List<SheduledWork>>()
+=======
+suspend fun getListOfScheduledWork(
+    applicationContext: Context
+): List<ScheduledWork> = suspendCoroutine { continuation ->
+    val url = "http://192.168.209.248:1337/works"
+>>>>>>> origin/main_app:AquaGraphApp/app/src/main/java/com/example/aquagraphapp/dataReceiving/ScheduledWorkReceiving.kt
     val queue = Volley.newRequestQueue(applicationContext)
     val request = StringRequest(
         Request.Method.GET,
@@ -20,21 +29,20 @@ fun getListOfScheduledWork(applicationContext: Context): CompletableFuture<List<
         { result ->
             Log.d("mama","$result")
             val parsed = parseScheduledWorkData(result)
-            response.complete(parsed)
+            continuation.resume(parsed)
         },
         { error ->
             Log.d("ScheduledWorkError", "$error")
-            response.complete(listOf())
+            continuation.resume(listOf())
         }
     )
     queue.add(request)
-    return response
 }
 
-fun parseScheduledWorkData(result: String): List<SheduledWork> {
+fun parseScheduledWorkData(result: String): List<ScheduledWork> {
     val jsonarray = JSONObject(result)
     val arrayOfWorks = jsonarray.getJSONArray("Works")
-    val listOfWorks = mutableListOf<SheduledWork>()
+    val listOfWorks = mutableListOf<ScheduledWork>()
 
     for (i in 0 until arrayOfWorks.length()) {
         val el = arrayOfWorks.getJSONObject(i)
@@ -45,7 +53,7 @@ fun parseScheduledWorkData(result: String): List<SheduledWork> {
         }
         listOfWorks.add(
             i,
-            SheduledWork(
+            ScheduledWork(
                 Time = el.getString("Time"),
                 Data = el.getString("Data"),
                 Addresses = addresses
@@ -55,3 +63,4 @@ fun parseScheduledWorkData(result: String): List<SheduledWork> {
     Log.d("list of work","$listOfWorks")
     return listOfWorks
 }
+

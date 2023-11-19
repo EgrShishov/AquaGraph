@@ -35,11 +35,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.material3.ButtonColors.*
+<<<<<<< HEAD
 import com.example.aquagraphapp.MainActivity
 import com.example.aquagraphapp.R
 import com.example.aquagraphapp.dataReceiving.getNewAdressPoint
 import com.yandex.mapkit.map.CameraPosition
 import com.yandex.mapkit.mapview.MapView
+=======
+import com.example.aquagraphapp.dataReceiving.getNewAdressPoint1
+>>>>>>> origin/main_app
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -123,7 +127,7 @@ fun AddNewAdressButton(applicationContext: Context):com.yandex.mapkit.geometry.P
                             OutlinedButton(
                                 enabled = text.isNotEmpty(),
                                 onClick = {
-                                    getNewAdressPoint(
+                                    getNewAdressPoint1(
                                         applicationContext,
                                         text
                                     ).thenAccept { newPoint ->

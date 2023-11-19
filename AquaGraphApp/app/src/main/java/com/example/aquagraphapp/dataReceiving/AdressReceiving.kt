@@ -9,9 +9,11 @@ import com.yandex.mapkit.geometry.Point
 import org.json.JSONArray
 import org.json.JSONObject
 import java.util.concurrent.CompletableFuture
+import kotlin.coroutines.resume
+import kotlin.coroutines.suspendCoroutine
 
-fun getNewAdressPoint(applicationContext: Context, adress: String): CompletableFuture<Point> {
-    val future = CompletableFuture<Point>()
+fun getNewAdressPoint1(applicationContext: Context, adress: String): CompletableFuture<Point>{
+    var future = CompletableFuture<Point>()
     val url = "https://geocode.maps.co/search?" +
             "street=${adress}" +
             "&city=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA" +
@@ -33,6 +35,31 @@ fun getNewAdressPoint(applicationContext: Context, adress: String): CompletableF
     queue.add(request)
     return future
 }
+
+suspend fun getNewAdressPoint2(applicationContext: Context, adress: String): Point = suspendCoroutine{
+    continuation ->
+    val url = "https://geocode.maps.co/search?" +
+            "street=${adress}" +
+            "&city=%D0%9C%D0%B8%D0%BD%D1%81%D0%BA" +
+            "&country=%D0%B1%D0%B5%D0%BB%D0%B0%D1%80%D1%83%D1%81%D1%8C"
+    val queue = Volley.newRequestQueue(applicationContext)
+    val request = StringRequest(
+        Request.Method.GET,
+        url,
+        { result ->
+            val ans = processAdress(result)
+            //Log.d("resadd", "$ans")
+            continuation.resume(ans)
+        },
+        { error ->
+            Log.d("Error in parsing point", "$error")
+            continuation.resume(Point())
+        }
+    )
+    queue.add(request)
+}
+
+
 
 fun processAdress(result: String): Point {
     val jsonArr = JSONArray(result)

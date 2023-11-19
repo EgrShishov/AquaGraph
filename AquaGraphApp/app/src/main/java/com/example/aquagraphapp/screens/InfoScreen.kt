@@ -66,6 +66,7 @@ class InfoScreen {
             isEnabled = true
         }
 
+<<<<<<< HEAD
         Scaffold(
             topBar = {
                 com.example.aquagraphapp.dropdownMenu.LargeDropdownMenu(
@@ -77,6 +78,28 @@ class InfoScreen {
                     onItemSelected = { index, _ ->
                         selectedIndex = index
                         buttonEnabled = if (index != -1) true else false
+=======
+    Scaffold(
+        topBar = {
+            com.example.aquagraphapp.dropdownMenu.LargeDropdownMenu(
+                modifier = Modifier.padding(10.dp, 10.dp, 10.dp, 10.dp),
+                enabled = isEnabled,
+                label = "Выберите критерий",
+                items = items,
+                selectedIndex = selectedIndex,
+                onItemSelected = { index, _ ->
+                    selectedIndex = index
+                    buttonEnabled = index != -1
+                },
+            )
+        },
+        floatingActionButton = {
+            if (buttonEnabled) {
+                FloatingActionButton(
+                    onClick = {
+                        selectedIndex = -1
+                        buttonEnabled = false
+>>>>>>> origin/main_app
                     },
                 )
             },
