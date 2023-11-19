@@ -3,7 +3,9 @@ package com.example.aquagraphapp.screens
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -20,7 +22,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
@@ -46,6 +47,8 @@ import com.example.aquagraphapp.models.ListOfMonth
 import com.example.aquagraphapp.models.ResponseModel
 import java.text.DecimalFormat
 import androidx.compose.ui.text.style.TextAlign
+import co.yml.charts.common.model.AccessibilityConfig
+import co.yml.charts.ui.barchart.models.SelectionHighlightData
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -191,8 +194,7 @@ fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int) : String {
             {
                 ListOfMonth[(pointsdata[i].point.x.toInt() + delta) % 12]
             }
-            else
-            {
+            else {
                 ""
             }
         }
@@ -213,7 +215,8 @@ fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int) : String {
         yAxisData = yAxisData,
         barStyle = BarStyle(
             paddingBetweenBars = 7 .dp,
-            barWidth = 16.dp
+            barWidth = 16.dp,
+            selectionHighlightData = null//SelectionHighlightData(isHighlightBarRequired = false)
         )
     )
 
@@ -221,7 +224,7 @@ fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int) : String {
         modifier = Modifier
             .height(400.dp)
             .fillMaxWidth(),
-        barChartData = barChartData
+        barChartData = barChartData,
     )
 
     return "10<sup>$degree</sup>"
@@ -310,6 +313,8 @@ fun min_Y(points: List<BarData>): Float {
 fun CreateTable(data: List<QualityModel>) {
     //var selectedRow by remember { mutableStateOf(0) }
     Table(
+        modifier = Modifier
+            .fillMaxWidth(),
         columns = listOf(
             TableColumnDefinition {
                 Text("Критерий")
