@@ -1,6 +1,7 @@
 package com.example.aquagraphapp.buttons
 
 import android.content.Context
+import android.graphics.Point
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -38,7 +39,7 @@ import com.example.aquagraphapp.dataReceiving.getNewAdressPoint1
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddNewAdressButton(applicationContext: Context) {
+fun AddNewAdressButton(applicationContext: Context):com.yandex.mapkit.geometry.Point {
     var showDialog by remember {
         mutableStateOf(false)
     }
@@ -49,6 +50,10 @@ fun AddNewAdressButton(applicationContext: Context) {
 
     var wrongInput by remember {
         mutableStateOf(false)
+    }
+
+    var point by remember {
+        mutableStateOf(com.yandex.mapkit.geometry.Point())
     }
 
     if (!showDialog) {
@@ -124,7 +129,7 @@ fun AddNewAdressButton(applicationContext: Context) {
                                                 "${newPoint.latitude} + ${newPoint.longitude}"
                                             )
                                             wrongInput = false
-
+                                            point = newPoint
                                         } else {
                                             wrongInput = true
                                             return@thenAccept
@@ -162,5 +167,6 @@ fun AddNewAdressButton(applicationContext: Context) {
             }
         }
     }
+    return point
 }
 

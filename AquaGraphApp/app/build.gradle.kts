@@ -47,9 +47,13 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    viewBinding {
+        enable = true
+    }
 }
 
 dependencies {
+    implementation("io.github.thechance101:chart:Beta-0.0.5")
     implementation("co.yml:ycharts:2.1.0")
     implementation("com.yandex.android:maps.mobile:4.4.0-lite")
     implementation("com.seanproctor:datatable:0.2.1")

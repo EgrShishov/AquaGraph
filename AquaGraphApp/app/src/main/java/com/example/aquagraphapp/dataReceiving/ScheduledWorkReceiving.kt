@@ -54,6 +54,7 @@ fun parseScheduledWorkData(result: String): List<ScheduledWork> {
             )
         )
     }
+    Log.d("list of work","$listOfWorks")
     return listOfWorks
 }
 

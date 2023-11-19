@@ -34,95 +34,133 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import com.example.aquagraphapp.models.ScheduledWork
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun NotificationScreen(worksData: List<ScheduledWork>) {
-    var selected_index by remember { mutableStateOf(-1) }
-    var clickable by remember {mutableStateOf(
-        mutableListOf(false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false)
-    )}
 
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Text(
-            modifier = Modifier
-                .padding(top = 20.dp),
-            text = "Уведомления",
-            fontSize = 30.sp,
-            color = MaterialTheme.colorScheme.onBackground,
-            fontWeight = FontWeight.Bold,
-        )
+class NotificationsScreen {
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun ShowNotificationScreen(worksData: List<ScheduledWork>) {
+        var selected_index by remember { mutableStateOf(-1) }
+        var clickable by remember {
+            mutableStateOf(
+                mutableListOf(
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false,
+                    false
+                )
+            )
+        }
+
         Column(
-            modifier = Modifier
-                .padding(10.dp)
-                .verticalScroll(rememberScrollState())
-        )
-        {
-            for (i in 0..worksData.size - 1) {
-                var CardColor: Color
-                if(clickable[i])
-                    CardColor = MaterialTheme.colorScheme.primaryContainer
-                else
-                    CardColor = MaterialTheme.colorScheme.inversePrimary
-                Card(
-                    onClick = {
-                        selected_index = i
-                        clickable[i] = true
-                    },
-                    elevation = CardDefaults.cardElevation(5.dp),
-                    border = BorderStroke(0.5.dp, MaterialTheme.colorScheme.onBackground),
-                    colors = CardDefaults.cardColors(
-                        containerColor = CardColor
-                    ),
-                    modifier = Modifier
-                        .width(380.dp)
-                        .height(120.dp)
-                        .padding(top = 9.dp, bottom = 9.dp)
-                )
-                {
-                    Text(
-                        maxLines = 3,
-                        text = "${worksData[i].Data}",
-                        fontSize = 20.sp,
-                        modifier = Modifier
-                            .padding(10.dp)
-                            .align(Alignment.CenterHorizontally)
-                    )
-                }
-            }
-            if (selected_index != -1) {
-                Dialog(
-                    onDismissRequest = {
-                        selected_index = -1
-                    }
-                )
-                {
+            modifier = Modifier.fillMaxSize(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Text(
+                modifier = Modifier
+                    .padding(top = 20.dp),
+                text = "Уведомления",
+                fontSize = 30.sp,
+                color = MaterialTheme.colorScheme.onBackground,
+                fontWeight = FontWeight.Bold,
+            )
+            Column(
+                modifier = Modifier
+                    .padding(10.dp)
+                    .verticalScroll(rememberScrollState())
+            )
+            {
+                for (i in 0..worksData.size - 1) {
+                    var CardColor: Color
+                    if (clickable[i])
+                        CardColor = MaterialTheme.colorScheme.primaryContainer
+                    else
+                        CardColor = MaterialTheme.colorScheme.inversePrimary
                     Card(
-                        elevation = CardDefaults.cardElevation(2.dp),
-                        border = BorderStroke(1.dp, MaterialTheme.colorScheme.onBackground),
-                        shape = RoundedCornerShape(20.dp)
+                        onClick = {
+                            selected_index = i
+                            clickable[i] = true
+                        },
+                        elevation = CardDefaults.cardElevation(5.dp),
+                        border = BorderStroke(0.5.dp, MaterialTheme.colorScheme.onBackground),
+                        colors = CardDefaults.cardColors(
+                            containerColor = CardColor
+                        ),
+                        modifier = Modifier
+                            .width(380.dp)
+                            .height(120.dp)
+                            .padding(top = 9.dp, bottom = 9.dp)
                     )
                     {
                         Text(
-                            text = "${worksData[selected_index].Data}",
+                            maxLines = 3,
+                            text = "${worksData[i].Data}",
+                            fontSize = 20.sp,
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(15.dp, 15.dp, 15.dp, 15.dp)
-                        )
-                        OutlinedButton(
-                            modifier = Modifier
+                                .padding(10.dp)
                                 .align(Alignment.CenterHorizontally)
-                                .padding(bottom = 15.dp),
-                            onClick = {
-                                selected_index = -1
-                            },
-                            shape = RoundedCornerShape(12.dp),
-                        ) {
-                            Icon(Icons.Outlined.Close, "Cancel")
-                            Text("Отмена")
+                        )
+                    }
+                }
+                if (selected_index != -1) {
+                    Dialog(
+                        onDismissRequest = {
+                            selected_index = -1
+                        }
+                    )
+                    {
+                        Card(
+                            elevation = CardDefaults.cardElevation(2.dp),
+                            border = BorderStroke(1.dp, MaterialTheme.colorScheme.onBackground),
+                            shape = RoundedCornerShape(20.dp)
+                        )
+                        {
+                            Text(
+                                text = "${worksData[selected_index].Data}",
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(15.dp, 15.dp, 15.dp, 15.dp)
+                            )
+                            OutlinedButton(
+                                modifier = Modifier
+                                    .align(Alignment.CenterHorizontally)
+                                    .padding(bottom = 15.dp),
+                                onClick = {
+                                    selected_index = -1
+                                },
+                                shape = RoundedCornerShape(12.dp),
+                            ) {
+                                Icon(Icons.Outlined.Close, "Cancel")
+                                Text("Отмена")
+                            }
                         }
                     }
                 }

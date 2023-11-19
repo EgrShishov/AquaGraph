@@ -17,6 +17,7 @@ import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -35,6 +36,7 @@ import com.example.aquagraphapp.models.QualityModel
 import androidx.core.text.HtmlCompat
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import co.yml.charts.axis.AxisData
@@ -49,112 +51,115 @@ import java.text.DecimalFormat
 import androidx.compose.ui.text.style.TextAlign
 import co.yml.charts.common.model.AccessibilityConfig
 import co.yml.charts.ui.barchart.models.SelectionHighlightData
+import com.aay.compose.barChart.model.BarParameters
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun InfoScreen(data: List<ResponseModel>) {
-    val items = mutableListOf<String>()
-    var dataForTable = data.last().params
-    dataForTable.forEachIndexed { index, item ->
-        items.add(index, removeHtmlTags(item.name).toString())
-    }
-    var selectedIndex by remember { mutableStateOf(-1) }
-    var isEnabled by remember { mutableStateOf(false) }
-    var buttonEnabled by remember { mutableStateOf(false) }
-    if (items.isNotEmpty()) {
-        isEnabled = true
-    }
+class InfoScreen {
+    @OptIn(ExperimentalMaterial3Api::class)
+    @Composable
+    fun ShowInfoScreen(data: List<ResponseModel>) {
+        val items = mutableListOf<String>()
+        var dataForTable = data.last().params
+        dataForTable.forEachIndexed { index, item ->
+            items.add(index, removeHtmlTags(item.name).toString())
+        }
+        var selectedIndex by remember { mutableStateOf(-1) }
+        var isEnabled by remember { mutableStateOf(false) }
+        var buttonEnabled by remember { mutableStateOf(false) }
+        if (items.isNotEmpty()) {
+            isEnabled = true
+        }
 
-    Scaffold(
-        topBar = {
-            com.example.aquagraphapp.dropdownMenu.LargeDropdownMenu(
-                modifier = Modifier.padding(10.dp, 10.dp, 10.dp, 10.dp),
-                enabled = isEnabled,
-                label = "Выберите критерий",
-                items = items,
-                selectedIndex = selectedIndex,
-                onItemSelected = { index, _ ->
-                    selectedIndex = index
-                    buttonEnabled = index != -1
-                },
-            )
-        },
-        floatingActionButton = {
-            if (buttonEnabled) {
-                FloatingActionButton(
-                    onClick = {
-                        selectedIndex = -1
-                        buttonEnabled = false
+        Scaffold(
+            topBar = {
+                com.example.aquagraphapp.dropdownMenu.LargeDropdownMenu(
+                    modifier = Modifier.padding(10.dp, 10.dp, 10.dp, 10.dp),
+                    enabled = isEnabled,
+                    label = "Выберите критерий",
+                    items = items,
+                    selectedIndex = selectedIndex,
+                    onItemSelected = { index, _ ->
+                        selectedIndex = index
+                        buttonEnabled = index != -1
                     },
-                    backgroundColor = MaterialTheme.colorScheme.tertiaryContainer,
-                    contentColor = MaterialTheme.colorScheme.primary
-                ) {
-                    Icon(Icons.Filled.ArrowBack, "FAB")
-                }
-            }
-        },
-        floatingActionButtonPosition = FabPosition.End
-    ) { paddingValues ->
-        Box(
-            modifier = Modifier
-                .padding(paddingValues)
-                .fillMaxSize()
-                .verticalScroll(rememberScrollState())
-        ) {
-            Column(
-                modifier = Modifier
-                    .wrapContentSize()
-                    .padding(10.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
-            ) {
-                if (items.isNotEmpty()) {
-                    if(selectedIndex == -1) {
-                        Text(
-                            text = "Качественный состав воды",
-                            fontSize = 30.sp,
-                            color = Color.Black,
-                            modifier = Modifier
-                                .padding(10.dp)
-                                .align(Alignment.CenterHorizontally),
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
-                        )
-                        CreateTable(dataForTable)
-                    }
-                    else
-                    {
-                        Text(
-                            text = "Единицы измерения: ${removeHtmlTags(data.last().params[selectedIndex].metric)}",
-                            fontSize = 20.sp,
-                            color = Color.Black,
-                            modifier = Modifier
-                                .padding(10.dp)
-                                .align(Alignment.CenterHorizontally),
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
-                        )
-                        var str = CreateGraphic(data = data, criterionIndex = selectedIndex)
-                        Text(
-                            text = "${removeHtmlTags(str)}",
-                            fontSize = 20.sp,
-                            color = Color.Black,
-                            modifier = Modifier
-                                .padding(10.dp)
-                                .align(Alignment.CenterHorizontally),
-                            fontWeight = FontWeight.Bold,
-                            textAlign = TextAlign.Center
-                        )
-                    }
-                } else {
-                    Text(
-                        text = "ОШИБКА СОЕДИНЕНИЯ С СЕРВЕРОМ",
-                        fontSize = 40.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.Gray,
-                        textAlign = TextAlign.Center,
-                        lineHeight = 44.sp
+                )
+            },
+            floatingActionButton = {
+                if (buttonEnabled) {
+                    ExtendedFloatingActionButton(
+                        onClick = {
+                            selectedIndex = -1
+                            buttonEnabled = false
+                        },
+                        contentColor = MaterialTheme.colorScheme.primary,
+                        containerColor = MaterialTheme.colorScheme.tertiaryContainer,
+                        icon = { Icon(Icons.Filled.ArrowBack, "FAB") },
+                        text = { Text("Назад") },
+                        expanded = true
                     )
+                }
+            },
+            floatingActionButtonPosition = FabPosition.End
+        ) { paddingValues ->
+            Box(
+                modifier = Modifier
+                    .padding(paddingValues)
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+            ) {
+                Column(
+                    modifier = Modifier
+                        .wrapContentSize()
+                        .padding(10.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    if (items.isNotEmpty()) {
+                        if (selectedIndex == -1) {
+                            Text(
+                                text = "Качественный состав воды",
+                                fontSize = 30.sp,
+                                color = MaterialTheme.colorScheme.onBackground,
+                                modifier = Modifier
+                                    .padding(10.dp)
+                                    .align(Alignment.CenterHorizontally),
+                                fontWeight = FontWeight.Bold,
+                                textAlign = TextAlign.Center
+                            )
+                            CreateTable(dataForTable)
+                        } else {
+                            Text(
+                                text = "Единицы измерения: ${removeHtmlTags(data.last().params[selectedIndex].metric)}",
+                                fontSize = 20.sp,
+                                color = MaterialTheme.colorScheme.onBackground,
+                                modifier = Modifier
+                                    .padding(10.dp)
+                                    .align(Alignment.CenterHorizontally),
+                                fontWeight = FontWeight.Bold,
+                                textAlign = TextAlign.Center
+                            )
+                            //com.example.aquagraphapp.screens.BarChartSample(data, selectedIndex)
+                            var str = CreateGraphic(data = data, criterionIndex = selectedIndex)
+                            Text(
+                                text = "${removeHtmlTags(str)}",
+                                fontSize = 20.sp,
+                                color = MaterialTheme.colorScheme.onBackground,
+                                modifier = Modifier
+                                    .padding(10.dp)
+                                    .align(Alignment.CenterHorizontally),
+                                fontWeight = FontWeight.Bold,
+                                textAlign = TextAlign.Center
+                            )
+                        }
+                    } else {
+                        Text(
+                            text = "ОШИБКА СОЕДИНЕНИЯ С СЕРВЕРОМ",
+                            fontSize = 40.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.onBackground,
+                            textAlign = TextAlign.Center,
+                            lineHeight = 44.sp
+                        )
+                    }
                 }
             }
         }
@@ -194,7 +199,8 @@ fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int) : String {
             {
                 ListOfMonth[(pointsdata[i].point.x.toInt() + delta) % 12]
             }
-            else {
+            else
+            {
                 ""
             }
         }
@@ -215,8 +221,7 @@ fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int) : String {
         yAxisData = yAxisData,
         barStyle = BarStyle(
             paddingBetweenBars = 7 .dp,
-            barWidth = 16.dp,
-            selectionHighlightData = null//SelectionHighlightData(isHighlightBarRequired = false)
+            barWidth = 16.dp
         )
     )
 
@@ -224,7 +229,7 @@ fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int) : String {
         modifier = Modifier
             .height(400.dp)
             .fillMaxWidth(),
-        barChartData = barChartData,
+        barChartData = barChartData
     )
 
     return "10<sup>$degree</sup>"
@@ -313,8 +318,6 @@ fun min_Y(points: List<BarData>): Float {
 fun CreateTable(data: List<QualityModel>) {
     //var selectedRow by remember { mutableStateOf(0) }
     Table(
-        modifier = Modifier
-            .fillMaxWidth(),
         columns = listOf(
             TableColumnDefinition {
                 Text("Критерий")

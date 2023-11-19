@@ -23,12 +23,18 @@ fun ShowLoadingCircle(loading: Boolean) {
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
-//            CircularProgressIndicator(
+//            Surface(
 //                modifier = Modifier
-//                    .width(64.dp)
-//                    .background(MaterialTheme.colorScheme.background),
-//                color = MaterialTheme.colorScheme.primary,
-//            )
+//                    .fillMaxSize(),
+//                color = MaterialTheme.colorScheme.background
+//            ) {
+//                CircularProgressIndicator(
+//                    modifier = Modifier
+//                        .width(64.dp)
+//                        .background(MaterialTheme.colorScheme.background),
+//                    color = MaterialTheme.colorScheme.primary,
+//                )
+//            }
         }
     }
 }
