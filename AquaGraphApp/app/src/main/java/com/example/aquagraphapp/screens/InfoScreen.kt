@@ -72,7 +72,7 @@ fun InfoScreen(data: List<ResponseModel>) {
                 selectedIndex = selectedIndex,
                 onItemSelected = { index, _ ->
                     selectedIndex = index
-                    buttonEnabled = if (index != -1) true else false
+                    buttonEnabled = index != -1
                 },
             )
         },

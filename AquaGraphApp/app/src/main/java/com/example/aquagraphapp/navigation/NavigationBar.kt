@@ -43,12 +43,19 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import com.example.aquagraphapp.models.MarkModel
 import com.example.aquagraphapp.models.ResponseModel
+import com.example.aquagraphapp.models.ScheduledWork
 import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NavigationBar(parsedData : List<ResponseModel>, applicationContext: Context) {
+fun NavigationBar(
+    qualityData : List<ResponseModel>,
+    worksData: List<ScheduledWork>,
+    workMarks: List<MarkModel>,
+    applicationContext: Context
+) {
     val items = listOf(
         BottomNavigationItem(
             route = "HomeScreen",
@@ -148,7 +155,7 @@ fun NavigationBar(parsedData : List<ResponseModel>, applicationContext: Context)
                     loading.value = false
                 }
                 com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
-                HomeScreen(applicationContext)
+                HomeScreen(applicationContext, workMarks)
             }
             composable("InfoScreen") {
                 LaunchedEffect(Unit) {
@@ -157,12 +164,12 @@ fun NavigationBar(parsedData : List<ResponseModel>, applicationContext: Context)
                     loading.value = false
                 }
                 com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
-                InfoScreen(parsedData)
+                InfoScreen(qualityData)
             }
             composable("ProblemsScreen") {
                 LaunchedEffect(Unit) {
                     loading.value = true
-                    delay(1000)
+                    //delay(1000)
                     loading.value = false
                 }
                 com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
@@ -175,7 +182,7 @@ fun NavigationBar(parsedData : List<ResponseModel>, applicationContext: Context)
                     loading.value = false
                 }
                 com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
-                NotificationScreen()
+                NotificationScreen(worksData)
             }
         }
     }

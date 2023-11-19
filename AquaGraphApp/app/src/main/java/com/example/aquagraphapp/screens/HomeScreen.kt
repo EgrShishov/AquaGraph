@@ -21,11 +21,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.aquagraphapp.MainActivity
+import com.example.aquagraphapp.models.MarkModel
 import com.yandex.mapkit.geometry.Point
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(applicationContext: Context) {
+fun HomeScreen(applicationContext: Context, workMarks: List<MarkModel>) {
     Scaffold(
         modifier = Modifier
             .fillMaxSize(),
@@ -45,7 +46,7 @@ fun HomeScreen(applicationContext: Context) {
                 verticalArrangement = Arrangement.Center
             ) {
                 val maExample = MainActivity()
-                maExample.ShowMap(maExample.curPoint)
+                maExample.ShowMap(maExample.curPoint, workMarks)
             }
         }
     }

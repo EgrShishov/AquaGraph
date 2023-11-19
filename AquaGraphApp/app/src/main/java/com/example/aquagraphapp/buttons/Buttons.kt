@@ -34,7 +34,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.material3.ButtonColors.*
-import com.example.aquagraphapp.dataReceiving.getNewAdressPoint
+import com.example.aquagraphapp.dataReceiving.getNewAdressPoint1
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -114,7 +114,7 @@ fun AddNewAdressButton(applicationContext: Context) {
                             OutlinedButton(
                                 enabled = text.isNotEmpty(),
                                 onClick = {
-                                    getNewAdressPoint(
+                                    getNewAdressPoint1(
                                         applicationContext,
                                         text
                                     ).thenAccept { newPoint ->
