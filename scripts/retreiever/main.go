@@ -16,9 +16,7 @@ func main() {
     fmt.Print("distort data? (Y/n): ")
     var ans string
     fmt.Scanln(&ans)
-    if ans != "n" {
-        data = services.Distort(data)
-    }
+    data = services.Prepare(data, ans != "n")
 
     if len(data) < 80000 {
         fmt.Println(data)
