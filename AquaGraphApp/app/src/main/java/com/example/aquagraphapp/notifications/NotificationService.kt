@@ -6,10 +6,17 @@ import android.app.PendingIntent
 import android.app.appsearch.SearchResult.Builder
 import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.Icon
 import android.os.Build
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.material3.Icon
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.graphics.drawable.IconCompat
 import com.example.aquagraphapp.MainActivity
+import com.example.aquagraphapp.R
 
 
 class NotificationService(applicationContext: Context) {
@@ -22,35 +29,20 @@ class NotificationService(applicationContext: Context) {
     companion object {
         const val CHANNEL_ID = "ScheduledWorksChannel"
     }
-
-    private fun createNotificationChannel() {
-        val channel = NotificationChannel(
-            CHANNEL_ID,
-            "ScheduledWorks",
-            NotificationManager.IMPORTANCE_DEFAULT
-        )
-        channel.description = "Used for notify users about scheduled works"
-
-//        val notificationManager = getSystemService(
-//            applicationContext,
-//            NotificationManager::class.java
-//        ) as NotificationManager
-        notificationManager.createNotificationChannel(channel)
-    }
-
     fun showNotification(notifyText: String) {
         val activityIntent = Intent(applicationContext, MainActivity::class.java)
         val activityPandingIntent = PendingIntent.getActivity(
             applicationContext,
             1,
             activityIntent,
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) PendingIntent.FLAG_IMMUTABLE else 0
+            PendingIntent.FLAG_IMMUTABLE
         )
         val notification = NotificationCompat.Builder(
             applicationContext, CHANNEL_ID
         ).setContentTitle("Плановые работы!")
             .setContentText(notifyText)
             .setContentIntent(activityPandingIntent)
+            .setSmallIcon(R.drawable.baseline_info_24)
             .build()
 
         notificationManager.notify(

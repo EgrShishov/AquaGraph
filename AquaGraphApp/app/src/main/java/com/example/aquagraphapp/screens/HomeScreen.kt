@@ -37,7 +37,10 @@ import androidx.compose.ui.window.Dialog
 import com.example.aquagraphapp.R
 import com.example.aquagraphapp.databinding.MainActivityBinding
 import com.example.aquagraphapp.models.MarkModel
+import com.example.aquagraphapp.models.ScheduledWork
+import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.map.CameraPosition
+import com.yandex.mapkit.map.MapObject
 import com.yandex.mapkit.map.MapObjectCollection
 import com.yandex.mapkit.map.MapObjectTapListener
 import com.yandex.mapkit.map.PlacemarkMapObject
@@ -51,7 +54,7 @@ class HomeScreen {
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun ShowHomeScreen(applicationContext: Context, marks: List<MarkModel>) {
+    fun ShowHomeScreen(applicationContext: Context, marks: List<MarkModel>):Point {
         var point by remember {
             mutableStateOf(com.yandex.mapkit.geometry.Point(53.919585, 27.587433))
         }
@@ -85,6 +88,7 @@ class HomeScreen {
                 }
             }
         }
+        return point
     }
 
     @Composable
@@ -104,22 +108,19 @@ class HomeScreen {
                 }
             ) {
                 Card(
-                    shape = RoundedCornerShape(12.dp),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                    //.height(1f)
+                    shape = RoundedCornerShape(20.dp),
                 ) {
                     Column(
                         modifier = Modifier
-                            .fillMaxSize(),
+                            .padding(16.dp),
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text("$text")
                         Row(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .align(Alignment.CenterHorizontally),
+                                .align(Alignment.CenterHorizontally)
+                                .padding(5.dp),
                             horizontalArrangement = Arrangement.Center
                         ) {
                             //understood button
@@ -143,7 +144,7 @@ class HomeScreen {
         AndroidView(
             factory = { context ->
                 val binding = MainActivityBinding.inflate(LayoutInflater.from(context))
-
+                mapObjectCollection = binding.mapview.map.mapObjects
                 if (binding.mapview.map.cameraPosition.target != point) {
                     binding.mapview.map.move(
                         CameraPosition(
@@ -155,7 +156,6 @@ class HomeScreen {
                     )
                 }
                 val marker = R.drawable.ic_pin_black_png
-                mapObjectCollection = binding.mapview.map.mapObjects
                 marks.forEachIndexed { index, markModel ->
                     if (index != 0) {
                         val point = com.yandex.mapkit.geometry.Point(
@@ -169,12 +169,14 @@ class HomeScreen {
                         )
                         placemarkMapObject.opacity = 0.5f
                         placemarkMapObject.setText(markModel.Data)
-                        val mapObjectTapListener =
-                            MapObjectTapListener { mapObject, p1 ->
+                        val mapObjectTapListener = object :
+                            MapObjectTapListener {
+                            override fun onMapObjectTap(p0: MapObject, p1: Point): Boolean {
                                 text = "Время : ${markModel.Time}\nИнфо : ${markModel.Data}"
                                 showMarkInfo = true
-                                true
+                                return true
                             }
+                        }
                         placemarkMapObject.addTapListener(
                             mapObjectTapListener
                         )

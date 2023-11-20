@@ -15,7 +15,7 @@ import kotlin.coroutines.suspendCoroutine
 suspend fun getListOfScheduledWork(
     applicationContext: Context
 ): List<ScheduledWork> = suspendCoroutine { continuation ->
-    val url = "http://192.168.209.248:1337/works"
+    val url = "http://192.168.98.248:1337/works"
     val queue = Volley.newRequestQueue(applicationContext)
     val request = StringRequest(
         Request.Method.GET,

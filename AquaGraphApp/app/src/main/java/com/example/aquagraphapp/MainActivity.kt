@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Text
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.MaterialTheme
@@ -65,7 +67,7 @@ class MainActivity : ComponentActivity() {
         MapKitFactory.initialize(this)
         binding = MainActivityBinding.inflate(layoutInflater)
         val NavigationBar = NavigationBar()
-        //val service = NotificationService(applicationContext)
+        val service = NotificationService(applicationContext)
 
         lifecycleScope.launch {
             val data = async {
@@ -78,17 +80,6 @@ class MainActivity : ComponentActivity() {
             val dataForTable = data.await()
             Log.d("coroutine", "$dataForTable")
 
-            val marks = async {
-                com.example.aquagraphapp.dataReceiving.getMarksData(
-                    applicationContext
-                )
-            }
-
-            val marksAdresses2 = marks.await()
-            if (marksAdresses2.isNotEmpty()) {
-                marksAdresses = marksAdresses2.subList(1, 3)
-                Log.d("marksdata", "$marksAdresses")
-            }
             val parsedData = data.await()
             Log.d("coroutine", "$parsedData")
 
@@ -106,7 +97,7 @@ class MainActivity : ComponentActivity() {
             }
             val workmarksData = workMarks.await()
             val qualityData = data.await()
-            val marksData = marks.await()
+
             setContent {
                 AquaGraphAppTheme {
                     if (isSystemInDarkTheme()) {
@@ -119,7 +110,8 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         color = Color.White,
                     ) {
-                        NavigationBar.ShowNavigationBar(
+                        curLocation = NavigationBar.ShowNavigationBar(
+                            curLocation = curLocation,
                             qualityData = qualityData,
                             worksData = worksData,
                             workMarks = workmarksData,

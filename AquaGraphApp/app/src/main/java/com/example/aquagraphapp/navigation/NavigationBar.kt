@@ -1,5 +1,6 @@
 package com.example.aquagraphapp.navigation
 
+import android.animation.PointFEvaluator
 import android.content.Context
 import android.util.Log
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -47,6 +48,7 @@ import com.example.aquagraphapp.models.MarkModel
 import com.example.aquagraphapp.models.ResponseModel
 import com.example.aquagraphapp.models.ScheduledWork
 import com.example.aquagraphapp.screens.NotificationsScreen
+import com.yandex.mapkit.geometry.Point
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 
@@ -54,15 +56,19 @@ class NavigationBar{
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun ShowNavigationBar(
+        curLocation: Point,
         qualityData: List<ResponseModel>,
         worksData: List<ScheduledWork>,
         workMarks: List<MarkModel>,
         applicationContext: Context
-    ) {
+    ): Point {
         val HomeScreen = HomeScreen()
         val InfoScreen = InfoScreen()
         val NotificationsScreen = NotificationsScreen()
         val ProblemsScreen = ProblemsScreen()
+        var curLocation by remember {
+            mutableStateOf(curLocation)
+        }
 
         val items = listOf(
             BottomNavigationItem(
@@ -172,7 +178,9 @@ class NavigationBar{
                     }
                     com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
                     if (!loading.value) {
-                        HomeScreen.ShowHomeScreen(applicationContext, marks)
+                        var copy = curLocation
+                        copy = HomeScreen.ShowHomeScreen(applicationContext, marks)
+                        Log.d("address", "$copy")
                     }
                 }
                 composable("InfoScreen") {
@@ -204,5 +212,6 @@ class NavigationBar{
                 }
             }
         }
+        return curLocation
     }
 }

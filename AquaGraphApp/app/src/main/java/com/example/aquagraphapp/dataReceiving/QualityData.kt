@@ -62,7 +62,7 @@ suspend fun getQualityData(
     applicationContext: Context
 ): List<ResponseModel> = suspendCoroutine { continuation ->
     Log.d("ipv4","${getNetworkIPv4Address(applicationContext)}")
-    val url = "http://192.168.209.248:1337/qualities?x=${point.longitude}&y=${point.latitude}"
+    val url = "http://192.168.98.248:1337/qualities?x=${point.longitude}&y=${point.latitude}"
     val queue = Volley.newRequestQueue(applicationContext)
     val request = StringRequest(
         Request.Method.GET,
