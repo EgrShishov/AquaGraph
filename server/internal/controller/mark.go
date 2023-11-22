@@ -2,6 +2,7 @@ package controller
 
 import (
 	"aquaGraph/models"
+	"strconv"
 
 	"github.com/Rosto4eks/grapes"
 )
@@ -25,6 +26,20 @@ func (c *Controller) NewMark(ctx grapes.Context) {
         Y: y,
     }
     err :=  c.usecase.NewMark(m)
+    if err != nil {
+        ctx.SendJson(grapes.Obj{"error": err.Error()})
+    } else {
+        ctx.SendJson(grapes.Obj{"error": nil})
+    }
+
+}
+
+func (c *Controller) DeleteMark(ctx grapes.Context) {
+	id, err := strconv.Atoi(ctx.GetQueryParam("id"))
+    if err != nil {
+        ctx.SendJson(grapes.Obj{"error": err.Error()})
+    }
+    err =  c.usecase.DeleteMark(id)
     if err != nil {
         ctx.SendJson(grapes.Obj{"error": err.Error()})
     } else {
