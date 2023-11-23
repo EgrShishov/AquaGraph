@@ -58,7 +58,6 @@ class MainActivity : ComponentActivity() {
 
     private lateinit var _mapView: MapView
     private lateinit var binding: MainActivityBinding
-    private var marksAdresses = listOf<MarkModel>()
     private var curLocation: Point = Point(53.919585, 27.587433)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,16 +69,30 @@ class MainActivity : ComponentActivity() {
         val service = NotificationService(applicationContext)
 
         lifecycleScope.launch {
-            val marks = async {
-                com.example.aquagraphapp.dataReceiving.getMarksData(
+
+//            val add = async {
+//                com.example.aquagraphapp.dataReceiving.addMarkData(
+//                    53.8578542f,
+//                    27.4845154f,
+//                    "Метка 1",
+//                    applicationContext
+//                )
+//            }
+//            add.await()
+            val delete = async {
+                com.example.aquagraphapp.dataReceiving.DeleteMarkData(
+                    12,
                     applicationContext
                 )
             }
-
+            delete.await()
             val works = async {
                 com.example.aquagraphapp.dataReceiving.getListOfScheduledWork(
                     applicationContext
                 )
+            }
+            val marks = async {
+                com.example.aquagraphapp.dataReceiving.getMarksData(applicationContext)
             }
 
             val worksData = works.await()
@@ -90,8 +103,8 @@ class MainActivity : ComponentActivity() {
                 )
             }
 
+            val marksData = marks.await()
             val workmarksData = workMarks.await()
-            marksAdresses = marks.await()
 
             setContent {
                 AquaGraphAppTheme {
@@ -106,7 +119,7 @@ class MainActivity : ComponentActivity() {
                         color = Color.White,
                     ) {
                         NavigationBar.ShowNavigationBar(
-                            //qualityData = qualityData,
+                            marksData = marksData,
                             worksData = worksData,
                             workMarks = workmarksData,
                             applicationContext = applicationContext,

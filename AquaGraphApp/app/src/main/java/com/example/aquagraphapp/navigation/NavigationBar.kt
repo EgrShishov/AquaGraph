@@ -57,7 +57,7 @@ class NavigationBar{
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun ShowNavigationBar(
-        //qualityData: List<ResponseModel>,
+        marksData: List<MarkModel>,
         worksData: List<ScheduledWork>,
         workMarks: List<MarkModel>,
         applicationContext: Context,
@@ -112,13 +112,13 @@ class NavigationBar{
         var loading = remember { mutableStateOf(true) }
 
         var marks by remember {
-            mutableStateOf(listOf<MarkModel>())
+            mutableStateOf(marksData)
         }
 
         var dataForTable by remember {
-            mutableStateOf(listOf<ResponseModel>(
+            mutableStateOf(listOf(
                 ResponseModel("Ожидание", "Ожидание",
-                    listOf<QualityModel>(QualityModel(
+                    listOf(QualityModel(
                         0,
                         "Ожидание",
                         "666",

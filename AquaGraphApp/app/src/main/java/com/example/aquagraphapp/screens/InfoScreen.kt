@@ -289,6 +289,15 @@ fun StringToValue(valueStr: String) : Float
     return valueStrCopy.toFloat()
 }
 
+fun StringToPDK(pdkStr: String) : Float
+{
+    var pdkStrCopy = pdkStr.substring(0, pdkStr.indexOf('/'))
+    if(pdkStrCopy.indexOf('-') != -1)
+        pdkStrCopy = pdkStrCopy.substring(pdkStrCopy.indexOf('-'))
+    pdkStrCopy = pdkStrCopy.replace(",", ".")
+    return pdkStrCopy.toFloat()
+}
+
 @Composable
 fun PartitionByPoint(data: List<ResponseModel>, criterionIndex: Int): List<BarData>
 {
@@ -298,7 +307,12 @@ fun PartitionByPoint(data: List<ResponseModel>, criterionIndex: Int): List<BarDa
     for (item in data.reversed())
     {
         var value = StringToValue(item.params[criterionIndex].value)
-        pointsdata.add(0, BarData(Point(falseMonth, value), MaterialTheme.colorScheme.tertiary))
+        if(value < 1f)//StringToPDK(item.params[criterionIndex].pdk))
+        {
+            pointsdata.add(0, BarData(Point(falseMonth, value), MaterialTheme.colorScheme.tertiary))
+        }
+        else
+            pointsdata.add(0, BarData(Point(falseMonth, value), MaterialTheme.colorScheme.inversePrimary))
         falseMonth--
     }
     while(pointsdata.size < 12)
@@ -330,6 +344,8 @@ fun min_Y(points: List<BarData>): Float {
 
 @Composable
 fun CreateTable(data: List<QualityModel>) {
+    if(data.size >= 4)
+        data[5].metric = "оЖ ****"
     //var selectedRow by remember { mutableStateOf(0) }
     Table(
         modifier = Modifier
@@ -354,11 +370,13 @@ fun CreateTable(data: List<QualityModel>) {
                 //onClick = { selectedRow = index }
                 cell { Text("${removeHtmlTags(item.name)}") }
                 cell { Text("${removeHtmlTags(item.metric).toString() + " - " + item.pdk}") }
-                cell { Text(
-                    text = "${item.value.toDouble()}",
-                    modifier = Modifier
-                    .padding(end = 10.dp)
-                )}
+                cell {
+                    Text(
+                        text = "${item.value.toDouble()}",
+                        modifier = Modifier
+                            .padding(end = 10.dp)
+                    )
+                }
             }
         }
     }
@@ -367,7 +385,8 @@ fun CreateTable(data: List<QualityModel>) {
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = "*** Показатели физиологической полноценности питьевой воды - показатели общей минерализации, жесткости," +
+            modifier = Modifier.padding(bottom = 10.dp),
+            text =  "*** Показатели физиологической полноценности питьевой воды - показатели общей минерализации, жесткости," +
                     " содержания макро- и микроэлементов, обеспечивающие профилактику заболеваний, устраняя дефицит биологически" +
                     " необходимых элементов." +
                     "\n**** В Республике Беларусь жесткость воды измеряют в градусах жесткости (оЖ), за рубежом приняты " +

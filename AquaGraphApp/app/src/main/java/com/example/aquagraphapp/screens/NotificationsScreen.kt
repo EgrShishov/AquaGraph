@@ -85,12 +85,12 @@ class NotificationsScreen {
                         ),
                         modifier = Modifier
                             .width(380.dp)
-                            .height(120.dp)
+                            .height(140.dp)
                             .padding(top = 9.dp, bottom = 9.dp)
                     )
                     {
                         Text(
-                            maxLines = 3,
+                            maxLines = 4,
                             text = "${worksData[i].Data}",
                             fontSize = 20.sp,
                             modifier = Modifier

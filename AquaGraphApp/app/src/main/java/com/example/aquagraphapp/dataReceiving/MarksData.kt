@@ -33,7 +33,7 @@ suspend fun getMarksData(applicationContext: Context): List<MarkModel>
 
 fun parseMarksData(result: String): List<MarkModel> {
 //    Log.d("MamaLyubitPapu", "$result")
-
+    Log.d("WKHKJNDWINIFBWF", "$result")
     val parsedData = mutableListOf<MarkModel>()
     val responseObject = JSONObject(result)
     val marks = responseObject.getJSONArray("Marks")
@@ -50,14 +50,6 @@ fun parseMarksData(result: String): List<MarkModel> {
         )
         parsedData.add(parsedData.size, model)
     }
-//    for (i in 0..parsedData.size - 1)
-//    {
-//        Log.d("mark$i:", "${parsedData[i].Id}")
-//        Log.d("mark$i:", "${parsedData[i].Data}")
-//        Log.d("mark$i:", "${parsedData[i].Time}")
-//        Log.d("mark$i:", "${parsedData[i].X}")
-//        Log.d("mark$i:", "${parsedData[i].Y}")
-//    }
     return parsedData
 }
 
@@ -71,6 +63,26 @@ suspend fun addMarkData(X: Float, Y: Float, Data: String, applicationContext: Co
         url,
         { result ->
             Log.d("new-mark", "x=$X&y=$Y&data=$Data")
+            continuation.resume("$result")
+        },
+        { error ->
+            Log.d("ErrorLog", "Error in requesting API happened : $error")
+            continuation.resume("")
+        },
+    )
+    queue.add(request)
+}
+
+suspend fun DeleteMarkData(markId: Int, applicationContext: Context): String
+        = suspendCoroutine { continuation ->
+    val url = "http://$IPconfig:1337/delete-mark?id=${markId}"
+
+    val queue = Volley.newRequestQueue(applicationContext)
+    val request = StringRequest(
+        Request.Method.GET,
+        url,
+        { result ->
+            Log.d("delete-mark", "${markId}")
             continuation.resume("$result")
         },
         { error ->

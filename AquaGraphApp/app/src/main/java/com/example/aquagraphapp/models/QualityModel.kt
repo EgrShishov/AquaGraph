@@ -5,7 +5,7 @@ data class QualityModel(
     val name : String,
     val value : String,
     val pdk : String,
-    val metric : String,
+    var metric : String,
     val help : String
     )
 
