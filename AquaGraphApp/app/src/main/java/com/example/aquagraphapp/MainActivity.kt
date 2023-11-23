@@ -31,11 +31,11 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import com.example.aquagraphapp.buttons.AddNewAdressButton
-import com.example.aquagraphapp.databinding.MainActivityBinding
 import com.example.aquagraphapp.models.ResponseModel
 import com.example.aquagraphapp.navigation.NavigationBar
 import com.example.aquagraphapp.notifications.NotificationService
 import com.example.aquagraphapp.dataReceiving.getNewAdressPoint2
+import com.example.aquagraphapp.databinding.MainActivityBinding
 import com.example.aquagraphapp.models.MarkModel
 import com.example.aquagraphapp.models.ScheduledWork
 import com.example.aquagraphapp.ui.theme.AquaGraphAppTheme
@@ -68,16 +68,6 @@ class MainActivity : ComponentActivity() {
         //val service = NotificationService(applicationContext)
 
         lifecycleScope.launch {
-            val data = async {
-                com.example.aquagraphapp.dataReceiving.getQualityData(
-                    curLocation,
-                    applicationContext
-                )
-            }
-
-            val dataForTable = data.await()
-            Log.d("coroutine", "$dataForTable")
-
             val marks = async {
                 com.example.aquagraphapp.dataReceiving.getMarksData(
                     applicationContext
@@ -89,8 +79,6 @@ class MainActivity : ComponentActivity() {
                 marksAdresses = marksAdresses2.subList(1, 3)
                 Log.d("marksdata", "$marksAdresses")
             }
-            val parsedData = data.await()
-            Log.d("coroutine", "$parsedData")
 
             val works = async {
                 com.example.aquagraphapp.dataReceiving.getListOfScheduledWork(
@@ -105,7 +93,6 @@ class MainActivity : ComponentActivity() {
                 )
             }
             val workmarksData = workMarks.await()
-            val qualityData = data.await()
             val marksData = marks.await()
             setContent {
                 AquaGraphAppTheme {
@@ -120,10 +107,11 @@ class MainActivity : ComponentActivity() {
                         color = Color.White,
                     ) {
                         NavigationBar.ShowNavigationBar(
-                            qualityData = qualityData,
+                            //qualityData = qualityData,
                             worksData = worksData,
                             workMarks = workmarksData,
-                            applicationContext = applicationContext
+                            applicationContext = applicationContext,
+                            valCurrPoint = curLocation
                         )
                     }
                 }
@@ -173,7 +161,7 @@ suspend fun ToMarksModel(works: List<ScheduledWork>, applicationContext: Context
             Log.d("mark", "${point.latitude}, ${point.longitude}")
             result_marks.add(
                 result_marks.size, MarkModel(
-                    0, "0", "0", "${point.latitude}", "${point.longitude}"
+                    0, "Запланированные работы. Возможно изменения качества воды", "${item_works.Time}", "${point.latitude}", "${point.longitude}"
                 )
             )
         }

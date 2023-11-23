@@ -5,11 +5,13 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.paddingFrom
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -49,9 +51,8 @@ import com.example.aquagraphapp.models.ListOfMonth
 import com.example.aquagraphapp.models.ResponseModel
 import java.text.DecimalFormat
 import androidx.compose.ui.text.style.TextAlign
-import co.yml.charts.common.model.AccessibilityConfig
 import co.yml.charts.ui.barchart.models.SelectionHighlightData
-import com.aay.compose.barChart.model.BarParameters
+
 
 class InfoScreen {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -109,7 +110,7 @@ class InfoScreen {
                 Column(
                     modifier = Modifier
                         .wrapContentSize()
-                        .padding(10.dp),
+                        .padding(start = 10.dp, end = 10.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
@@ -128,7 +129,9 @@ class InfoScreen {
                             CreateTable(dataForTable)
                         } else {
                             Text(
-                                text = "Единицы измерения: ${removeHtmlTags(data.last().params[selectedIndex].metric)}",
+                                text = "\n" +
+                                        "\n" +
+                                        "\nЕдиницы измерения: ${removeHtmlTags(data.last().params[selectedIndex].metric)}",
                                 fontSize = 20.sp,
                                 color = MaterialTheme.colorScheme.onBackground,
                                 modifier = Modifier
@@ -138,15 +141,25 @@ class InfoScreen {
                                 textAlign = TextAlign.Center
                             )
                             //com.example.aquagraphapp.screens.BarChartSample(data, selectedIndex)
-                            var str = CreateGraphic(data = data, criterionIndex = selectedIndex)
+                            var str: String = ""
+                            Box(
+                              contentAlignment = Alignment.Center
+                            ) {
+                                str = CreateGraphic(data = data, criterionIndex = selectedIndex)
+                            }
                             Text(
-                                text = "${removeHtmlTags(str)}",
+                                text = "* Табличные данные необходимо домножить на: ${
+                                    removeHtmlTags(
+                                        str
+                                    )
+                                }",
                                 fontSize = 20.sp,
                                 color = MaterialTheme.colorScheme.onBackground,
                                 modifier = Modifier
                                     .padding(10.dp)
                                     .align(Alignment.CenterHorizontally),
-                                fontWeight = FontWeight.Bold,
+                                fontWeight = FontWeight.Light,
+                                fontStyle = FontStyle.Italic,
                                 textAlign = TextAlign.Center
                             )
                         }
@@ -221,7 +234,8 @@ fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int) : String {
         yAxisData = yAxisData,
         barStyle = BarStyle(
             paddingBetweenBars = 7 .dp,
-            barWidth = 16.dp
+            barWidth = 16.dp,
+            selectionHighlightData = null
         )
     )
 
@@ -318,6 +332,8 @@ fun min_Y(points: List<BarData>): Float {
 fun CreateTable(data: List<QualityModel>) {
     //var selectedRow by remember { mutableStateOf(0) }
     Table(
+        modifier = Modifier
+            .fillMaxWidth(),
         columns = listOf(
             TableColumnDefinition {
                 Text("Критерий")
@@ -326,7 +342,10 @@ fun CreateTable(data: List<QualityModel>) {
                 Text("ПДК")
             },
             TableColumnDefinition(Alignment.CenterEnd) {
-                Text("Значение")
+                Text(
+                    text = "Значение",
+                    modifier = Modifier
+                        .padding(end = 10.dp))
             },
         )
     ) {
@@ -335,7 +354,11 @@ fun CreateTable(data: List<QualityModel>) {
                 //onClick = { selectedRow = index }
                 cell { Text("${removeHtmlTags(item.name)}") }
                 cell { Text("${removeHtmlTags(item.metric).toString() + " - " + item.pdk}") }
-                cell { Text("${item.value}") }
+                cell { Text(
+                    text = "${item.value}",
+                    modifier = Modifier
+                    .padding(end = 10.dp)
+                )}
             }
         }
     }
@@ -367,13 +390,20 @@ fun removeHtmlTags(htmlString: String): CharSequence {
     res = res.replace("<sup>2-</sup>", "\u00B2\u207B")
     res = res.replace("<sup>+</sup>", "\u207A")
     res = res.replace("<sup>-</sup>", "\u207A")
-    res = res.replace("<sup>2</sup>", "\u00B2")
-    res = res.replace("<sup>-2</sup>", "\u207A\u00B2")
-    res = res.replace("<sup>1</sup>", "\u00B1")
-    res = res.replace("<sup>-1</sup>", "\u207A\u00B1")
     res = res.replace("<sup>4</sup>", "\u2074")
+    res = res.replace("<sup>+4</sup>", "\u207A\u2074")
+    res = res.replace("<sup>-4</sup>", "\u207B\u2074")
     res = res.replace("<sup>3</sup>", "\u00B3")
+    res = res.replace("<sup>+3</sup>", "\u207A\u00B3")
+    res = res.replace("<sup>-3</sup>", "\u207B\u00B3")
     res = res.replace("<sup>2</sup>", "\u00B2")
+    res = res.replace("<sup>+2</sup>", "\u207A\u00B2")
+    res = res.replace("<sup>-2</sup>", "\u207B\u00B2")
+    res = res.replace("10<sup>1</sup>", "10")
+    res = res.replace("<sup>1</sup>", "\u00B9")
+    res = res.replace("<sup>+1</sup>", "\u207A\u00B9")
+    res = res.replace("<sup>-1</sup>", "\u207B\u00B9")
+    res = res.replace("10<sup>0</sup>", "1")
     res = res.replace("<sub>4</sub>", "\u2084")
     res = res.replace("<sub>3</sub>", "\u2083")
     res = res.replace("<sub>2</sub>", "\u2082")

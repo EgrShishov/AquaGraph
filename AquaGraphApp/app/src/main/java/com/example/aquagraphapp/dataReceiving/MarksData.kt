@@ -5,6 +5,7 @@ import android.util.Log
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.aquagraphapp.models.IPconfig
 import com.example.aquagraphapp.models.MarkModel
 import org.json.JSONObject
 import kotlin.coroutines.resume
@@ -62,7 +63,7 @@ fun parseMarksData(result: String): List<MarkModel> {
 
 suspend fun addMarkData(X: Float, Y: Float, Data: String, applicationContext: Context): String
         = suspendCoroutine { continuation ->
-    val url = "http://192.168.209.248:1337/new-mark?x=$X&y=$Y&data=$Data"
+    val url = "http://$IPconfig:1337/new-mark?x=$X&y=$Y&data=$Data"
 
     val queue = Volley.newRequestQueue(applicationContext)
     val request = StringRequest(

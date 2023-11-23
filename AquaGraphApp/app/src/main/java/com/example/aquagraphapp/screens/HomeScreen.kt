@@ -37,7 +37,9 @@ import androidx.compose.ui.window.Dialog
 import com.example.aquagraphapp.R
 import com.example.aquagraphapp.databinding.MainActivityBinding
 import com.example.aquagraphapp.models.MarkModel
+import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.map.CameraPosition
+import com.yandex.mapkit.map.MapObject
 import com.yandex.mapkit.map.MapObjectCollection
 import com.yandex.mapkit.map.MapObjectTapListener
 import com.yandex.mapkit.map.PlacemarkMapObject
@@ -48,12 +50,13 @@ class HomeScreen {
 
     private lateinit var mapObjectCollection: MapObjectCollection
     private lateinit var placemarkMapObject: PlacemarkMapObject
+    private val markerDataList = mutableListOf<PlacemarkMapObject>()
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun ShowHomeScreen(applicationContext: Context, marks: List<MarkModel>) {
+    fun ShowHomeScreen(applicationContext: Context, marks: List<MarkModel>, workMarks: List<MarkModel>, currPoint: Point) : Point {
         var point by remember {
-            mutableStateOf(com.yandex.mapkit.geometry.Point(53.919585, 27.587433))
+            mutableStateOf(com.yandex.mapkit.geometry.Point(currPoint.latitude, currPoint.longitude))
         }
         Scaffold(
             modifier = Modifier
@@ -81,14 +84,15 @@ class HomeScreen {
                     verticalArrangement = Arrangement.Center
                 ) {
                     Log.d("marksinfunc", "$marks")
-                    ShowMap(point, marks)
+                    ShowMap(point, marks, workMarks)
                 }
             }
         }
+        return point
     }
 
     @Composable
-    fun ShowMap(point: com.yandex.mapkit.geometry.Point, marks: List<MarkModel>) {
+    fun ShowMap(point: com.yandex.mapkit.geometry.Point, marks: List<MarkModel>, workmarks: List<MarkModel>) {
         var showMarkInfo by remember {
             mutableStateOf(false)
         }
@@ -106,35 +110,27 @@ class HomeScreen {
                 Card(
                     shape = RoundedCornerShape(12.dp),
                     modifier = Modifier
-                        .fillMaxWidth()
+                        //.fillMaxWidth()
                     //.height(1f)
                 ) {
-                    Column(
+                    Text(
+                        text = "$text",
                         modifier = Modifier
-                            .fillMaxSize(),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
+                            .padding(15.dp, 15.dp, 15.dp, 15.dp)
+                        )
+                    OutlinedButton(
+                        modifier = Modifier
+                            .align(Alignment.CenterHorizontally)
+                            .padding(bottom = 10.dp),
+                        onClick = {
+                            showMarkInfo = false
+                            text = ""
+                        },
+                        shape = RoundedCornerShape(12.dp),
+                        contentPadding = PaddingValues(6.dp)
                     ) {
-                        Text("$text")
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .align(Alignment.CenterHorizontally),
-                            horizontalArrangement = Arrangement.Center
-                        ) {
-                            //understood button
-                            OutlinedButton(
-                                onClick = {
-                                    showMarkInfo = false
-                                    text = ""
-                                },
-                                shape = RoundedCornerShape(12.dp),
-                                contentPadding = PaddingValues(6.dp)
-                            ) {
-                                Icon(Icons.Outlined.Check, "Accept")
-                                Text("Понятно")
-                            }
-                        }
+                        Icon(Icons.Outlined.Check, "Accept")
+                        Text("Понятно")
                     }
                 }
             }
@@ -154,8 +150,36 @@ class HomeScreen {
                         )
                     )
                 }
-                val marker = R.drawable.ic_pin_black_png
+                val workmarker = R.drawable.ic_pin_black_png
                 mapObjectCollection = binding.mapview.map.mapObjects
+                workmarks.forEachIndexed { index, markModel ->
+                    if (index != 0) {
+                        val point = com.yandex.mapkit.geometry.Point(
+                            markModel.X.toDouble(),
+                            markModel.Y.toDouble()
+                        )
+                        Log.d("workmarka", "$markModel")
+                        placemarkMapObject = mapObjectCollection.addPlacemark(
+                            point,
+                            ImageProvider.fromResource(context, workmarker)
+                        )
+                        placemarkMapObject.opacity = 0.5f
+                        val index = markModel.Data.indexOf(".",0)
+                        placemarkMapObject.setText(markModel.Data.substring(0, index))
+                        val mapObjectTapListener =
+                            MapObjectTapListener { mapObject, p1 ->
+                                text = "Время : ${markModel.Time}\nИнфо : ${markModel.Data}"
+                                showMarkInfo = true
+                                true
+                            }
+                        placemarkMapObject.addTapListener(
+                            mapObjectTapListener
+                        )
+                        markerDataList.add(placemarkMapObject)
+                    }
+                }
+                val marker = R.drawable.image
+                //mapObjectCollection = binding.mapview.map.mapObjects
                 marks.forEachIndexed { index, markModel ->
                     if (index != 0) {
                         val point = com.yandex.mapkit.geometry.Point(
@@ -169,12 +193,14 @@ class HomeScreen {
                         )
                         placemarkMapObject.opacity = 0.5f
                         placemarkMapObject.setText(markModel.Data)
-                        val mapObjectTapListener =
-                            MapObjectTapListener { mapObject, p1 ->
+                        val mapObjectTapListener = object: MapObjectTapListener {
+                            override fun onMapObjectTap(p0: MapObject, p1: Point): Boolean {
                                 text = "Время : ${markModel.Time}\nИнфо : ${markModel.Data}"
                                 showMarkInfo = true
-                                true
+                                Log.d("", "${markModel.Id}")
+                                return true
                             }
+                        }
                         placemarkMapObject.addTapListener(
                             mapObjectTapListener
                         )
@@ -186,6 +212,16 @@ class HomeScreen {
                     ImageProvider.fromResource(context, redMarker)
                 )
                 placemarkMapObject.setText("Введенный адрес ${point.latitude}")
+                val mapObjectTapListener =
+                    MapObjectTapListener { mapObject, p1 ->
+                        showMarkInfo = true
+                        Log.d("","${p1.latitude}")
+                        true
+                    }
+                placemarkMapObject.addTapListener(
+                    mapObjectTapListener
+                )
+                markerDataList.add(placemarkMapObject)
                 binding.root
             },
             modifier = Modifier.fillMaxSize(),

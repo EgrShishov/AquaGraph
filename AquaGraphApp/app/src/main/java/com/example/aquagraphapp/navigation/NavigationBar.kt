@@ -44,9 +44,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import com.example.aquagraphapp.models.MarkModel
+import com.example.aquagraphapp.models.QualityModel
 import com.example.aquagraphapp.models.ResponseModel
 import com.example.aquagraphapp.models.ScheduledWork
 import com.example.aquagraphapp.screens.NotificationsScreen
+import com.yandex.mapkit.geometry.Point
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 
@@ -54,16 +56,21 @@ class NavigationBar{
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun ShowNavigationBar(
-        qualityData: List<ResponseModel>,
+        //qualityData: List<ResponseModel>,
         worksData: List<ScheduledWork>,
         workMarks: List<MarkModel>,
-        applicationContext: Context
+        applicationContext: Context,
+        valCurrPoint: Point
     ) {
         val HomeScreen = HomeScreen()
         val InfoScreen = InfoScreen()
         val NotificationsScreen = NotificationsScreen()
         val ProblemsScreen = ProblemsScreen()
+        var currPoint = Point(valCurrPoint.latitude, valCurrPoint.longitude)
 
+        var hasNotifications by remember{
+            mutableStateOf(false)
+        }
         val items = listOf(
             BottomNavigationItem(
                 route = "HomeScreen",
@@ -91,7 +98,7 @@ class NavigationBar{
                 title = "Уведомления",
                 selectedItem = Icons.Filled.Notifications,
                 unselectedItem = Icons.Outlined.Notifications,
-                hasNotifications = true
+                hasNotifications = hasNotifications
             )
         )
 
@@ -105,6 +112,18 @@ class NavigationBar{
 
         var marks by remember {
             mutableStateOf(listOf<MarkModel>())
+        }
+
+        var dataForTable by remember {
+            mutableStateOf(listOf<ResponseModel>(
+                ResponseModel("Ожидание", "Ожидание",
+                    listOf<QualityModel>(QualityModel(
+                        0,
+                        "Ожидание",
+                        "Ожидание",
+                        "",
+                        "Ожидание",
+                        "Ожидание")))))
         }
 
         Scaffold(
@@ -171,18 +190,25 @@ class NavigationBar{
                         Log.d("marks", "$marks")
                     }
                     com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
-                    if (!loading.value) {
-                        HomeScreen.ShowHomeScreen(applicationContext, marks)
-                    }
+                   // if (!loading.value) {
+                        currPoint = HomeScreen.ShowHomeScreen(applicationContext, marks, workMarks, currPoint)
+                    //}
                 }
                 composable("InfoScreen") {
                     LaunchedEffect(Unit) {
                         loading.value = true
                         delay(1200)
                         loading.value = false
+                        val data = async {
+                            com.example.aquagraphapp.dataReceiving.getQualityData(
+                                currPoint,
+                                applicationContext
+                            )
+                        }
+                        dataForTable = data.await()
                     }
+                    InfoScreen.ShowInfoScreen(dataForTable)
                     com.example.aquagraphapp.loading.ShowLoadingCircle(loading = loading.value)
-                    InfoScreen.ShowInfoScreen(qualityData)
                 }
                 composable("ProblemsScreen") {
                     LaunchedEffect(Unit) {

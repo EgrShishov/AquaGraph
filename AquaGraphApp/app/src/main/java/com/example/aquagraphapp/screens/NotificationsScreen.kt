@@ -40,43 +40,12 @@ class NotificationsScreen {
     @Composable
     fun ShowNotificationScreen(worksData: List<ScheduledWork>) {
         var selected_index by remember { mutableStateOf(-1) }
+        var papa = mutableListOf(false)
+        for (i in 0..worksData.size)
+            papa.add(0, false)
+
         var clickable by remember {
-            mutableStateOf(
-                mutableListOf(
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false
-                )
-            )
+            mutableStateOf(papa)
         }
 
         Column(
