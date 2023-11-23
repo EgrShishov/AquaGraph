@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Text
+import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.MaterialTheme
@@ -31,11 +33,11 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.lifecycleScope
 import com.example.aquagraphapp.buttons.AddNewAdressButton
+import com.example.aquagraphapp.databinding.MainActivityBinding
 import com.example.aquagraphapp.models.ResponseModel
 import com.example.aquagraphapp.navigation.NavigationBar
 import com.example.aquagraphapp.notifications.NotificationService
 import com.example.aquagraphapp.dataReceiving.getNewAdressPoint2
-import com.example.aquagraphapp.databinding.MainActivityBinding
 import com.example.aquagraphapp.models.MarkModel
 import com.example.aquagraphapp.models.ScheduledWork
 import com.example.aquagraphapp.ui.theme.AquaGraphAppTheme
@@ -65,7 +67,7 @@ class MainActivity : ComponentActivity() {
         MapKitFactory.initialize(this)
         binding = MainActivityBinding.inflate(layoutInflater)
         val NavigationBar = NavigationBar()
-        //val service = NotificationService(applicationContext)
+        val service = NotificationService(applicationContext)
 
         lifecycleScope.launch {
             val marks = async {

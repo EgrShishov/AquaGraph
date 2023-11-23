@@ -38,6 +38,8 @@ import com.example.aquagraphapp.R
 import com.example.aquagraphapp.databinding.MainActivityBinding
 import com.example.aquagraphapp.models.MarkModel
 import com.yandex.mapkit.geometry.Point
+import com.example.aquagraphapp.models.ScheduledWork
+import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.map.CameraPosition
 import com.yandex.mapkit.map.MapObject
 import com.yandex.mapkit.map.MapObjectCollection
@@ -108,29 +110,34 @@ class HomeScreen {
                 }
             ) {
                 Card(
-                    shape = RoundedCornerShape(12.dp),
-                    modifier = Modifier
-                        //.fillMaxWidth()
-                    //.height(1f)
+                    shape = RoundedCornerShape(20.dp),
                 ) {
-                    Text(
-                        text = "$text",
+                    Column(
                         modifier = Modifier
-                            .padding(15.dp, 15.dp, 15.dp, 15.dp)
-                        )
-                    OutlinedButton(
-                        modifier = Modifier
-                            .align(Alignment.CenterHorizontally)
-                            .padding(bottom = 10.dp),
-                        onClick = {
-                            showMarkInfo = false
-                            text = ""
-                        },
-                        shape = RoundedCornerShape(12.dp),
-                        contentPadding = PaddingValues(6.dp)
+                            .padding(16.dp),
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Icon(Icons.Outlined.Check, "Accept")
-                        Text("Понятно")
+                        Text("$text")
+                        Row(
+                            modifier = Modifier
+                                .align(Alignment.CenterHorizontally)
+                                .padding(5.dp),
+                            horizontalArrangement = Arrangement.Center
+                        ) {
+                            //understood button
+                            OutlinedButton(
+                                onClick = {
+                                    showMarkInfo = false
+                                    text = ""
+                                },
+                                shape = RoundedCornerShape(12.dp),
+                                contentPadding = PaddingValues(6.dp)
+                            ) {
+                                Icon(Icons.Outlined.Check, "Accept")
+                                Text("Понятно")
+                            }
+                        }
                     }
                 }
             }
@@ -139,7 +146,7 @@ class HomeScreen {
         AndroidView(
             factory = { context ->
                 val binding = MainActivityBinding.inflate(LayoutInflater.from(context))
-
+                mapObjectCollection = binding.mapview.map.mapObjects
                 if (binding.mapview.map.cameraPosition.target != point) {
                     binding.mapview.map.move(
                         CameraPosition(
@@ -193,11 +200,11 @@ class HomeScreen {
                         )
                         placemarkMapObject.opacity = 0.5f
                         placemarkMapObject.setText(markModel.Data)
-                        val mapObjectTapListener = object: MapObjectTapListener {
+                        val mapObjectTapListener = object :
+                            MapObjectTapListener {
                             override fun onMapObjectTap(p0: MapObject, p1: Point): Boolean {
                                 text = "Время : ${markModel.Time}\nИнфо : ${markModel.Data}"
                                 showMarkInfo = true
-                                Log.d("", "${markModel.Id}")
                                 return true
                             }
                         }
