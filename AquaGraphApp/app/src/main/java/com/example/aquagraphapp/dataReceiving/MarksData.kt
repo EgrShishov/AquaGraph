@@ -5,6 +5,7 @@ import android.util.Log
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.aquagraphapp.models.IPconfig
 import com.example.aquagraphapp.models.MarkModel
 import org.json.JSONObject
 import kotlin.coroutines.resume
@@ -32,7 +33,7 @@ suspend fun getMarksData(applicationContext: Context): List<MarkModel>
 
 fun parseMarksData(result: String): List<MarkModel> {
 //    Log.d("MamaLyubitPapu", "$result")
-
+    Log.d("WKHKJNDWINIFBWF", "$result")
     val parsedData = mutableListOf<MarkModel>()
     val responseObject = JSONObject(result)
     val marks = responseObject.getJSONArray("Marks")
@@ -54,7 +55,7 @@ fun parseMarksData(result: String): List<MarkModel> {
 
 suspend fun addMarkData(X: Float, Y: Float, Data: String, applicationContext: Context): String
         = suspendCoroutine { continuation ->
-    val url = "http://192.168.209.248:1337/new-mark?x=$X&y=$Y&data=$Data"
+    val url = "http://$IPconfig:1337/new-mark?x=$X&y=$Y&data=$Data"
 
     val queue = Volley.newRequestQueue(applicationContext)
     val request = StringRequest(
@@ -62,6 +63,26 @@ suspend fun addMarkData(X: Float, Y: Float, Data: String, applicationContext: Co
         url,
         { result ->
             Log.d("new-mark", "x=$X&y=$Y&data=$Data")
+            continuation.resume("$result")
+        },
+        { error ->
+            Log.d("ErrorLog", "Error in requesting API happened : $error")
+            continuation.resume("")
+        },
+    )
+    queue.add(request)
+}
+
+suspend fun DeleteMarkData(markId: Int, applicationContext: Context): String
+        = suspendCoroutine { continuation ->
+    val url = "http://$IPconfig:1337/delete-mark?id=${markId}"
+
+    val queue = Volley.newRequestQueue(applicationContext)
+    val request = StringRequest(
+        Request.Method.GET,
+        url,
+        { result ->
+            Log.d("delete-mark", "${markId}")
             continuation.resume("$result")
         },
         { error ->

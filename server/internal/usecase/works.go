@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"regexp"
 	"strings"
+	"time"
 )
 
 type Works []map[string]interface{}
@@ -24,15 +25,32 @@ func (u *Usecase) GetDataWorks() (Works, error) {
         
     }
     
-    works := make(Works, len(data) / 4)
+    works := make(Works, 0)
     for i := 0; i < len(data); i += 4 {
-        works[i / 4] = make(map[string]interface{})
-        works[i / 4]["Time"] = data[i + 2]
-        works[i / 4]["Addresses"] = getAddresses(data[i + 3])
-        works[i / 4]["Data"] = data[i + 3]
+        temp := make(map[string]interface{})
+        temp["Time"] = data[i + 2]
+        temp["Addresses"] = getAddresses(data[i + 3])
+        temp["Data"] = data[i + 3]
+        if !isPast(data[i+2]) {
+            works = append(works, temp)
+        }
     } 
 
     return works, nil
+}
+
+func isPast(data string) bool {
+    rg, _ := regexp.Compile("до .*")
+    data = rg.FindString(data)
+    if data == "" {
+        return false
+    }
+    t, err := time.Parse("02.01.2006", data[11:])
+    if err != nil {
+        print(err.Error())
+        return true
+    }
+    return time.Now().After(t)
 }
 
 func getAddresses(str string) []string {

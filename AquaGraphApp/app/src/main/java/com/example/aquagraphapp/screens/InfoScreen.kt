@@ -3,11 +3,15 @@ package com.example.aquagraphapp.screens
 import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.paddingFrom
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -21,7 +25,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
@@ -48,7 +51,8 @@ import com.example.aquagraphapp.models.ListOfMonth
 import com.example.aquagraphapp.models.ResponseModel
 import java.text.DecimalFormat
 import androidx.compose.ui.text.style.TextAlign
-import com.aay.compose.barChart.model.BarParameters
+import co.yml.charts.ui.barchart.models.SelectionHighlightData
+
 
 class InfoScreen {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -106,7 +110,7 @@ class InfoScreen {
                 Column(
                     modifier = Modifier
                         .wrapContentSize()
-                        .padding(10.dp),
+                        .padding(start = 10.dp, end = 10.dp),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
@@ -125,7 +129,9 @@ class InfoScreen {
                             CreateTable(dataForTable)
                         } else {
                             Text(
-                                text = "Единицы измерения: ${removeHtmlTags(data.last().params[selectedIndex].metric)}",
+                                text = "\n" +
+                                        "\n" +
+                                        "\nЕдиницы измерения: ${removeHtmlTags(data.last().params[selectedIndex].metric)}",
                                 fontSize = 20.sp,
                                 color = MaterialTheme.colorScheme.onBackground,
                                 modifier = Modifier
@@ -135,15 +141,25 @@ class InfoScreen {
                                 textAlign = TextAlign.Center
                             )
                             //com.example.aquagraphapp.screens.BarChartSample(data, selectedIndex)
-                            var str = CreateGraphic(data = data, criterionIndex = selectedIndex)
+                            var str: String = ""
+                            Box(
+                              contentAlignment = Alignment.Center
+                            ) {
+                                str = CreateGraphic(data = data, criterionIndex = selectedIndex)
+                            }
                             Text(
-                                text = "${removeHtmlTags(str)}",
+                                text = "* Табличные данные необходимо домножить на: ${
+                                    removeHtmlTags(
+                                        str
+                                    )
+                                }",
                                 fontSize = 20.sp,
                                 color = MaterialTheme.colorScheme.onBackground,
                                 modifier = Modifier
                                     .padding(10.dp)
                                     .align(Alignment.CenterHorizontally),
-                                fontWeight = FontWeight.Bold,
+                                fontWeight = FontWeight.Light,
+                                fontStyle = FontStyle.Italic,
                                 textAlign = TextAlign.Center
                             )
                         }
@@ -164,90 +180,40 @@ class InfoScreen {
 }
 
 @Composable
-fun BarChartSample(data: List<ResponseModel>, index: Int) {
-
-    val testBarParameters: List<BarParameters> = listOf(
-        BarParameters(
-            dataName = "Completed",
-            data = listOf(0.0, 0.0, 0.0, 50.6, 44.0, 100.6, 10.0),
-            barColor = Color(0xFF6C3428)
-        ),
-        BarParameters(
-            dataName = "Completed",
-            data = listOf(0.0, 0.0, 0.0, 69.6, 50.0, 30.6, 80.0),
-            barColor = Color(0xFFBA704F),
-        ),
-        BarParameters(
-            dataName = "Completed",
-            data = listOf(0.0, 0.0, 0.0, 80.6, 10.0, 100.6, 55.99),
-            barColor = Color(0xFFDFA878),
-        ),
-    )
-
-    Box(Modifier.fillMaxSize()) {
-        com.aay.compose.barChart.BarChart(
-            chartParameters = testBarParameters,
-            gridColor = Color.DarkGray,
-            xAxisData = listOf("2016", "2017", "2018", "2019", "2020", "2021", "2022"),
-            isShowGrid = true,
-            animateChart = true,
-            showGridWithSpacer = true,
-            yAxisStyle = TextStyle(
-                fontSize = 14.sp,
-                color = Color.DarkGray,
-            ),
-            xAxisStyle = TextStyle(
-                fontSize = 14.sp,
-                color = Color.DarkGray,
-                fontWeight = FontWeight.W400
-            ),
-            yAxisRange = 20,
-            barWidth = 20.dp,
-            spaceBetweenBars = 5.dp
-        )
-    }
-}
-
-@Composable
-fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int): String {
-    val origpointsdata = PartitionByPoint(data, criterionIndex).toMutableList()
-    val delta = StringToMonth(data.last().time) - 1
-    val steps = 20
+fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int) : String {
+    var origpointsdata = PartitionByPoint(data, criterionIndex).toMutableList()
+    var delta = StringToMonth(data.last().time) - 1
+    var steps = 20
     var max_y = max_Y(origpointsdata)
     var min_y = min_Y(origpointsdata)
-    val degree = GetDegree(min_y)
-    val gamma = 10f / min_y
+    var degree = GetDegree(min_y)
+    var gamma = 10f / min_y
     Log.d("min", "$min_y")
     min_y = min_y / 10f * Math.pow(10.0, -1.0 * degree).toFloat()
     Log.d("min", "$min_y")
     max_y *= gamma
-    val pointsdata: MutableList<BarData> = mutableListOf()
+    var pointsdata: MutableList<BarData> = mutableListOf()
 
     for (i in 0..origpointsdata.size - 1)
-        pointsdata.add(
-            BarData(
-                Point(origpointsdata[i].point.x, origpointsdata[i].point.y * gamma),
-                origpointsdata[i].color
-            )
-        )
+        pointsdata.add(BarData(Point(origpointsdata[i].point.x, origpointsdata[i].point.y * gamma), origpointsdata[i].color))
 
-    pointsdata.add(0, BarData(Point(0f, max_y), MaterialTheme.colorScheme.onBackground))
+    pointsdata.add(0, BarData(Point(0f, max_y), Color.White))
     pointsdata.add(
         pointsdata.size,
-        BarData(
-            Point(pointsdata.last().point.x + 1f, max_y),
-            MaterialTheme.colorScheme.onBackground
-        )
+        BarData(Point(pointsdata.last().point.x + 1f, max_y), Color.White)
     )
 
     val xAxisData = AxisData.Builder()
-        .backgroundColor(MaterialTheme.colorScheme.onBackground)
+        .backgroundColor(MaterialTheme.colorScheme.tertiaryContainer)
         .steps(pointsdata.size)
         .axisLabelAngle(35f)
         .labelData { i ->
-            if (i != pointsdata.size - 1 && i != 0) {
+            if (i != pointsdata.size - 1 && i != 0)
+            {
                 ListOfMonth[(pointsdata[i].point.x.toInt() + delta) % 12]
-            } else {
+            }
+            else
+            {
                 ""
             }
         }
@@ -257,9 +223,9 @@ fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int): String {
 
     val yAxisData = AxisData.Builder()
         .steps(steps)
-        .backgroundColor(MaterialTheme.colorScheme.onBackground)
+        .backgroundColor(MaterialTheme.colorScheme.tertiaryContainer)
         .labelAndAxisLinePadding(20.dp)
-        .labelData { i -> DecimalFormat("#0.00").format(i * min_y) }
+        .labelData { i -> DecimalFormat("#0.00").format(i * min_y)}
         .build()
 
     val barChartData = BarChartData(
@@ -267,10 +233,10 @@ fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int): String {
         xAxisData = xAxisData,
         yAxisData = yAxisData,
         barStyle = BarStyle(
-            paddingBetweenBars = 7.dp,
+            paddingBetweenBars = 7 .dp,
             barWidth = 16.dp,
-        ),
-        backgroundColor = MaterialTheme.colorScheme.onBackground
+            selectionHighlightData = null
+        )
     )
 
     BarChart(
@@ -283,14 +249,19 @@ fun CreateGraphic(data: List<ResponseModel>, criterionIndex: Int): String {
     return "10<sup>$degree</sup>"
 }
 
-fun GetDegree(Num: Float): Int {
+fun GetDegree(Num: Float): Int
+{
     var num = Num
     var degree = 0
-    while (num > 10 || num < 1) {
-        if (num > 10) {
+    while(num > 10 || num < 1)
+    {
+        if(num > 10)
+        {
             num /= 10
             degree++
-        } else {
+        }
+        else
+        {
             num *= 10
             degree--
         }
@@ -298,18 +269,19 @@ fun GetDegree(Num: Float): Int {
     return degree
 }
 
-fun StringToMonth(time: String): Int // time: yyyy-mm-dd
+fun StringToMonth(time: String) : Int // time: yyyy-mm-dd
 {
-    val index1: Int = time.indexOf('-', 0)
-    val index2: Int = time.indexOf('-', index1 + 1)
+    var index1: Int = time.indexOf('-', 0)
+    var index2: Int = time.indexOf('-', index1 + 1)
     //Log.d("timestring", "${time.substring(index1 + 1, index2)}")
     return time.substring(index1 + 1, index2).toInt()
 }
 
-fun StringToValue(valueStr: String): Float {
+fun StringToValue(valueStr: String) : Float
+{
     var valueStrCopy = valueStr.substring(0)
     //Log.d("valuestring", "${valueStrCopy}")
-    if (valueStrCopy[0] == '<' || valueStrCopy[0] == '>' || valueStrCopy[0] == '~')
+    if(valueStrCopy[0] == '<' || valueStrCopy[0] == '>' || valueStrCopy[0] == '~')
         valueStrCopy = valueStrCopy.drop(1)
     valueStrCopy = valueStrCopy.replace(",", ".")
     //Log.d("value", "${valueStrCopy}")
@@ -317,24 +289,35 @@ fun StringToValue(valueStr: String): Float {
     return valueStrCopy.toFloat()
 }
 
+fun StringToPDK(pdkStr: String) : Float
+{
+    var pdkStrCopy = pdkStr.substring(0, pdkStr.indexOf('/'))
+    if(pdkStrCopy.indexOf('-') != -1)
+        pdkStrCopy = pdkStrCopy.substring(pdkStrCopy.indexOf('-'))
+    pdkStrCopy = pdkStrCopy.replace(",", ".")
+    return pdkStrCopy.toFloat()
+}
+
 @Composable
-fun PartitionByPoint(data: List<ResponseModel>, criterionIndex: Int): List<BarData> {
+fun PartitionByPoint(data: List<ResponseModel>, criterionIndex: Int): List<BarData>
+{
     //var criterionIndex = CriterionIndex--
     var pointsdata: MutableList<BarData> = mutableListOf()
     var falseMonth = 12f
-    for (item in data.reversed()) {
+    for (item in data.reversed())
+    {
         var value = StringToValue(item.params[criterionIndex].value)
-        pointsdata.add(0, BarData(Point(falseMonth, value), MaterialTheme.colorScheme.tertiary))
+        if(value < 1f)//StringToPDK(item.params[criterionIndex].pdk))
+        {
+            pointsdata.add(0, BarData(Point(falseMonth, value), MaterialTheme.colorScheme.tertiary))
+        }
+        else
+            pointsdata.add(0, BarData(Point(falseMonth, value), MaterialTheme.colorScheme.inversePrimary))
         falseMonth--
     }
-    while (pointsdata.size < 12) {
-        pointsdata.add(
-            0,
-            BarData(
-                Point(falseMonth, pointsdata[0].point.y),
-                MaterialTheme.colorScheme.onBackground
-            )
-        )
+    while(pointsdata.size < 12)
+    {
+        pointsdata.add(0, BarData(Point(falseMonth, pointsdata[0].point.y), Color.White))
         falseMonth--
     }
     //This func always return twelve months
@@ -361,8 +344,12 @@ fun min_Y(points: List<BarData>): Float {
 
 @Composable
 fun CreateTable(data: List<QualityModel>) {
+    if(data.size >= 4)
+        data[5].metric = "оЖ ****"
     //var selectedRow by remember { mutableStateOf(0) }
     Table(
+        modifier = Modifier
+            .fillMaxWidth(),
         columns = listOf(
             TableColumnDefinition {
                 Text("Критерий")
@@ -371,15 +358,25 @@ fun CreateTable(data: List<QualityModel>) {
                 Text("ПДК")
             },
             TableColumnDefinition(Alignment.CenterEnd) {
-                Text("Значение")
+                Text(
+                    text = "Значение",
+                    modifier = Modifier
+                        .padding(end = 10.dp))
             },
         )
     ) {
         data.forEachIndexed { index, item ->
             row {
+                //onClick = { selectedRow = index }
                 cell { Text("${removeHtmlTags(item.name)}") }
                 cell { Text("${removeHtmlTags(item.metric).toString() + " - " + item.pdk}") }
-                cell { Text("${item.value}") }
+                cell {
+                    Text(
+                        text = "${item.value.toDouble()}",
+                        modifier = Modifier
+                            .padding(end = 10.dp)
+                    )
+                }
             }
         }
     }
@@ -388,7 +385,8 @@ fun CreateTable(data: List<QualityModel>) {
         contentAlignment = Alignment.Center
     ) {
         Text(
-            text = "*** Показатели физиологической полноценности питьевой воды - показатели общей минерализации, жесткости," +
+            modifier = Modifier.padding(bottom = 10.dp),
+            text =  "*** Показатели физиологической полноценности питьевой воды - показатели общей минерализации, жесткости," +
                     " содержания макро- и микроэлементов, обеспечивающие профилактику заболеваний, устраняя дефицит биологически" +
                     " необходимых элементов." +
                     "\n**** В Республике Беларусь жесткость воды измеряют в градусах жесткости (оЖ), за рубежом приняты " +
@@ -411,13 +409,20 @@ fun removeHtmlTags(htmlString: String): CharSequence {
     res = res.replace("<sup>2-</sup>", "\u00B2\u207B")
     res = res.replace("<sup>+</sup>", "\u207A")
     res = res.replace("<sup>-</sup>", "\u207A")
-    res = res.replace("<sup>2</sup>", "\u00B2")
-    res = res.replace("<sup>-2</sup>", "\u207A\u00B2")
-    res = res.replace("<sup>1</sup>", "\u00B1")
-    res = res.replace("<sup>-1</sup>", "\u207A\u00B1")
     res = res.replace("<sup>4</sup>", "\u2074")
+    res = res.replace("<sup>+4</sup>", "\u207A\u2074")
+    res = res.replace("<sup>-4</sup>", "\u207B\u2074")
     res = res.replace("<sup>3</sup>", "\u00B3")
+    res = res.replace("<sup>+3</sup>", "\u207A\u00B3")
+    res = res.replace("<sup>-3</sup>", "\u207B\u00B3")
     res = res.replace("<sup>2</sup>", "\u00B2")
+    res = res.replace("<sup>+2</sup>", "\u207A\u00B2")
+    res = res.replace("<sup>-2</sup>", "\u207B\u00B2")
+    res = res.replace("10<sup>1</sup>", "10")
+    res = res.replace("<sup>1</sup>", "\u00B9")
+    res = res.replace("<sup>+1</sup>", "\u207A\u00B9")
+    res = res.replace("<sup>-1</sup>", "\u207B\u00B9")
+    res = res.replace("10<sup>0</sup>", "1")
     res = res.replace("<sub>4</sub>", "\u2084")
     res = res.replace("<sub>3</sub>", "\u2083")
     res = res.replace("<sub>2</sub>", "\u2082")

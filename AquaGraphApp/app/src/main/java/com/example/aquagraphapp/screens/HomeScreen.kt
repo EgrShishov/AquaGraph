@@ -37,7 +37,6 @@ import androidx.compose.ui.window.Dialog
 import com.example.aquagraphapp.R
 import com.example.aquagraphapp.databinding.MainActivityBinding
 import com.example.aquagraphapp.models.MarkModel
-import com.example.aquagraphapp.models.ScheduledWork
 import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.map.CameraPosition
 import com.yandex.mapkit.map.MapObject
@@ -51,12 +50,13 @@ class HomeScreen {
 
     private lateinit var mapObjectCollection: MapObjectCollection
     private lateinit var placemarkMapObject: PlacemarkMapObject
+    private val markerDataList = mutableListOf<PlacemarkMapObject>()
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun ShowHomeScreen(applicationContext: Context, marks: List<MarkModel>):Point {
+    fun ShowHomeScreen(applicationContext: Context, marks: List<MarkModel>, workMarks: List<MarkModel>, currPoint: Point) : Point {
         var point by remember {
-            mutableStateOf(com.yandex.mapkit.geometry.Point(53.919585, 27.587433))
+            mutableStateOf(Point(currPoint.latitude, currPoint.longitude))
         }
         Scaffold(
             modifier = Modifier
@@ -84,7 +84,7 @@ class HomeScreen {
                     verticalArrangement = Arrangement.Center
                 ) {
                     Log.d("marksinfunc", "$marks")
-                    ShowMap(point, marks)
+                    ShowMap(point, marks, workMarks)
                 }
             }
         }
@@ -92,7 +92,7 @@ class HomeScreen {
     }
 
     @Composable
-    fun ShowMap(point: com.yandex.mapkit.geometry.Point, marks: List<MarkModel>) {
+    fun ShowMap(point: Point, marks: List<MarkModel>, workmarks: List<MarkModel>) {
         var showMarkInfo by remember {
             mutableStateOf(false)
         }
@@ -140,7 +140,6 @@ class HomeScreen {
                 }
             }
         }
-        //com.example.aquagraphapp.screens.BarChartSample(data = listOf() , index = 0)
         AndroidView(
             factory = { context ->
                 val binding = MainActivityBinding.inflate(LayoutInflater.from(context))
@@ -155,12 +154,42 @@ class HomeScreen {
                         )
                     )
                 }
-                val marker = R.drawable.ic_pin_black_png
-                marks.forEachIndexed { index, markModel ->
+                val workmarker = R.drawable.ic_pin_black_png
+                mapObjectCollection = binding.mapview.map.mapObjects
+                workmarks.forEachIndexed { index, markModel ->
                     if (index != 0) {
-                        val point = com.yandex.mapkit.geometry.Point(
-                            markModel.Y.toDouble(),
-                            markModel.X.toDouble()
+                        val point = Point(
+                            markModel.X.toDouble(),
+                            markModel.Y.toDouble()
+                        )
+                        Log.d("workmarka", "$markModel")
+                        placemarkMapObject = mapObjectCollection.addPlacemark(
+                            point,
+                            ImageProvider.fromResource(context, workmarker)
+                        )
+                        placemarkMapObject.opacity = 0.5f
+                        val index = markModel.Data.indexOf(".",0)
+                        placemarkMapObject.setText(markModel.Data.substring(0, index))
+                        val mapObjectTapListener = object :
+                            MapObjectTapListener {
+                            override fun onMapObjectTap(p0: MapObject, p1: Point): Boolean {
+                                text = "Время : ${markModel.Time}\nИнфо : ${markModel.Data}"
+                                showMarkInfo = true
+                                return true
+                            }
+                        }
+                        placemarkMapObject.addTapListener(
+                            mapObjectTapListener
+                        )
+                        markerDataList.add(placemarkMapObject)
+                    }
+                }
+                Log.d("mamaLubitpapu", "asdafdasdas")
+                val marker = R.drawable.image
+                marks.forEachIndexed { index, markModel ->
+                        val point = Point(
+                            markModel.X.toDouble(),
+                            markModel.Y.toDouble()
                         )
                         Log.d("mamamarka", "$markModel")
                         placemarkMapObject = mapObjectCollection.addPlacemark(
@@ -181,13 +210,23 @@ class HomeScreen {
                             mapObjectTapListener
                         )
                     }
-                }
+                //Current Location
                 val redMarker = R.drawable.image
                 placemarkMapObject = mapObjectCollection.addPlacemark(
                     point,
                     ImageProvider.fromResource(context, redMarker)
                 )
-                placemarkMapObject.setText("Введенный адрес ${point.latitude}")
+                placemarkMapObject.setText("Текущий адрес") //${point.latitude}")
+                val mapObjectTapListener =
+                    MapObjectTapListener { mapObject, p1 ->
+                        showMarkInfo = true
+                        Log.d("","${p1.latitude}")
+                        true
+                    }
+                placemarkMapObject.addTapListener(
+                    mapObjectTapListener
+                )
+                markerDataList.add(placemarkMapObject)
                 binding.root
             },
             modifier = Modifier.fillMaxSize(),

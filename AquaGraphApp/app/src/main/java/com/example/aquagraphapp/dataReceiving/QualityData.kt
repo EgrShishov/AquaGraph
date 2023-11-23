@@ -6,6 +6,7 @@ import android.util.Log
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.aquagraphapp.models.IPconfig
 import com.example.aquagraphapp.models.QualityModel
 import com.example.aquagraphapp.models.ResponseModel
 import org.json.JSONObject
@@ -62,7 +63,7 @@ suspend fun getQualityData(
     applicationContext: Context
 ): List<ResponseModel> = suspendCoroutine { continuation ->
     Log.d("ipv4","${getNetworkIPv4Address(applicationContext)}")
-    val url = "http://192.168.98.248:1337/qualities?x=${point.longitude}&y=${point.latitude}"
+    val url = "http://$IPconfig:1337/qualities?x=${point.longitude}&y=${point.latitude}"
     val queue = Volley.newRequestQueue(applicationContext)
     val request = StringRequest(
         Request.Method.GET,

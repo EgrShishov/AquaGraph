@@ -14,6 +14,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Add
 import androidx.compose.material.icons.outlined.Close
+import androidx.compose.material.icons.outlined.Create
 import androidx.compose.material.icons.outlined.Done
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.Card
@@ -59,8 +60,8 @@ fun AddNewAdressButton(applicationContext: Context):com.yandex.mapkit.geometry.P
     if (!showDialog) {
         ExtendedFloatingActionButton(
             expanded = true,
-            icon = { Icon(Icons.Outlined.Add, "desc") },
-            text = { Text(text = "Добавить адрес") },
+            icon = { Icon(Icons.Outlined.Create, "create") },
+            text = { Text(text = "Изменить мой адрес") },
             contentColor = MaterialTheme.colorScheme.primary,
             containerColor = MaterialTheme.colorScheme.tertiaryContainer,
             onClick = {

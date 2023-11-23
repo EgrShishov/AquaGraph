@@ -6,6 +6,7 @@ import android.util.Log
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.aquagraphapp.models.IPconfig
 import com.example.aquagraphapp.models.ScheduledWork
 import org.json.JSONObject
 import kotlin.coroutines.resume
@@ -15,7 +16,7 @@ import kotlin.coroutines.suspendCoroutine
 suspend fun getListOfScheduledWork(
     applicationContext: Context
 ): List<ScheduledWork> = suspendCoroutine { continuation ->
-    val url = "http://192.168.98.248:1337/works"
+    val url = "http://$IPconfig:1337/works"
     val queue = Volley.newRequestQueue(applicationContext)
     val request = StringRequest(
         Request.Method.GET,

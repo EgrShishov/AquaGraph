@@ -58,7 +58,6 @@ class MainActivity : ComponentActivity() {
 
     private lateinit var _mapView: MapView
     private lateinit var binding: MainActivityBinding
-    private var marksAdresses = listOf<MarkModel>()
     private var curLocation: Point = Point(53.919585, 27.587433)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,24 +69,32 @@ class MainActivity : ComponentActivity() {
         val service = NotificationService(applicationContext)
 
         lifecycleScope.launch {
-            val data = async {
-                com.example.aquagraphapp.dataReceiving.getQualityData(
-                    curLocation,
+
+//            val add = async {
+//                com.example.aquagraphapp.dataReceiving.addMarkData(
+//                    53.8578542f,
+//                    27.4845154f,
+//                    "Метка 1",
+//                    applicationContext
+//                )
+//            }
+//            add.await()
+            val delete = async {
+                com.example.aquagraphapp.dataReceiving.DeleteMarkData(
+                    12,
                     applicationContext
                 )
             }
-
-            val dataForTable = data.await()
-            Log.d("coroutine", "$dataForTable")
-
-            val parsedData = data.await()
-            Log.d("coroutine", "$parsedData")
-
+            delete.await()
             val works = async {
                 com.example.aquagraphapp.dataReceiving.getListOfScheduledWork(
                     applicationContext
                 )
             }
+            val marks = async {
+                com.example.aquagraphapp.dataReceiving.getMarksData(applicationContext)
+            }
+
             val worksData = works.await()
             val workMarks = async {
                 ToMarksModel(
@@ -95,8 +102,9 @@ class MainActivity : ComponentActivity() {
                     applicationContext
                 )
             }
+
+            val marksData = marks.await()
             val workmarksData = workMarks.await()
-            val qualityData = data.await()
 
             setContent {
                 AquaGraphAppTheme {
@@ -110,12 +118,12 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         color = Color.White,
                     ) {
-                        curLocation = NavigationBar.ShowNavigationBar(
-                            curLocation = curLocation,
-                            qualityData = qualityData,
+                        NavigationBar.ShowNavigationBar(
+                            marksData = marksData,
                             worksData = worksData,
                             workMarks = workmarksData,
-                            applicationContext = applicationContext
+                            applicationContext = applicationContext,
+                            valCurrPoint = curLocation
                         )
                     }
                 }
@@ -165,7 +173,7 @@ suspend fun ToMarksModel(works: List<ScheduledWork>, applicationContext: Context
             Log.d("mark", "${point.latitude}, ${point.longitude}")
             result_marks.add(
                 result_marks.size, MarkModel(
-                    0, "0", "0", "${point.latitude}", "${point.longitude}"
+                    0, "Запланированные работы. Возможно изменения качества воды", "${item_works.Time}", "${point.latitude}", "${point.longitude}"
                 )
             )
         }
