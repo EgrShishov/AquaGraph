@@ -14,7 +14,7 @@ import (
 const epsilon = 0.01
 
 func distort(f float64) float64 {
-    if rand.Intn(100) > 70 {
+    if rand.Intn(100) > 30 {
         return f + rand.Float64() * f / 7 * math.Pow(-1.0, float64(rand.Intn(2)))
     } 
     return f
