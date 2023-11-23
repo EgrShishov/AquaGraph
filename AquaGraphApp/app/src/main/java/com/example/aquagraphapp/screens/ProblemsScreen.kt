@@ -2,20 +2,22 @@ package com.example.aquagraphapp.screens
 
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Add
-import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material.icons.outlined.Done
-import androidx.compose.material.icons.outlined.Search
-import androidx.compose.material3.Divider
-import androidx.compose.material3.ExtendedFloatingActionButton
-import androidx.compose.material3.FabPosition
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -23,6 +25,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -31,14 +34,17 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.aquagraphapp.models.ScheduledWork
+import com.android.volley.Request
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
+import com.yandex.mapkit.geometry.Point
 
 class ProblemsScreen {
+    @OptIn(ExperimentalMaterial3Api::class)
     @Composable
     fun ShowProblemsScreen(applicationContext: Context) {
         var problemText by rememberSaveable {
@@ -47,31 +53,18 @@ class ProblemsScreen {
         var addressText by rememberSaveable {
             mutableStateOf("")
         }
-        var isExpanded by remember {
+        var isEnable by remember {
             mutableStateOf(false)
         }
         var isInputFinished by remember {
             mutableStateOf(false)
         }
+        var isError by remember {
+            mutableStateOf(false)
+        }
         Scaffold(
             modifier = Modifier
                 .fillMaxSize(),
-            floatingActionButton = {
-                ExtendedFloatingActionButton(
-                    text = { Text("Отметить неполадку") },
-                    icon = { Icon(Icons.Outlined.Done, "Add mark") },
-                    onClick = {
-//                        if (isExpanded) {
-//
-//                        }
-                    },
-                    expanded = isExpanded,
-                    containerColor = MaterialTheme.colorScheme.tertiaryContainer,
-                    contentColor = MaterialTheme.colorScheme.onBackground,
-                    shape = RoundedCornerShape(12.dp),
-                )
-            },
-            floatingActionButtonPosition = FabPosition.Center,
         ) { paddingValues ->
             Box(
                 modifier = Modifier
@@ -80,49 +73,128 @@ class ProblemsScreen {
             ) {
                 Column(
                     modifier = Modifier
-                        .padding(20.dp),
+                        .padding(paddingValues),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
-                    Text("Сообщите о проблеме, чтобы другие пользователи были осведомлены",
+                    Text(
+                        "Сообщите о проблеме",
                         color = MaterialTheme.colorScheme.onBackground,
                         fontWeight = FontWeight.Bold,
                         fontSize = 30.sp,
                         textAlign = TextAlign.Center,
-                        lineHeight = 4.sp)
-                    Divider()
-                    TextField(
                         modifier = Modifier
-                            .padding(15.dp),
-                        value = problemText,
-                        onValueChange = {
-                            problemText = it
-                            isInputFinished = addressText.isNotEmpty() && problemText.isNotEmpty()
-                            isExpanded = isInputFinished
-                        },
-                        label = {
-                            Text("Опишите кратко проблему")
-                        },
-                        singleLine = true
+                            .fillMaxWidth()
+                            .padding(paddingValues.calculateTopPadding() + 20.dp),
                     )
-                    Divider()
-                    TextField(
+                    ElevatedCard(
                         modifier = Modifier
-                            .padding(15.dp),
-                        value = addressText,
-                        onValueChange = {
-                            addressText = it
-                            isInputFinished = addressText.isNotEmpty() && problemText.isNotEmpty()
-                            isExpanded = isInputFinished
-                        },
-                        label = {
-                            Text("Введите адрес")
-                        },
-                        singleLine = true
-                    )
-                    Divider()
+                            .padding(15.dp)
+                            .defaultMinSize(minHeight = 100.dp),
+                        elevation = CardDefaults.cardElevation(
+                            defaultElevation = 6.dp
+                        ),
+                        colors = CardDefaults.cardColors(MaterialTheme.colorScheme.tertiaryContainer)
+                    ) {
+                        OutlinedTextField(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(10.dp),
+                            value = problemText,
+                            onValueChange = {
+                                isError = false
+                                problemText = it
+                                isInputFinished =
+                                    addressText.isNotEmpty() && problemText.isNotEmpty()
+                                isEnable = isInputFinished
+                            },
+                            label = {
+                                Text("Опишите кратко проблему")
+                            },
+                            singleLine = true,
+                            colors = TextFieldDefaults.textFieldColors(containerColor = MaterialTheme.colorScheme.background),
+                            isError = isError
+                        )
+                        OutlinedTextField(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(10.dp),
+                            value = addressText,
+                            onValueChange = {
+                                isError = false
+                                addressText = it
+                                isInputFinished =
+                                    addressText.isNotEmpty() && problemText.isNotEmpty()
+                                isEnable = isInputFinished
+                            },
+                            label = {
+                                Text("Введите адрес")
+                            },
+                            singleLine = true,
+                            colors = TextFieldDefaults.textFieldColors(containerColor = MaterialTheme.colorScheme.background),
+                            isError = isError
+                        )
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(5.dp),
+                            horizontalArrangement = Arrangement.End,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            TextButton(
+                                shape = RoundedCornerShape(10.dp),
+                                onClick = {
+                                    if (isEnable) {
+                                        Toast.makeText(
+                                            applicationContext,
+                                            "Неполадка успешно добавлена на карту!",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                        com.example.aquagraphapp.dataReceiving.getNewAdressPoint1(
+                                            applicationContext,
+                                            addressText
+                                        ).thenAccept {
+                                            addMark(applicationContext, it, problemText)
+                                        }
+                                        problemText = ""
+                                        addressText = ""
+                                        isEnable = false
+                                    } else {
+                                        Toast.makeText(
+                                            applicationContext,
+                                            "Введите данные!",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                        isError = true
+                                    }
+                                },
+                                colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.primary),
+                                enabled = isEnable
+                            ) {
+                                Icon(Icons.Outlined.Done, "add mark")
+                                Text("Отметить неполадку")
+                            }
+                        }
+                    }
                 }
             }
         }
     }
+}
+
+fun addMark(applicationContext: Context, address: Point, info: String) {
+    val url =
+        "http://192.168.98.248:1337/new-mark?data=${info}&x=${address.latitude}&y=${address.longitude}"
+    val queue = Volley.newRequestQueue(applicationContext)
+    val request = StringRequest(
+        Request.Method.GET,
+        url,
+        { ans ->
+            Log.d("MARKS", "${ans}")
+        },
+        { error ->
+            Log.d("MARKS", "Error in adding mark ${error}")
+        }
+    )
+    queue.add(request)
 }

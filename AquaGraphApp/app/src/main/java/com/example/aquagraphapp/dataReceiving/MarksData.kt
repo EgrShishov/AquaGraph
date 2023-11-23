@@ -49,14 +49,6 @@ fun parseMarksData(result: String): List<MarkModel> {
         )
         parsedData.add(parsedData.size, model)
     }
-//    for (i in 0..parsedData.size - 1)
-//    {
-//        Log.d("mark$i:", "${parsedData[i].Id}")
-//        Log.d("mark$i:", "${parsedData[i].Data}")
-//        Log.d("mark$i:", "${parsedData[i].Time}")
-//        Log.d("mark$i:", "${parsedData[i].X}")
-//        Log.d("mark$i:", "${parsedData[i].Y}")
-//    }
     return parsedData
 }
 
