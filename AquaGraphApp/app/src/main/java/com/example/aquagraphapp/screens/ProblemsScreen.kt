@@ -155,10 +155,10 @@ class ProblemsScreen {
                                             addressText
                                         ).thenAccept {
                                             addMark(applicationContext, it, problemText)
+                                            problemText = ""
+                                            addressText = ""
+                                            isEnable = false
                                         }
-                                        problemText = ""
-                                        addressText = ""
-                                        isEnable = false
                                     } else {
                                         Toast.makeText(
                                             applicationContext,
