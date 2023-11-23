@@ -355,7 +355,7 @@ fun CreateTable(data: List<QualityModel>) {
                 cell { Text("${removeHtmlTags(item.name)}") }
                 cell { Text("${removeHtmlTags(item.metric).toString() + " - " + item.pdk}") }
                 cell { Text(
-                    text = "${item.value}",
+                    text = "${item.value.toDouble()}",
                     modifier = Modifier
                     .padding(end = 10.dp)
                 )}

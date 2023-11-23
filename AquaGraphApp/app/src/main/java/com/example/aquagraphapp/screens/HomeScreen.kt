@@ -38,8 +38,6 @@ import com.example.aquagraphapp.R
 import com.example.aquagraphapp.databinding.MainActivityBinding
 import com.example.aquagraphapp.models.MarkModel
 import com.yandex.mapkit.geometry.Point
-import com.example.aquagraphapp.models.ScheduledWork
-import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.map.CameraPosition
 import com.yandex.mapkit.map.MapObject
 import com.yandex.mapkit.map.MapObjectCollection
@@ -94,7 +92,7 @@ class HomeScreen {
     }
 
     @Composable
-    fun ShowMap(point: com.yandex.mapkit.geometry.Point, marks: List<MarkModel>, workmarks: List<MarkModel>) {
+    fun ShowMap(point: Point, marks: List<MarkModel>, workmarks: List<MarkModel>) {
         var showMarkInfo by remember {
             mutableStateOf(false)
         }

@@ -121,7 +121,7 @@ class NavigationBar{
                     listOf<QualityModel>(QualityModel(
                         0,
                         "Ожидание",
-                        "Ожидание",
+                        "666",
                         "",
                         "Ожидание",
                         "Ожидание")))))

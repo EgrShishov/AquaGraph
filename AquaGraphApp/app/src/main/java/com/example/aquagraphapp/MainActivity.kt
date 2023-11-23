@@ -76,17 +76,12 @@ class MainActivity : ComponentActivity() {
                 )
             }
 
-            val marksAdresses2 = marks.await()
-            if (marksAdresses2.isNotEmpty()) {
-                marksAdresses = marksAdresses2.subList(1, 3)
-                Log.d("marksdata", "$marksAdresses")
-            }
-
             val works = async {
                 com.example.aquagraphapp.dataReceiving.getListOfScheduledWork(
                     applicationContext
                 )
             }
+
             val worksData = works.await()
             val workMarks = async {
                 ToMarksModel(
@@ -94,8 +89,10 @@ class MainActivity : ComponentActivity() {
                     applicationContext
                 )
             }
+
             val workmarksData = workMarks.await()
-            val marksData = marks.await()
+            marksAdresses = marks.await()
+
             setContent {
                 AquaGraphAppTheme {
                     if (isSystemInDarkTheme()) {
