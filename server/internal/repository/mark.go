@@ -11,6 +11,11 @@ func (r* Repository) NewMark(m models.Mark) error {
     return err
 }
 
+func (r* Repository) DeleteMark(id int) error {
+    _, err := r.db.Exec("DELETE FROM mark WHERE id=$1", id)
+    return err
+}
+
 func (r* Repository) GetMarks() ([]models.Mark, error) {
     var marks []models.Mark
     rows, err := r.db.Query("SELECT * FROM mark ORDER BY id")

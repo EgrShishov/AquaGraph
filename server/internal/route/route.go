@@ -11,5 +11,6 @@ func Init(router *grapes.Router, c *controller.Controller) {
 	router.Get("/qualities", c.GetQualities)
 	router.Get("/marks", c.GetMarks)
 	router.Get("/new-mark", c.NewMark)
+	router.Get("/delete-mark", c.DeleteMark)
     router.Get("/works", c.GetWorks)
 }
