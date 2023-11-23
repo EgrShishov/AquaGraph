@@ -69,7 +69,6 @@ class MainActivity : ComponentActivity() {
         val service = NotificationService(applicationContext)
 
         lifecycleScope.launch {
-
 //            val add = async {
 //                com.example.aquagraphapp.dataReceiving.addMarkData(
 //                    53.8578542f,
@@ -79,13 +78,13 @@ class MainActivity : ComponentActivity() {
 //                )
 //            }
 //            add.await()
-            val delete = async {
-                com.example.aquagraphapp.dataReceiving.DeleteMarkData(
-                    12,
-                    applicationContext
-                )
-            }
-            delete.await()
+//            val delete = async {
+//                com.example.aquagraphapp.dataReceiving.DeleteMarkData(
+//                    13,
+//                    applicationContext
+//                )
+//            }
+//            delete.await()
             val works = async {
                 com.example.aquagraphapp.dataReceiving.getListOfScheduledWork(
                     applicationContext
