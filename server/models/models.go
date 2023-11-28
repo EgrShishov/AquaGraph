@@ -18,3 +18,5 @@ type Mark struct {
     X string
     Y string
 }
+
+type Works []map[string]interface{}

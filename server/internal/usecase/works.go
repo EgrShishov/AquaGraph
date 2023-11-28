@@ -1,6 +1,7 @@
 package usecase
 
 import (
+	"aquaGraph/models"
 	"io"
 	"net/http"
 	"regexp"
@@ -8,10 +9,25 @@ import (
 	"time"
 )
 
-type Works []map[string]interface{}
 
+func (u *Usecase) GetWorks() (models.Works, error) {
+    return u.repository.GetWorks()
+}
 
-func (u *Usecase) GetDataWorks() (Works, error) {
+func (u *Usecase) UpdateWorks() {
+    println("loading works data...")
+    works, err := u.getDataWorks()
+    if err == nil {
+        u.repository.SaveWorks(works)
+        println("works data loaded!")
+        time.Sleep(time.Minute * 60 * 12)
+    } else {
+        time.Sleep(time.Minute * 60)
+    }
+    u.UpdateWorks()
+}
+
+func (u *Usecase) getDataWorks() (models.Works, error) {
     page, err := getHTMLWorks()
     if err != nil {
         return nil, err
@@ -25,7 +41,7 @@ func (u *Usecase) GetDataWorks() (Works, error) {
         
     }
     
-    works := make(Works, 0)
+    works := make(models.Works, 0)
     for i := 0; i < len(data); i += 4 {
         temp := make(map[string]interface{})
         temp["Time"] = data[i + 2]

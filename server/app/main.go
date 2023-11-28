@@ -16,6 +16,6 @@ func main() {
 	usecase := usecase.New(repository)
 	controller := controller.New(usecase)
 	route.Init(router, controller)
-
+    go usecase.UpdateWorks()
 	router.Run(1337)
 }

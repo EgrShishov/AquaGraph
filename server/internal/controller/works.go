@@ -5,7 +5,7 @@ import (
 )
 
 func (c *Controller) GetWorks(ctx grapes.Context) {
-    data, err := c.usecase.GetDataWorks()
+    data, err := c.usecase.GetWorks()
     if err != nil {
         ctx.SendJson(grapes.Obj{"error": err.Error()})
     
