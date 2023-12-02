@@ -7,22 +7,29 @@ import (
 	"regexp"
 	"strings"
 	"time"
+
+	"github.com/Rosto4eks/loggify"
 )
 
+const (
+    UPDATE_TIMESPAN_OK = time.Minute * 60 * 12
+    UPDATE_TIMESPAN_ERR = time.Minute * 60
+)
 
 func (u *Usecase) GetWorks() (models.Works, error) {
     return u.repository.GetWorks()
 }
 
 func (u *Usecase) UpdateWorks() {
-    println("loading works data...")
+    loggify.INFO("Loading works data...")
     works, err := u.getDataWorks()
     if err == nil {
         u.repository.SaveWorks(works)
-        println("works data loaded!")
-        time.Sleep(time.Minute * 60 * 12)
+        loggify.INFO("Successfully loaded works")
+        time.Sleep(UPDATE_TIMESPAN_OK)
     } else {
-        time.Sleep(time.Minute * 60)
+        loggify.ERROR(err.Error())
+        time.Sleep(UPDATE_TIMESPAN_ERR)
     }
     u.UpdateWorks()
 }
@@ -63,7 +70,7 @@ func isPast(data string) bool {
     }
     t, err := time.Parse("02.01.2006", data[11:])
     if err != nil {
-        print(err.Error())
+        loggify.ERROR(err.Error())
         return true
     }
     return time.Now().After(t)
@@ -85,11 +92,13 @@ func getAddresses(str string) []string {
 func getHTMLWorks() (string, error) {
     res, err := http.Get("http://minskvodokanal.by/about/planovyie-rabotyi")
     if err != nil {
+        loggify.ERROR(err.Error())
         return "", err
     }
     defer res.Body.Close()
     page, err := io.ReadAll(res.Body)
     if err != nil {
+        loggify.ERROR(err.Error())
         return "", err
     }
     return string(page), nil

@@ -5,9 +5,14 @@ import (
 	"errors"
 	"math"
 	"os"
+
+	"github.com/Rosto4eks/loggify"
 )
 
+var polygons Polygons
+
 type Point []float64
+
 type crossRay func(Point, Point, Point) float64
 
 type Polygons struct {
@@ -24,20 +29,24 @@ type Properties struct {
 	Name string `json:"name"`
 }
 
-
-func (u *Usecase) GetPolygons() (Polygons, error) {
+func init() {
+    loggify.INFO("Loading polygons from data/polygons.json")
 	file, err := os.ReadFile("data/polygons.json")
 	if err != nil {
-		return Polygons{}, err
+        loggify.ERROR(err.Error())
+        panic(err)
 	}
-	var polygons Polygons
-	json.Unmarshal(file, &polygons)
-	return polygons, nil
+	err = json.Unmarshal(file, &polygons)
+    if err != nil {
+        loggify.ERROR(err.Error())
+        panic(err)
+    }
+    loggify.INFO("Successfully loaded polygons")
 }
 
 
 // returns id of point's polygon
-func (u *Usecase) Locate(polygons Polygons, point Point) (string, error) {
+func (u *Usecase) Locate(point Point) (string, error) {
 	for _, pl := range polygons.Polygons {
 		if locatePolygon(pl.Coords, point) {
 			return pl.Properties.Id, nil
