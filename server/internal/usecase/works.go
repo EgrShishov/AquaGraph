@@ -47,9 +47,12 @@ func (u *Usecase) getDataWorks() (models.Works, error) {
         data[i] = strings.ReplaceAll(elem[13:], "&nbsp;", "")
         
     }
-    
     works := make(models.Works, 0)
     for i := 0; i < len(data); i += 4 {
+        if data[i] == "" {
+            i++
+            continue
+        }
         temp := make(map[string]interface{})
         temp["Time"] = data[i + 2]
         temp["Addresses"] = getAddresses(data[i + 3])
@@ -81,7 +84,8 @@ func getAddresses(str string) []string {
     addrs := reg.FindString(str)
     if addrs == "" {
         reg, _ = regexp.Compile("адресу:.[^.]+")
-        addrs = reg.FindString(str)[14:]
+        addrs = reg.FindString(str)
+        addrs = addrs[14:]
     } else {
         addrs = addrs[16:]
     }
@@ -90,7 +94,7 @@ func getAddresses(str string) []string {
 
 
 func getHTMLWorks() (string, error) {
-    res, err := http.Get("http://minskvodokanal.by/about/planovyie-rabotyi")
+    res, err := http.Get("http://minskvodokanal.by/about/planovyie-rabotyi/")
     if err != nil {
         loggify.ERROR(err.Error())
         return "", err
