@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.sp
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.aquagraphapp.models.IPconfig
 import com.yandex.mapkit.geometry.Point
 
 class ProblemsScreen {
@@ -184,7 +185,7 @@ class ProblemsScreen {
 
 fun addMark(applicationContext: Context, address: Point, info: String) {
     val url =
-        "http://192.168.98.248:1337/new-mark?data=${info}&x=${address.latitude}&y=${address.longitude}"
+        "http://${IPconfig}:1337/new-mark?data=${info}&x=${address.latitude}&y=${address.longitude}"
     val queue = Volley.newRequestQueue(applicationContext)
     val request = StringRequest(
         Request.Method.GET,
