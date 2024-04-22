@@ -3,7 +3,8 @@ package usecase
 import (
 	"aquaGraph/models"
 	"encoding/json"
-	"fmt"
+
+	"github.com/Rosto4eks/loggify"
 )
 
 
@@ -15,6 +16,7 @@ func (u *Usecase) GetQuality(id string) (models.QualityJson, error) {
     datamap := make(map[string]interface{})
     err = json.Unmarshal([]byte(data.Data), &datamap)
     if err != nil {
+        loggify.ERROR(err.Error())
         return models.QualityJson{}, err
     }
     return models.QualityJson{
@@ -34,7 +36,7 @@ func (u *Usecase) GetQualities(id string) ([]models.QualityJson, error) {
         datamap := make(map[string]interface{})
         err = json.Unmarshal([]byte(elem.Data), &datamap)
         if err != nil {
-            fmt.Println(err.Error())
+            loggify.ERROR(err.Error())
             continue
         }
         arr = append(arr, models.QualityJson{

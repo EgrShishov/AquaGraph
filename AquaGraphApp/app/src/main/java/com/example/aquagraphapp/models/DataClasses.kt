@@ -2,7 +2,7 @@ package com.example.aquagraphapp.models
 
 import androidx.compose.ui.graphics.vector.ImageVector
 
-var IPconfig: String = "192.168.89.100"
+var IPconfig: String = "192.168.78.100"
 
 data class BottomNavigationItem(
     var route : String,

@@ -1,17 +1,40 @@
 package usecase
 
 import (
+	"aquaGraph/models"
 	"io"
 	"net/http"
 	"regexp"
 	"strings"
 	"time"
+
+	"github.com/Rosto4eks/loggify"
 )
 
-type Works []map[string]interface{}
+const (
+    UPDATE_TIMESPAN_OK = time.Minute * 60 * 12
+    UPDATE_TIMESPAN_ERR = time.Minute * 60
+)
 
+func (u *Usecase) GetWorks() (models.Works, error) {
+    return u.repository.GetWorks()
+}
 
-func (u *Usecase) GetDataWorks() (Works, error) {
+func (u *Usecase) UpdateWorks() {
+    loggify.INFO("Loading works data...")
+    works, err := u.getDataWorks()
+    if err == nil {
+        u.repository.SaveWorks(works)
+        loggify.INFO("Successfully loaded works")
+        time.Sleep(UPDATE_TIMESPAN_OK)
+    } else {
+        loggify.ERROR(err.Error())
+        time.Sleep(UPDATE_TIMESPAN_ERR)
+    }
+    u.UpdateWorks()
+}
+
+func (u *Usecase) getDataWorks() (models.Works, error) {
     page, err := getHTMLWorks()
     if err != nil {
         return nil, err
@@ -24,9 +47,12 @@ func (u *Usecase) GetDataWorks() (Works, error) {
         data[i] = strings.ReplaceAll(elem[13:], "&nbsp;", "")
         
     }
-    
-    works := make(Works, 0)
+    works := make(models.Works, 0)
     for i := 0; i < len(data); i += 4 {
+        if data[i] == "" {
+            i++
+            continue
+        }
         temp := make(map[string]interface{})
         temp["Time"] = data[i + 2]
         temp["Addresses"] = getAddresses(data[i + 3])
@@ -47,7 +73,7 @@ func isPast(data string) bool {
     }
     t, err := time.Parse("02.01.2006", data[11:])
     if err != nil {
-        print(err.Error())
+        loggify.ERROR(err.Error())
         return true
     }
     return time.Now().After(t)
@@ -58,7 +84,8 @@ func getAddresses(str string) []string {
     addrs := reg.FindString(str)
     if addrs == "" {
         reg, _ = regexp.Compile("адресу:.[^.]+")
-        addrs = reg.FindString(str)[14:]
+        addrs = reg.FindString(str)
+        addrs = addrs[14:]
     } else {
         addrs = addrs[16:]
     }
@@ -67,13 +94,15 @@ func getAddresses(str string) []string {
 
 
 func getHTMLWorks() (string, error) {
-    res, err := http.Get("http://minskvodokanal.by/about/planovyie-rabotyi")
+    res, err := http.Get("http://minskvodokanal.by/about/planovyie-rabotyi/")
     if err != nil {
+        loggify.ERROR(err.Error())
         return "", err
     }
     defer res.Body.Close()
     page, err := io.ReadAll(res.Body)
     if err != nil {
+        loggify.ERROR(err.Error())
         return "", err
     }
     return string(page), nil
